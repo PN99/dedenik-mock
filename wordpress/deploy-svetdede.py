@@ -68,11 +68,14 @@ def deploy(apply=False):
         raise ValueError('Invalid FTP port')
     context = ssl.create_default_context()
     with ftplib.FTP_TLS(context=context, timeout=30) as ftp:
+        print('Connecting with verified FTPS.', flush=True)
         ftp.connect(host, port)
         # FTP_TLS negotiates TLS before sending the username or password.
         ftp.login(user, password)
+        print('FTP login accepted.', flush=True)
         ftp.prot_p()
         ftp.cwd(REMOTE)
+        print('Test theme directory opened.', flush=True)
         installed = io.BytesIO()
         ftp.retrbinary('RETR style.css', installed.write)
         if not re.search(r'^Theme Name:\s*Dedeník\s*$', installed.getvalue().decode('utf-8-sig'), re.M):
@@ -122,5 +125,7 @@ if __name__ == '__main__':
         deploy(apply=args.apply)
     except Exception as error:
         # Do not include exception messages that may contain FTP responses or credentials.
-        print('Deployment failed (' + type(error).__name__ + '). Check secret names, TLS hostname, FTP access and target directory.', file=sys.stderr)
+        code = str(error)[:3]
+        detail = '; FTP status ' + code if re.fullmatch(r'[45][0-9]{2}', code) else ''
+        print('Deployment failed (' + type(error).__name__ + detail + '). Check secret names, TLS hostname, FTP access and target directory.', file=sys.stderr)
         sys.exit(1)
