@@ -26,6 +26,8 @@ Není potřeba ukládat DB heslo ani přihlašovací údaje WordPressu. FTP hesl
 
 FTP server musí podporovat explicitní TLS. Skript nikdy nepřejde na nešifrované FTP a nevypíná ověřování certifikátu. Když alias `ftp.dedenik.cz` neodpovídá certifikátu, použijte platný serverový hostname uvedený Webglobe. Logy záměrně nevypisují FTP přihlašovací údaje ani celé odpovědi serveru.
 
+Při zprovoznění 20. října 2026 byl pro tento hosting ověřen **`dw132.nameserver.sk`**: DNS vede na stejný server jako `ftp.dedenik.cz`, ale tento název odpovídá jeho TLS certifikátu. Secret `SVETDEDE_FTP_HOST` byl upraven na ověřený název. Přihlášení stávajícím FTP účtem a čtení cílové šablony prošlo dry runem.
+
 FTP nasazení není atomická výměna celé šablony. Soubory se nejprve nahrají do dočasného souboru a potom přejmenují, závislosti před vstupními soubory. Při chybě se běh zastaví, část souborů může být už aktualizovaná. Pro návrat vraťte příslušný commit v Gitu a znovu spusťte deployment. Nepoužívejte force push na sdílenou `main`.
 
 Dokumentace: [GitHub deployment workflow](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments), [GitHub secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets).
