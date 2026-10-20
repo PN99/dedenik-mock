@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "settings": {
+    "layout": {"contentSize": "820px", "wideSize": "1180px"},
+    "color": {
+      "palette": [
+        {"slug": "navy", "name": "Tmavá modrá", "color": "#05092b"},
+        {"slug": "green", "name": "Lesní zelená", "color": "#173d32"},
+        {"slug": "paper", "name": "Papír", "color": "#fffdf8"},
+        {"slug": "cream", "name": "Krémová", "color": "#f7f2e9"},
+        {"slug": "ink", "name": "Text", "color": "#18202c"},
+        {"slug": "red", "name": "Červená", "color": "#ef1820"}
+      ]
+    }
+  },
+  "styles": {"color": {"text": "#18202c", "background": "#fffdf8"}}
+}

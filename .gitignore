@@ -1,0 +1,16 @@
+/old_web/
+*.sql
+*.sql.gz
+*.sql.zip
+wp-config.php
+.env
+.env.*
+/dist/
+__pycache__/
+*.pyc
+*.tgz
+*.tar.gz
+*.log
+*.pem
+*.key
+/.deploy/
