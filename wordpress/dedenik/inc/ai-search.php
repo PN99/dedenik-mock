@@ -31,7 +31,7 @@ function dedenik_ai_json( $instruction, $data, $schema ) {
         'contents' => array( array( 'role' => 'user', 'parts' => array( array( 'text' => wp_json_encode( $data ) ) ) ) ),
         'generationConfig' => array( 'temperature' => 1, 'maxOutputTokens' => 1024,
             'responseMimeType' => 'application/json', 'responseSchema' => $schema,
-            'thinkingConfig' => array( 'thinkingLevel' => 'minimal' ) ),
+            'thinkingConfig' => array( 'thinkingLevel' => 'MINIMAL' ) ),
     );
     $GLOBALS['dedenik_ai_inflight'] = true;
     try {

@@ -59,6 +59,7 @@ $body=json_decode($calls[1][1]['body'],true);
 $sent=json_decode($body['contents'][0]['parts'][0]['text'],true);
 ai_check(array_column($sent['records'],'id')===[10],'Private, draft, password and attachment data must not leave WordPress');
 ai_check(!isset($body['tools']),'No web search or executable model tools');
+ai_check($body['generationConfig']['maxOutputTokens']===1024 && $body['generationConfig']['thinkingConfig']['thinkingLevel']==='MINIMAL','Bounded output and documented REST thinking enum');
 ai_check($calls[0][0]===dedenik_ai_endpoint() && $calls[0][1]['sslverify'] && $calls[0][1]['redirection']===0,'Fixed provider with verified TLS and no redirect');
 ai_check(!str_contains($calls[0][0],'fake-key'),'API key must not be placed in URL');
 ai_check(count(dedenik_ai_search('příběhy o soužití'))===1 && count($calls)===2 && $wpdb->count===1,'Cached search must not consume API or daily quota');
