@@ -5,6 +5,11 @@ define('WP_DISABLE_FATAL_ERROR_HANDLER',true);
 require $argv[1];
 if(wp_get_environment_type()!=='local' || DB_NAME!=='dedenik_local') exit("Local test DB required.\n");
 $saved=[];$created=[];$checks=0;$calls=0;
+$old_ip=$_SERVER['REMOTE_ADDR']??null;
+$_SERVER['REMOTE_ADDR']='192.0.2.250';
+$rate_key='dedenik_ai_rate_'.hash_hmac('sha256',$_SERVER['REMOTE_ADDR'],wp_salt('nonce'));
+$old_rate=get_transient($rate_key);
+delete_transient($rate_key);
 foreach(['dedenik_ai_enabled','dedenik_ai_key','dedenik_ai_daily_limit','dedenik_ai_content_version','dedenik_ai_daily_'.gmdate('Ymd')] as $name){$saved[$name]=get_option($name,null);}
 function integration_check($value,$message){$GLOBALS['checks']++;if(!$value)throw new RuntimeException($message);}
 try {
@@ -50,6 +55,8 @@ try {
 } finally {
     foreach($created as $id)wp_delete_post($id,true);
     foreach($saved as $name=>$value){if($value===null)delete_option($name);else update_option($name,$value,false);}
+    if($old_rate===false)delete_transient($rate_key);else set_transient($rate_key,$old_rate,MINUTE_IN_SECONDS);
+    if($old_ip===null)unset($_SERVER['REMOTE_ADDR']);else $_SERVER['REMOTE_ADDR']=$old_ip;
     if(in_array('--keep-ui',$argv,true)){
         // Deliberately invalid local-only key permits browser testing of failure/fallback UI.
         update_option('dedenik_ai_key','local-ui-invalid-key-never-used',false);
