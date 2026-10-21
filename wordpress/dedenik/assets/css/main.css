@@ -1076,3 +1076,6 @@ h3 {
   max-width:100%;
   overflow:auto
 }
+
+/* Optional archive-only Gemini search. */
+.ai-search{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid currentColor}.ai-search-form label{display:block;font-weight:600}.ai-search-form input[type=search]{display:block;width:100%;min-width:0;margin:.6rem 0;padding:.8rem;border:1px solid #b9c5bb;border-radius:.5rem;color:#10152e;background:#fff;font:inherit}.ai-search-form button{padding:.65rem 1rem;border:0;border-radius:.5rem;background:#10152e;color:white;font:inherit;cursor:pointer}.ai-search-form button:disabled{opacity:.6;cursor:wait}.ai-search-note{font-size:.8rem!important;line-height:1.5}.ai-search-results ul{padding-left:1.25rem}.ai-search-results li{margin:1rem 0}.ai-search-results a{font-weight:700}.ai-search-results p{font-size:.9rem;line-height:1.55;overflow-wrap:anywhere}

@@ -32,6 +32,8 @@ jobs:
         run: find wordpress/dedenik -name '*.php' -print0 | xargs -0 -n1 php -n -l
       - name: Check theme behavior
         run: php -n wordpress/tests/theme-behavior.php
+      - name: Check AI search isolation and budgets
+        run: php wordpress/tests/ai-search-behavior.php
       - name: Check deployment boundaries
         run: python3 -m unittest discover -s wordpress/tests -p 'test_deploy.py'
       - name: Build installation ZIP

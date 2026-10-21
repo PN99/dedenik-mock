@@ -6,3 +6,4 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/world-admin.php';
 require get_template_directory() . '/inc/footer.php';
+require get_template_directory() . '/inc/ai-search.php';
