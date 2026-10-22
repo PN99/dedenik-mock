@@ -1,6 +1,11 @@
 name: Build staging discussion index
 on:
   workflow_dispatch:
+    inputs:
+      resume:
+        description: 'Continue an interrupted initial build from the first missing public comment'
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -21,4 +26,4 @@ jobs:
           SVETDEDE_FTP_USER: ${{ secrets.SVETDEDE_FTP_USER }}
           SVETDEDE_FTP_PASSWORD: ${{ secrets.SVETDEDE_FTP_PASSWORD }}
           SVETDEDE_FTP_PORT: ${{ vars.SVETDEDE_FTP_PORT || '21' }}
-        run: python3 scripts/build-search-index.py --comments
+        run: python3 scripts/build-search-index.py --comments ${{ inputs.resume && '--resume' || '' }}

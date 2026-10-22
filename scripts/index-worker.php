@@ -16,7 +16,9 @@ global $wpdb;
 if ( 'comments_status' === ( $_POST['action'] ?? '' ) ) {
     $table = dedenik_comments_table();
     $expected = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->comments} c JOIN {$wpdb->posts} p ON p.ID=c.comment_post_ID WHERE " . dedenik_comments_public_sql() );
-    echo wp_json_encode( array( 'expected' => $expected, 'indexed' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $table" ), 'last_comment_id' => (int) $wpdb->get_var( "SELECT MAX(comment_id) FROM $table" ), 'ready' => dedenik_comments_ready() ) );
+    $missing_first = $wpdb->get_var( "SELECT MIN(c.comment_ID) FROM {$wpdb->comments} c JOIN {$wpdb->posts} p ON p.ID=c.comment_post_ID LEFT JOIN $table i ON i.comment_id=c.comment_ID WHERE i.comment_id IS NULL AND " . dedenik_comments_public_sql() );
+    $resume = $missing_first ? max( 0, (int) $missing_first - 1 ) : (int) $wpdb->get_var( "SELECT MAX(comment_ID) FROM {$wpdb->comments}" );
+    echo wp_json_encode( array( 'expected' => $expected, 'indexed' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $table" ), 'last_comment_id' => (int) $wpdb->get_var( "SELECT MAX(comment_id) FROM $table" ), 'resume_cursor' => $resume, 'ready' => dedenik_comments_ready() ) );
     exit;
 }
 $lock = $wpdb->get_var( "SELECT GET_LOCK('svetdede_search_index',0)" );

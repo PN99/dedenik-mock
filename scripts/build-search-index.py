@@ -22,6 +22,8 @@ def main():
     source = template.replace('__WORKER_EXPIRES__', str(int(time.time()) + 1800)).replace('__WORKER_TOKEN_HASH__', hashlib.sha256(token.encode()).hexdigest())
     site = 'https://svetdede.dedenik.cz/'
     prefix = 'comments_' if '--comments' in sys.argv else ''
+    if '--resume' in sys.argv and not prefix:
+        raise ValueError('Resume applies only to the discussion index')
 
     def call(action, **values):
         request = urllib.request.Request(site + worker, data=urllib.parse.urlencode(dict(action=action, **values)).encode(), headers={'X-Dedenik-Index-Token': token})
@@ -48,7 +50,9 @@ def main():
                 print('Discussion progress:', json.dumps(call('comments_status')), flush=True)
                 return
             print(call(prefix + 'install'), flush=True)
-            cursor = 0
+            cursor = call('comments_status')['resume_cursor'] if '--resume' in sys.argv else 0
+            if cursor:
+                print('Resuming before first missing public comment, cursor', cursor, flush=True)
             for batch in range(1000):
                 result = call(prefix + 'batch', cursor=cursor)
                 cursor = result['cursor']
