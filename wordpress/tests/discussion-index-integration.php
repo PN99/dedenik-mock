@@ -32,12 +32,12 @@ try {
         $posts[] = wp_insert_post( array( 'post_title' => 'Discussion fixture', 'post_content' => 'Public article', 'post_status' => 'password' === $status ? 'publish' : $status, 'post_password' => 'password' === $status ? 'hidden' : '' ) );
     }
     for ( $i = 0; $i < 15; $i++ ) {
-        $comments[] = wp_insert_comment( array( 'comment_post_ID' => $posts[0], 'comment_author' => $speaker, 'comment_author_email' => 'must-not-leak@example.invalid', 'comment_author_IP' => '192.0.2.88', 'comment_content' => "Koně $marker příběh $i", 'comment_approved' => 1 ) );
+        $comments[] = wp_insert_comment( array( 'comment_post_ID' => $posts[0], 'comment_author' => $speaker, 'comment_author_email' => 'must-not-leak@example.invalid', 'comment_author_IP' => '192.0.2.88', 'comment_content' => "Koně $marker příběh $i", 'comment_date' => '2026-10-22 12:00:00', 'comment_approved' => 1 ) );
     }
     foreach ( array( '0', 'spam', 'trash' ) as $status ) {
         $comments[] = wp_insert_comment( array( 'comment_post_ID' => $posts[0], 'comment_author' => $speaker, 'comment_content' => $marker, 'comment_approved' => $status ) );
     }
-    $comments[] = wp_insert_comment( array( 'comment_post_ID' => $posts[0], 'comment_author' => $speaker, 'comment_content' => 'Konec projektu a kontakt na koncert.', 'comment_approved' => 1 ) );
+    $comments[] = wp_insert_comment( array( 'comment_post_ID' => $posts[0], 'comment_author' => $speaker, 'comment_content' => 'Konec projektu a kontakt na koncert.', 'comment_date' => '2026-10-22 12:00:00', 'comment_approved' => 1 ) );
     foreach ( array( $posts[1], $posts[2] ) as $parent ) {
         $comments[] = wp_insert_comment( array( 'comment_post_ID' => $parent, 'comment_author' => $speaker, 'comment_content' => $marker, 'comment_approved' => 1 ) );
     }
@@ -71,6 +71,9 @@ try {
     discussion_check( dedenik_comments_search( $marker, array( $marker ), $intent )['total'] === 0 && dedenik_search_result( -$comments[2], $marker, true ) === null, 'Live parent visibility gates stale index and cached IDs' );
     wp_update_post( array( 'ID' => $posts[0], 'post_password' => '' ) );
     discussion_check( dedenik_comments_search( $marker, array( $marker ), $intent )['total'] === 13, 'Public parent restored' );
+    $calendar_intent = dedenik_comments_intent( 'o čem jsme se bavili v říjnu 2026', array( 'date_from' => '2026-10-01', 'date_to' => '2026-10-31' ) );
+    $calendar_result = dedenik_comments_search( 'o čem jsme se bavili v říjnu 2026', array( 'o čem jsme se bavili v říjnu 2026' ), $calendar_intent );
+    discussion_check( $calendar_result['total'] >= 15, 'Calendar restriction must not also require month/year to appear in comment body' );
     update_option( 'dedenik_ai_enabled', true ); update_option( 'dedenik_ai_key', 'not-a-real-discussion-key' ); update_option( 'dedenik_ai_daily_limit', 50 );
     delete_option( 'dedenik_ai_daily_' . gmdate( 'Ymd' ) );
     $_SERVER['REMOTE_ADDR'] = '192.0.2.245';

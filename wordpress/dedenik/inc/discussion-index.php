@@ -129,11 +129,13 @@ function dedenik_comments_search( $query, $terms, $intent, $page = 1, $per_page 
     }
     $tokens = array();
     $skip = array( 'najdi','najdete','hledam','prosim','kdy','kde','jak','cem','cim','jsme','jsem','jsi','bavili','bavily','bavil','diskutovali','mluvila','mluvil','mluvili','psala','psal','napsala','napsal','rikala','rikal','diskuse','diskusi','komentare','komentar','prispevky','vse','vsechny','neco','uzivatele','autora','autorky','od' );
+    $calendar = array( 'rok','roku','roce','letos','loni','dnes','vcera','minuly','minule','minulem','minuleho','tyden','tydnu','tydne','mesic','mesici','mesice','obdobi','leden','lednu','ledna','unor','unoru','unora','brezen','breznu','brezna','duben','dubnu','dubna','kveten','kvetnu','kvetna','cerven','cervnu','cervna','cervenec','cervenci','cervence','srpen','srpnu','srpna','zari','rijen','rijnu','rijna','listopad','listopadu','prosinec','prosinci','prosince' );
     foreach ( $terms as $term ) {
         preg_match_all( '/[\p{L}\p{N}]{3,60}/u', $term, $matches );
         foreach ( $matches[0] as $token ) {
             $normalized = dedenik_index_key( $token );
             if ( $normalized === $intent['participant'] || in_array( $normalized, $skip, true ) ) { continue; }
+            if ( ( isset( $intent['date_from'] ) || isset( $intent['date_to'] ) ) && ( preg_match( '/^\d{4}$/D', $normalized ) || in_array( $normalized, $calendar, true ) ) ) { continue; }
             // A bare kon* also matches konec, kontakt, koncert. Use horse inflections as whole words.
             if ( in_array( $normalized, array( 'kon','konich','koni','kone','konmi','kun','konim','konem' ), true ) ) {
                 array_push( $tokens, 'kůň', 'koně', 'koni', 'koní', 'koním', 'koních', 'koňmi', 'koněm' );

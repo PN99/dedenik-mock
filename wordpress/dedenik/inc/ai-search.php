@@ -86,7 +86,7 @@ function dedenik_ai_reserve() {
 }
 function dedenik_ai_make_plan( $query ) {
     return dedenik_ai_json(
-        'Extract up to 6 short Czech topic search terms, preferring useful word stems and variants (e.g. kon, koň, kůň for horses). Remove conversational filler. Set discussion=true only for questions about comments or conversations. participant is an explicitly named comment speaker, otherwise empty. Do not include the participant name as a topic term. date_from/date_to are YYYY-MM-DD only when constrained by the query, otherwise empty. Today is ' . gmdate( 'Y-m-d' ) . '. No SQL, URLs or answers.',
+        'Extract up to 6 short Czech topic search terms, preferring useful word stems and variants (e.g. kon, koň, kůň for horses). Remove conversational filler and calendar constraints from topic terms. Set discussion=true only for questions about comments or conversations. participant is an explicitly named comment speaker, otherwise empty. Do not include the participant name as a topic term. date_from/date_to are YYYY-MM-DD only when constrained by the query, otherwise empty. Today is ' . ( function_exists( 'wp_date' ) ? wp_date( 'Y-m-d' ) : gmdate( 'Y-m-d' ) ) . '. No SQL, URLs or answers.',
         array( 'query' => $query ),
         array( 'type' => 'OBJECT', 'properties' => array(
             'terms' => array( 'type' => 'ARRAY', 'maxItems' => 6, 'items' => array( 'type' => 'STRING' ) ),
