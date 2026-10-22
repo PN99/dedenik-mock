@@ -64,9 +64,15 @@ function dedenik_ai_public( $post ) {
         'publish' === $post->post_status && '' === $post->post_password && is_post_publicly_viewable( $post );
 }
 function dedenik_ai_record( $post ) {
-    return array( 'id' => $post->ID, 'title' => html_entity_decode( wp_strip_all_tags( $post->post_title ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ),
+    $record = array( 'id' => $post->ID, 'title' => html_entity_decode( wp_strip_all_tags( $post->post_title ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ),
         'date' => substr( $post->post_date, 0, 10 ),
         'excerpt' => wp_html_excerpt( html_entity_decode( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ), 900, '…' ) );
+    if ( function_exists( 'dedenik_index_ready' ) && dedenik_index_ready() ) {
+        $record['authors'] = array_column( dedenik_index_credits( $post ), 0 );
+        $terms = wp_get_object_terms( $post->ID, array( 'category', 'post_tag' ), array( 'fields' => 'names' ) );
+        $record['topics'] = is_wp_error( $terms ) ? array() : $terms;
+    }
+    return $record;
 }
 /** Atomic site-wide reservation: one search reserves at most two Google calls. */
 function dedenik_ai_reserve() {
@@ -84,6 +90,10 @@ function dedenik_ai_search( $query ) {
         return new WP_Error( 'query', 'Napište dotaz dlouhý 3 až 250 znaků.' );
     }
     if ( ! dedenik_ai_ready() ) { return new WP_Error( 'disabled', 'Chytré hledání zatím není zapnuté.' ); }
+    if ( function_exists( 'dedenik_index_author' ) ) {
+        $author = dedenik_index_author( $query );
+        if ( $author ) { return $author['ids']; }
+    }
     // Store record IDs only; visibility and snippets are re-read on every request.
     $cache_key = 'dedenik_ai_' . md5( $query . get_option( 'dedenik_ai_content_version', '1' ) . wp_hash( dedenik_ai_key() ) );
     $cached = get_transient( $cache_key );
@@ -103,6 +113,13 @@ function dedenik_ai_search( $query ) {
         if ( is_string( $term ) && mb_strlen( trim( $term ) ) >= 3 && mb_strlen( $term ) <= 60 ) { $terms[] = sanitize_text_field( $term ); }
     }
     $records = array();
+    $indexed = function_exists( 'dedenik_index_candidates' ) ? dedenik_index_candidates( $terms ) : null;
+    if ( null !== $indexed ) {
+        foreach ( $indexed as $id ) {
+            $post = get_post( $id );
+            if ( dedenik_ai_public( $post ) ) { $records[ $post->ID ] = dedenik_ai_record( $post ); }
+        }
+    } else {
     foreach ( array_unique( $terms ) as $term ) {
         $found = new WP_Query( array( 's' => $term, 'post_type' => array( 'post', 'page' ),
             'post_status' => 'publish', 'has_password' => false, 'posts_per_page' => 8,
@@ -111,6 +128,7 @@ function dedenik_ai_search( $query ) {
             if ( dedenik_ai_public( $post ) ) { $records[ $post->ID ] = dedenik_ai_record( $post ); }
         }
         if ( count( $records ) >= 32 ) { break; }
+    }
     }
     $records = array_slice( $records, 0, 32, true );
     if ( ! $records ) { set_transient( $cache_key, array(), HOUR_IN_SECONDS ); return array(); }
@@ -140,6 +158,11 @@ function dedenik_ai_ajax() {
     $ids = dedenik_ai_search( wp_unslash( $_POST['query'] ?? '' ) );
     nocache_headers();
     if ( is_wp_error( $ids ) ) { wp_send_json_error( array( 'message' => $ids->get_error_message() ), 400 ); }
+    $pagination = null;
+    if ( function_exists( 'dedenik_index_author' ) ) {
+        $pagination = dedenik_index_author( sanitize_text_field( wp_unslash( $_POST['query'] ?? '' ) ), absint( $_POST['page'] ?? 1 ) );
+        if ( $pagination ) { $ids = $pagination['ids']; unset( $pagination['ids'] ); }
+    }
     $results = array();
     foreach ( $ids as $id ) {
         $post = get_post( $id );
@@ -149,7 +172,7 @@ function dedenik_ai_ajax() {
             $results[] = $record;
         }
     }
-    wp_send_json_success( array( 'results' => $results ) );
+    wp_send_json_success( array( 'results' => $results, 'pagination' => $pagination ) );
 }
 add_action( 'admin_menu', function () {
     add_options_page( 'Chytré hledání Dedeník', 'Chytré hledání', 'manage_options', 'dedenik-ai', 'dedenik_ai_settings' );
@@ -169,8 +192,17 @@ add_action( 'admin_post_dedenik_ai_save', function () {
 function dedenik_ai_settings() {
     if ( ! current_user_can( 'manage_options' ) ) { return; }
     ?><div class="wrap"><h1>Chytré hledání Dedeník</h1>
+    <?php if ( function_exists( 'dedenik_index_ready' ) ) : ?>
+    <p><strong>Databázový index:</strong> <?php
+    if ( dedenik_index_ready() ) {
+        global $wpdb;
+        $tables = dedenik_index_tables();
+        echo esc_html( number_format_i18n( (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$tables['documents']}" ) ) . ' veřejných článků a stránek. Změny obsahu se indexují automaticky.' );
+    } else { echo 'Zatím není naplněný; hledání používá původní výběr článků.'; }
+    ?></p>
+    <?php endif; ?>
     <p>Gemini 3.1 Flash-Lite pomáhá hledat pouze ve veřejných článcích a stránkách tohoto WordPressu. Neprohledává internet.</p>
-    <p>Google dostane dotaz a nejvýše 32 názvů, dat a krátkých úryvků. Nedostane komentáře, uživatelské účty, neveřejné příspěvky ani přístup do databáze. Před zapnutím použijte projekt s placeným Gemini API a nastavte jeho rozpočet v Google Cloud.</p>
+    <p>Google dostane dotaz a nejvýše 32 názvů, dat, veřejných autorských jmen, rubrik, štítků a krátkých úryvků. Nedostane komentáře, uživatelské účty, neveřejné příspěvky ani přístup do databáze. Přesné hledání podle autora používá databázový index bez volání Googlu. Před zapnutím použijte projekt s placeným Gemini API a nastavte jeho rozpočet v Google Cloud.</p>
     <?php if ( isset( $_GET['saved'] ) ) { echo '<div class="notice notice-success"><p>Nastavení uloženo.</p></div>'; } ?>
     <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
     <input type="hidden" name="action" value="dedenik_ai_save"><?php wp_nonce_field( 'dedenik_ai_save' ); ?>

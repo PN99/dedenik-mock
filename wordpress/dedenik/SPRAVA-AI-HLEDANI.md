@@ -1,5 +1,7 @@
 # Chytré hledání
 
+Od verze 0.5.0 lze hledání napojit na databázový index celého veřejného archivu včetně autorů, rubrik a štítků. Přesné autorské dotazy mají úplný stránkovaný výpis bez volání Gemini. Vytvoření indexu, jeho strukturu a průběžnou synchronizaci popisuje [SPRAVA-INDEXU.md](SPRAVA-INDEXU.md). Níže uvedený výběr pomocí WP_Query se používá jako záloha, dokud index není připravený.
+
 V administraci otevřete **Nastavení → Chytré hledání**. Výchozí stav je vypnuto, bez API klíče se návštěvníkům formulář nezobrazuje a Google se nekontaktuje.
 
 1. V Google AI Studio vytvořte API klíč k projektu s aktivovaným placeným Gemini API: https://aistudio.google.com/api-keys
