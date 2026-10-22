@@ -6,6 +6,7 @@ import os
 import re
 import ssl
 import urllib.request
+import urllib.parse
 import uuid
 
 
@@ -51,7 +52,6 @@ add_action( 'after_setup_theme', function () {
     nonce = re.search(r'name="nonce" value="([A-Za-z0-9]+)"', html)
     if not nonce:
         raise RuntimeError('Search nonce missing')
-    import urllib.parse
     request = urllib.request.Request(site + 'wp-admin/admin-ajax.php', data=urllib.parse.urlencode({
         'action': 'dedenik_ai_search', 'nonce': nonce.group(1), 'query': 'Příběhy o psech a kočkách'
     }).encode())
