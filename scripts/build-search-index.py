@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import secrets
+import sys
 import ssl
 import time
 import urllib.parse
@@ -20,6 +21,7 @@ def main():
     template = Path(__file__).with_name('index-worker.php').read_text()
     source = template.replace('__WORKER_EXPIRES__', str(int(time.time()) + 1800)).replace('__WORKER_TOKEN_HASH__', hashlib.sha256(token.encode()).hexdigest())
     site = 'https://svetdede.dedenik.cz/'
+    prefix = 'comments_' if '--comments' in sys.argv else ''
 
     def call(action, **values):
         request = urllib.request.Request(site + worker, data=urllib.parse.urlencode(dict(action=action, **values)).encode(), headers={'X-Dedenik-Index-Token': token})
@@ -42,18 +44,18 @@ def main():
         try:
             ftp.storbinary('STOR ' + worker, io.BytesIO(source.encode()))
             print('Temporary authenticated worker installed.', flush=True)
-            print(call('install'), flush=True)
+            print(call(prefix + 'install'), flush=True)
             cursor = 0
             for batch in range(1000):
-                result = call('batch', cursor=cursor)
+                result = call(prefix + 'batch', cursor=cursor)
                 cursor = result['cursor']
                 if result['done']:
                     break
                 if batch % 10 == 0:
-                    print('Indexed through post ID', cursor, flush=True)
+                    print('Indexed through ' + ('comment' if prefix else 'post') + ' ID', cursor, flush=True)
             else:
                 raise RuntimeError('Index batch limit exceeded')
-            print('Coverage verified:', json.dumps(call('verify')), flush=True)
+            print('Coverage verified:', json.dumps(call(prefix + 'verify')), flush=True)
         finally:
             # Reconnect if a long build has expired the FTP control connection.
             try:

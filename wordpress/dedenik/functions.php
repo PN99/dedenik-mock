@@ -8,3 +8,4 @@ require get_template_directory() . '/inc/world-admin.php';
 require get_template_directory() . '/inc/footer.php';
 require get_template_directory() . '/inc/ai-search.php';
 require get_template_directory() . '/inc/search-index.php';
+require get_template_directory() . '/inc/discussion-index.php';

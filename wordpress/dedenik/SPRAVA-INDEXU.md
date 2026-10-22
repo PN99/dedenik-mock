@@ -8,7 +8,7 @@ Index používá vlastní tabulky s aktuálním prefixem WordPressu. Původní �
 | `dedenik_search_credits` | Vazby článků na veřejná autorská jména a přezdívky. Index normalizovaného jména; zdroj `wordpress`, `title` nebo `editor`. |
 | `dedenik_search_terms` | Vazby na rubriky a štítky: ID taxonomie, typ, název a slug. Index ID taxonomie a typu. |
 
-V indexu nejsou komentáře, e-maily, přihlašovací jména, hesla, neveřejné příspěvky ani přílohy. Před vrácením výsledků se navíc znovu ověřuje současná viditelnost příspěvku ve WordPressu. Úryvky pro Google a návštěvníky se vždy čtou z aktuálního článku, nikoli ze starého indexu.
+Tyto tabulky obsahují články, nikoli komentáře. Od verze 0.6.0 mají veřejné schválené komentáře [vlastní index diskusí](SPRAVA-DISKUSI-HLEDANI.md). Neindexují se soukromá pole uživatelů, hesla, neveřejný obsah ani přílohy. Před vrácením výsledků se znovu ověřuje současná viditelnost příspěvku ve WordPressu. Úryvky se vždy čtou z aktuálního zdroje, nikoli ze starého indexu.
 
 ## Autoři
 

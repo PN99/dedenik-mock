@@ -25,6 +25,24 @@ try {
         }
     } elseif ( 'batch' === $action && dedenik_index_installed() ) {
         $result = dedenik_index_batch( absint( $_POST['cursor'] ?? 0 ) );
+    } elseif ( 'comments_install' === $action ) {
+        $result = dedenik_comments_install();
+        if ( ! is_wp_error( $result ) ) {
+            update_option( 'dedenik_comments_ready', false, false );
+            $result = array( 'comments_installed' => true );
+        }
+    } elseif ( 'comments_batch' === $action && dedenik_comments_installed() ) {
+        $result = dedenik_comments_batch( absint( $_POST['cursor'] ?? 0 ) );
+    } elseif ( 'comments_verify' === $action && dedenik_comments_ready() ) {
+        $table = dedenik_comments_table();
+        $join = "FROM {$wpdb->comments} c JOIN {$wpdb->posts} p ON p.ID=c.comment_post_ID WHERE " . dedenik_comments_public_sql();
+        $expected = (int) $wpdb->get_var( "SELECT COUNT(*) $join" );
+        $indexed = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $table" );
+        $missing = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->comments} c JOIN {$wpdb->posts} p ON p.ID=c.comment_post_ID LEFT JOIN $table i ON i.comment_id=c.comment_ID WHERE i.comment_id IS NULL AND " . dedenik_comments_public_sql() );
+        $unsafe = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $table i LEFT JOIN {$wpdb->comments} c ON c.comment_ID=i.comment_id LEFT JOIN {$wpdb->posts} p ON p.ID=c.comment_post_ID WHERE c.comment_ID IS NULL OR p.ID IS NULL OR NOT (" . dedenik_comments_public_sql() . ')' );
+        $yga = dedenik_comments_search( 'kdy mluvila YGA o koních', array( 'kon', 'koň', 'kůň' ), dedenik_comments_intent( 'kdy mluvila YGA o koních' ) );
+        $result = array( 'expected' => $expected, 'indexed' => $indexed, 'missing' => $missing, 'unsafe' => $unsafe, 'yga_horses_matches' => $yga['total'], 'yga_horses_pages' => $yga['pages'] );
+        if ( ! $expected || $indexed !== $expected || $missing || $unsafe ) { $result = new WP_Error( 'verification', 'Discussion index coverage failed.' ); }
     } elseif ( 'verify' === $action && dedenik_index_ready() ) {
         $tables = dedenik_index_tables();
         $expected = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts} p WHERE " . dedenik_index_public_sql() );

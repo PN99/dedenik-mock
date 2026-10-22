@@ -17,8 +17,9 @@ document.querySelectorAll('.ai-search-form').forEach(form => {
             const pagination = payload.data.pagination;
             output.replaceChildren();
             const status = document.createElement('p');
-            status.textContent = records.length ? 'Související články z archivu:' : 'Nenašli jsme odpovídající článek. Zkuste kratší dotaz nebo běžné hledání výše.';
+            status.textContent = records.length ? 'Související články a diskuse:' : 'Nenašli jsme odpovídající výsledek. Zkuste kratší dotaz nebo běžné hledání výše.';
             if (pagination?.mode === 'author') status.textContent = `Články autora: celkem ${pagination.total}. Strana ${pagination.page} z ${pagination.pages}.`;
+            if (pagination?.mode === 'discussion') status.textContent = pagination.total ? `Nalezené komentáře: ${pagination.total}. Strana ${pagination.page} z ${pagination.pages}.` : 'Odpovídající veřejný komentář jsme nenašli. Zkuste jiné téma nebo přezdívku.';
             output.append(status);
             const list = document.createElement('ul');
             records.forEach(record => {
