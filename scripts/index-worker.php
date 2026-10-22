@@ -13,6 +13,12 @@ if ( wp_parse_url( home_url(), PHP_URL_HOST ) !== 'svetdede.dedenik.cz' || DB_NA
     http_response_code( 409 ); echo '{"error":"Wrong target or index code unavailable"}'; exit;
 }
 global $wpdb;
+if ( 'comments_status' === ( $_POST['action'] ?? '' ) ) {
+    $table = dedenik_comments_table();
+    $expected = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->comments} c JOIN {$wpdb->posts} p ON p.ID=c.comment_post_ID WHERE " . dedenik_comments_public_sql() );
+    echo wp_json_encode( array( 'expected' => $expected, 'indexed' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $table" ), 'last_comment_id' => (int) $wpdb->get_var( "SELECT MAX(comment_id) FROM $table" ), 'ready' => dedenik_comments_ready() ) );
+    exit;
+}
 $lock = $wpdb->get_var( "SELECT GET_LOCK('svetdede_search_index',0)" );
 if ( '1' !== (string) $lock ) { http_response_code( 409 ); echo '{"error":"Index busy"}'; exit; }
 try {

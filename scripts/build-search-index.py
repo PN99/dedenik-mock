@@ -44,6 +44,9 @@ def main():
         try:
             ftp.storbinary('STOR ' + worker, io.BytesIO(source.encode()))
             print('Temporary authenticated worker installed.', flush=True)
+            if '--status' in sys.argv:
+                print('Discussion progress:', json.dumps(call('comments_status')), flush=True)
+                return
             print(call(prefix + 'install'), flush=True)
             cursor = 0
             for batch in range(1000):
