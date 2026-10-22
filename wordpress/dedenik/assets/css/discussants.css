@@ -1,0 +1,9 @@
+.commenter-archive-link { text-decoration: underline; text-underline-offset: .18em; }
+.commenter-archive-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.commenter-archive { max-width: 900px; overflow-wrap: anywhere; }
+.commenter-list { display: grid; gap: 1.25rem; list-style: none; margin: 2rem 0; padding: 0; }
+.commenter-item { padding: clamp(16px, 3vw, 28px); border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+.commenter-item h2 { margin: 0 0 .6rem; font: 1.55rem/1.25 var(--serif); }
+.commenter-item a { text-decoration: underline; text-underline-offset: .18em; }
+.commenter-meta { color: var(--muted); font-size: .9rem; }
+.commenter-excerpt { line-height: 1.7; }
