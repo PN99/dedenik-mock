@@ -5,6 +5,9 @@ defined( 'ABSPATH' ) || exit;
 function dedenik_ai_key() {
     return defined( 'DEDENIK_GEMINI_API_KEY' ) ? DEDENIK_GEMINI_API_KEY : get_option( 'dedenik_ai_key', '' );
 }
+function dedenik_ai_valid_key( $key ) {
+    return is_string( $key ) && 1 === preg_match( '/^(?:AQ\.)?[A-Za-z0-9_-]{20,200}$/D', $key );
+}
 function dedenik_ai_ready() {
     return get_option( 'dedenik_ai_enabled', false ) && dedenik_ai_key();
 }
@@ -157,7 +160,7 @@ add_action( 'admin_post_dedenik_ai_save', function () {
     $key = trim( wp_unslash( $_POST['api_key'] ?? '' ) );
     if ( ! defined( 'DEDENIK_GEMINI_API_KEY' ) ) {
         if ( ! empty( $_POST['remove_key'] ) ) { delete_option( 'dedenik_ai_key' ); }
-        elseif ( $key && preg_match( '/^[A-Za-z0-9_-]{20,200}$/D', $key ) ) { update_option( 'dedenik_ai_key', $key, false ); }
+        elseif ( dedenik_ai_valid_key( $key ) ) { update_option( 'dedenik_ai_key', $key, false ); }
     }
     update_option( 'dedenik_ai_enabled', ! empty( $_POST['enabled'] ), false );
     update_option( 'dedenik_ai_daily_limit', max( 1, min( 500, absint( $_POST['daily_limit'] ?? 50 ) ) ), false );

@@ -81,4 +81,7 @@ ai_check($filter($blocked,['headers'=>['x-goog-api-key'=>'wrong']],dedenik_ai_en
 ai_check($filter($blocked,['headers'=>['x-goog-api-key'=>dedenik_ai_key()]],dedenik_ai_endpoint())===false,'Only explicit module request may pass staging isolation');
 $GLOBALS['dedenik_ai_inflight']=false;
 ai_check($filter($blocked,['headers'=>['x-goog-api-key'=>dedenik_ai_key()]],dedenik_ai_endpoint())===$blocked,'Google must remain blocked outside module request');
+ai_check(dedenik_ai_valid_key('AQ.'.str_repeat('a',45)), 'Gemini auth keys with AQ. prefix are accepted');
+ai_check(dedenik_ai_valid_key('AIza'.str_repeat('b',35)), 'Legacy key format remains accepted');
+ai_check(!dedenik_ai_valid_key("AQ.".str_repeat('a',45)."\n") && !dedenik_ai_valid_key('AQ.invalid.key'), 'Reject whitespace and unexpected punctuation in keys');
 echo "AI search: $checks checks passed (mocked Google, no external calls).\n";
