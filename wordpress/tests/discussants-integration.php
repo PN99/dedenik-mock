@@ -39,6 +39,23 @@ try {
     set_query_var( 'diskutujici', wp_slash( $name ) ); set_query_var( 'disk_strana', '1' );
     discussant_check( dedenik_discussant_context()['total'] === 22, 'WordPress slashed request variables resolve the correct nickname' );
     discussant_check( dedenik_is_discussant() && apply_filters( 'redirect_canonical', home_url( '/' ) ) === false, 'Commenter route preserves its own URL' );
+    if ( in_array( '--http', $argv, true ) && wp_parse_url( home_url(), PHP_URL_HOST ) === '127.0.0.1' ) {
+        $http = file_get_contents( dedenik_discussant_url( $name ), false, stream_context_create( array( 'http' => array( 'timeout' => 20 ) ) ) );
+        discussant_check( is_string( $http ) && substr_count( $http, 'data-comment-id=' ) === 20, 'HTTP archive resolves quoted Unicode nickname' );
+        preg_match_all( '/href="([^"]+)"/', $http, $hrefs );
+        $next_url = '';
+        foreach ( $hrefs[1] as $href ) {
+            $href = html_entity_decode( $href, ENT_QUOTES, 'UTF-8' );
+            parse_str( wp_parse_url( $href, PHP_URL_QUERY ) ?? '', $query );
+            if ( (string) ( $query['disk_strana'] ?? '' ) === '2' ) {
+                discussant_check( ( $query['diskutujici'] ?? '' ) === $name, 'HTTP pagination preserves entire nickname' );
+                $next_url = $href; break;
+            }
+        }
+        discussant_check( (bool) $next_url, 'HTTP next-page link exists' );
+        $next_html = file_get_contents( $next_url );
+        discussant_check( substr_count( $next_html, 'data-comment-id=' ) === 2, 'HTTP next page has remaining comments' );
+    }
     discussant_check( ! str_contains( get_comment_author_link( $comments[22] ), 'diskutujici=' ), 'No archive links for unapproved comment' );
     discussant_check( ! str_contains( wp_json_encode( $archive ), 'hidden@example.invalid' ) && ! str_contains( wp_json_encode( $archive ), '192.0.2.42' ), 'No email, IP or account metadata returned' );
     $wpdb->update( $wpdb->comments, array( 'comment_approved' => '0' ), array( 'comment_ID' => $comments[0] ) ); clean_comment_cache( $comments[0] );
