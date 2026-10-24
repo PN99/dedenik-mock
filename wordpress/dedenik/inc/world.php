@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
 function dedenik_world_items() {
     $items = array();
     if ( ! get_theme_mod( 'dedenik_world_enabled', true ) ) { return $items; }
-    $labels = array( 'podcast' => 'Podcasty', 'theatre' => 'Divadlo', 'books' => 'Knihy' );
+    $labels = array( 'podcast' => 'Podcasty', 'theatre' => 'Dedivadlo', 'books' => 'Knihy' );
     $order = explode( ',', get_theme_mod( 'dedenik_world_order', 'podcast,theatre,books' ) );
     if ( count( $order ) !== 3 || count( array_unique( $order ) ) !== 3 || array_diff( $order, array_keys( $labels ) ) ) { $order = array_keys( $labels ); }
     foreach ( $order as $key ) {
@@ -13,7 +13,7 @@ function dedenik_world_items() {
         $selected = absint( get_theme_mod( 'dedenik_world_' . $key, 0 ) );
         $page = $selected ? get_post( $selected ) : null;
         $public_page = $selected && $page && 'page' === $page->post_type && 'publish' === $page->post_status && ! $page->post_password;
-        $external = get_theme_mod( 'dedenik_world_' . $key . '_url', '' );
+        $external = get_theme_mod( 'dedenik_world_' . $key . '_url', 'books' === $key && ! $selected ? 'https://alzbetaadrak.cz/' : '' );
         $url = $external ? esc_url( $external, array( 'http', 'https' ) ) : ( $public_page ? get_permalink( $page ) : '' );
         if ( ! $url ) { continue; }
         $items[] = array(

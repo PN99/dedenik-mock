@@ -36,6 +36,15 @@ function dedenik_excerpt_length( $length ) {
     return ( is_home() || is_archive() || is_search() ) ? 28 : $length;
 }
 add_filter( 'excerpt_length', 'dedenik_excerpt_length', 20 );
+// Keep the homepage's editorial strip to one desktop row. Apply the same
+// page size to every home page so native pagination never skips posts.
+function dedenik_home_page_size( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && $query->is_home() && ! $query->is_feed() ) {
+        $query->set( 'posts_per_page', 4 );
+        $query->set( 'ignore_sticky_posts', true );
+    }
+}
+add_action( 'pre_get_posts', 'dedenik_home_page_size' );
 function dedenik_widgets() {
     $areas = array(
         'widgets_sidebar_left' => __( 'Původní levý sloupec', 'dedenik' ),

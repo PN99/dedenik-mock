@@ -14,6 +14,7 @@ function get_theme_mod($key,$default=false) { return $GLOBALS['mods'][$key] ?? $
 function wp_get_nav_menu_object($id) { return $id === 7 ? (object)array('term_id'=>7) : false; }
 function get_permalink($id) { return 'https://example.test/page/'.$id.'/'; }
 function home_url($path) { return 'https://example.test'.$path; }
+function get_theme_file_uri($path) { return 'https://example.test/wp-content/themes/dedenik/'.$path; }
 function get_the_category() { return $GLOBALS['terms']; }
 function get_post_meta($id,$key,$single) { return $GLOBALS['primary'] ?? 0; }
 function get_the_ID() { return 42; }
@@ -47,7 +48,7 @@ $protected=false; ob_start(); dedenik_card_image(); $html=ob_get_clean(); check(
 $thumbnail=false; ob_start(); dedenik_card_image(); $html=ob_get_clean(); check(strpos($html,'card-placeholder')!==false,'Missing image has fallback');
 $mods['dedenik_chat_category']=999; check(dedenik_chat_category()===false,'Invalid Chatnik category hides component');
 $mods['dedenik_chat_category']=9; check(dedenik_chat_category()->term_id===9,'Configured Chatnik category used');
-$fixture_pages=array(); ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check($html==='','Unset World pages must hide section');
+$fixture_pages=array(); ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'https://alzbetaadrak.cz/')!==false,'Default books card links to Alzbeta a drak');
 $mods['dedenik_world_books']=3; $fixture_pages[3]=(object)array('post_type'=>'page','post_status'=>'draft','post_password'=>'');
 ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check($html==='','Draft promotional page must not leak');
 $fixture_pages[3]->post_status='publish'; $fixture_pages[3]->post_password='fixture';

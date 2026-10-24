@@ -10,10 +10,15 @@ $landing = $landing_id ? get_post( $landing_id ) : null;
 </div><div class="world-grid">
 <?php foreach ( $items as $item ) : ?>
 <article class="world-card world-card-<?php echo esc_attr( $item['key'] ); ?>">
-<?php if ( $item['image'] ) { echo wp_get_attachment_image( $item['image'], 'medium', false, array( 'class' => 'world-image', 'alt' => '', 'loading' => 'lazy' ) ); }
-elseif ( $item['page'] ) { echo get_the_post_thumbnail( $item['page'], 'medium', array( 'class' => 'world-image', 'alt' => '', 'loading' => 'lazy' ) ); } ?>
+<?php
+$image = $item['image'] ? wp_get_attachment_image( $item['image'], 'medium', false, array( 'class' => 'world-image', 'alt' => '', 'loading' => 'lazy' ) ) : '';
+if ( ! $image && $item['page'] ) { $image = get_the_post_thumbnail( $item['page'], 'medium', array( 'class' => 'world-image', 'alt' => '', 'loading' => 'lazy' ) ); }
+if ( $image ) { echo $image; }
+else { $pictures = array( 'podcast' => 'podcast', 'theatre' => 'theatre', 'books' => 'book' ); ?>
+<img class="world-image" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $pictures[ $item['key'] ] . '.webp' ) ); ?>" alt="" loading="lazy" width="110" height="170">
+<?php } ?>
 <div><span class="badge"><?php echo esc_html( $item['label'] ); ?></span><h3><a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a></h3>
 <?php if ( $item['description'] ) : ?><p><?php echo esc_html( $item['description'] ); ?></p><?php endif; ?>
-<a class="text-link" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['button'] ); ?></a></div></article>
+<a class="button world-button" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['button'] ); ?></a></div></article>
 <?php endforeach; ?>
 </div></div></section>
