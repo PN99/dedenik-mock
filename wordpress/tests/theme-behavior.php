@@ -50,7 +50,10 @@ $mods['dedenik_chat_category']=999; check(dedenik_chat_category()===false,'Inval
 $mods['dedenik_chat_category']=9; check(dedenik_chat_category()->term_id===9,'Configured Chatnik category used');
 $fixture_pages=array(); ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'https://alzbetaadrak.cz/')!==false,'Default books card links to Alzbeta a drak');
 $mods['dedenik_world_books']=3; $fixture_pages[3]=(object)array('post_type'=>'page','post_status'=>'draft','post_password'=>'');
-ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check($html==='','Draft promotional page must not leak');
+ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'world-card-books')===false,'Draft promotional page must not leak');
 $fixture_pages[3]->post_status='publish'; $fixture_pages[3]->post_password='fixture';
-ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check($html==='','Protected promotional page must not leak');
+ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'world-card-books')===false,'Protected promotional page must not leak');
+check(strpos($html,'https://open.spotify.com/show/4xeerT4CEz6vBbsb9YzGWM')!==false,'Podcast card defaults to the supplied Spotify show');
+$mods['dedenik_world_podcast_url']='https://example.test/custom-podcast';
+$items=dedenik_world_items(); check($items[0]['url']==='https://example.test/custom-podcast','Configured podcast link takes priority');
 echo 'Passed '.$tests." offline behavior checks\n";

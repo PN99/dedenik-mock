@@ -13,7 +13,9 @@ function dedenik_world_items() {
         $selected = absint( get_theme_mod( 'dedenik_world_' . $key, 0 ) );
         $page = $selected ? get_post( $selected ) : null;
         $public_page = $selected && $page && 'page' === $page->post_type && 'publish' === $page->post_status && ! $page->post_password;
-        $external = get_theme_mod( 'dedenik_world_' . $key . '_url', 'books' === $key && ! $selected ? 'https://alzbetaadrak.cz/' : '' );
+        $default_urls = array( 'podcast' => 'https://open.spotify.com/show/4xeerT4CEz6vBbsb9YzGWM', 'books' => 'https://alzbetaadrak.cz/' );
+        $external = get_theme_mod( 'dedenik_world_' . $key . '_url', '' );
+        if ( ! $external && ! $selected ) { $external = $default_urls[ $key ] ?? ''; }
         $url = $external ? esc_url( $external, array( 'http', 'https' ) ) : ( $public_page ? get_permalink( $page ) : '' );
         if ( ! $url ) { continue; }
         $items[] = array(
@@ -24,7 +26,7 @@ function dedenik_world_items() {
             'title' => get_theme_mod( 'dedenik_world_' . $key . '_title', '' ) ?: ( $public_page ? get_the_title( $page ) : $default_label ),
             'description' => get_theme_mod( 'dedenik_world_' . $key . '_description', '' ),
             'image' => absint( get_theme_mod( 'dedenik_world_' . $key . '_image', 0 ) ),
-            'button' => get_theme_mod( 'dedenik_world_' . $key . '_button', __( 'Objevit více →', 'dedenik' ) ),
+            'button' => get_theme_mod( 'dedenik_world_' . $key . '_button', 'podcast' === $key ? __( 'Poslechnout →', 'dedenik' ) : __( 'Objevit více →', 'dedenik' ) ),
         );
     }
     return $items;
