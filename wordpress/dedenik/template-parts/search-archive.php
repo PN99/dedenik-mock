@@ -10,9 +10,7 @@ $archive_posts = get_posts( array(
 <section class="section wrap search-archive-grid">
 <div class="search-panel" id="hledani"><h2><?php esc_html_e( 'Chytré vyhledávání v Dedeníku', 'dedenik' ); ?></h2>
 <p><?php esc_html_e( 'Hledejte příběhy podle tématu, rubriky nebo oblíbeného autora.', 'dedenik' ); ?></p>
-<?php if ( dedenik_ai_ready() ) : dedenik_ai_form(); ?>
-<details><summary><?php esc_html_e( 'Běžné vyhledávání', 'dedenik' ); ?></summary><?php get_search_form(); ?></details>
-<?php else : get_search_form(); endif; ?>
+<?php if ( dedenik_ai_ready() ) { dedenik_ai_form(); } else { get_search_form(); } ?>
 </div>
 <div class="home-archive" id="archiv"><h2><?php esc_html_e( 'Z archivu', 'dedenik' ); ?></h2>
 <?php foreach ( $archive_posts as $archive_post ) : ?>
