@@ -8,12 +8,17 @@ get_header();
 ?>
 <div class="wrap world-landing section">
 <?php while ( have_posts() ) : the_post(); ?>
+<?php $page_id = get_the_ID(); $kind = get_post_meta( $page_id, '_dedenik_world_kind', true ); ?>
 <article <?php post_class( 'world-intro' ); ?>><header class="article-header"><h1><?php the_title(); ?></h1></header>
-<div class="entry-content"><?php the_content(); wp_link_pages(); ?></div></article>
+<?php if ( 'theatre' !== $kind ) : ?><div class="entry-content"><?php the_content(); wp_link_pages(); ?></div><?php endif; ?></article>
 <?php
 if ( post_password_required() ) { continue; }
-$page_id = get_the_ID();
-$kind = get_post_meta( $page_id, '_dedenik_world_kind', true );
+if ( 'theatre' === $kind ) : ?>
+    <section class="world-posts theatre-program" aria-labelledby="theatre-program-title">
+        <h2 id="theatre-program-title"><?php esc_html_e( 'Program Dedivadla', 'dedenik' ); ?></h2>
+        <p><strong><?php esc_html_e( '7. 11. · Vánočnice', 'dedenik' ); ?></strong> · <?php esc_html_e( '19.00 · Velichovky', 'dedenik' ); ?></p>
+    </section>
+<?php endif;
 $category = absint( get_post_meta( $page_id, '_dedenik_world_category', true ) );
 $links = array( 'spotify' => 'Spotify', 'apple' => 'Apple Podcasts', 'youtube' => 'YouTube' );
 $public_links = array();
