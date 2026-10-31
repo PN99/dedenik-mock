@@ -10,6 +10,29 @@ function dedenik_footer_page( $slugs ) {
     return '';
 }
 
+/** Decorative Spotify mark; the adjacent text supplies the accessible name. */
+function dedenik_footer_spotify_icon() {
+    return '<svg class="spotify-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5.8 9.1c4.1-1.2 8.7-.9 12.4 1.2M6.6 12.4c3.4-1 7.2-.7 10.3 1M7.4 15.5c2.8-.8 5.8-.5 8.3.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+}
+
+/** Apply the same podcast label to an explicitly assigned footer menu. */
+function dedenik_footer_is_podcast_item( $item, $args ) {
+    if ( 'footer-world' !== ( $args->theme_location ?? '' ) ) { return false; }
+    foreach ( dedenik_world_items() as $world_item ) {
+        if ( 'podcast' === $world_item['key'] && untrailingslashit( $world_item['url'] ) === untrailingslashit( $item->url ) ) { return true; }
+    }
+    return false;
+}
+function dedenik_footer_menu_title( $title, $item, $args ) {
+    return dedenik_footer_is_podcast_item( $item, $args ) ? dedenik_footer_spotify_icon() . '<span>' . esc_html__( 'Podcast', 'dedenik' ) . '</span>' : $title;
+}
+add_filter( 'nav_menu_item_title', 'dedenik_footer_menu_title', 10, 3 );
+function dedenik_footer_menu_attributes( $attributes, $item, $args ) {
+    if ( dedenik_footer_is_podcast_item( $item, $args ) ) { $attributes['class'] = trim( ( $attributes['class'] ?? '' ) . ' footer-podcast-link' ); }
+    return $attributes;
+}
+add_filter( 'nav_menu_link_attributes', 'dedenik_footer_menu_attributes', 10, 3 );
+
 function dedenik_footer_links( $location ) {
     if ( has_nav_menu( $location ) ) {
         wp_nav_menu( array( 'theme_location' => $location, 'container' => false, 'menu_class' => 'footer-links', 'fallback_cb' => false, 'depth' => 1 ) );
@@ -32,14 +55,18 @@ function dedenik_footer_links( $location ) {
             array( __( 'Kontakt', 'dedenik' ), dedenik_footer_page( array( 'kontakt', 'o-nas' ) ) ),
         );
     } elseif ( 'footer-world' === $location ) {
-        foreach ( dedenik_world_items() as $item ) { $links[] = array( $item['label'], $item['url'] ); }
+        foreach ( dedenik_world_items() as $item ) {
+            $podcast = 'podcast' === $item['key'];
+            $links[] = array( $podcast ? __( 'Podcast', 'dedenik' ) : $item['label'], $item['url'], $podcast );
+        }
         if ( ! $links ) { $links[] = array( __( 'Knihy', 'dedenik' ), 'https://alzbetaadrak.cz/' ); }
         $links[] = array( __( 'Další projekty', 'dedenik' ), dedenik_footer_page( array( 'nase-projekty' ) ) );
     }
     echo '<ul class="footer-links">';
     foreach ( $links as $item ) {
         if ( ! $item[1] || is_wp_error( $item[1] ) ) { continue; }
-        echo '<li><a href="' . esc_url( $item[1] ) . '">' . esc_html( $item[0] ) . '</a></li>';
+        $podcast = ! empty( $item[2] );
+        echo '<li><a' . ( $podcast ? ' class="footer-podcast-link"' : '' ) . ' href="' . esc_url( $item[1] ) . '">' . ( $podcast ? dedenik_footer_spotify_icon() . '<span>' : '' ) . esc_html( $item[0] ) . ( $podcast ? '</span>' : '' ) . '</a></li>';
     }
     echo '</ul>';
 }

@@ -145,17 +145,25 @@ h3 {
 }
 .primary-navigation {
   flex:1;
+  min-width:0;
   font-family:var(--serif);
   font-size:16px
 }
 .menu li {
-  position:relative
+  position:relative;
+  min-width:0
+}
+.site-header .menu a {
+  display:block;
+  overflow-wrap:anywhere
 }
 .menu .sub-menu {
   position:absolute;
   top:100%;
   left:0;
   min-width:200px;
+  width:max-content;
+  max-width:min(280px,calc(100vw - 48px));
   background:var(--navy);
   padding:14px 20px;
   list-style:none;
@@ -166,8 +174,15 @@ h3 {
   display:block
 }
 .menu .sub-menu .sub-menu {
-  left:100%;
-  top:0
+  position:static;
+  width:auto;
+  min-width:0;
+  padding:10px 0 0 14px;
+  border-left:1px solid #ffffff33
+}
+.menu>li:last-child>.sub-menu {
+  left:auto;
+  right:0
 }
 .menu .sub-menu li+li {
   margin-top:10px
@@ -899,6 +914,8 @@ h3 {
 .footer-links,.footer-legal-links { margin:0; padding:0; list-style:none }
 .footer-links li+li { margin-top:9px }
 .footer-links a { display:inline-block; padding-block:2px; overflow-wrap:anywhere }
+.footer-links .footer-podcast-link { display:inline-flex; align-items:center; gap:8px }
+.spotify-icon { display:block; width:18px; height:18px; flex:0 0 18px; fill:currentColor }
 .footer-widgets { margin-top:32px; border-top:1px solid #ffffff22; padding-top:16px }
 .footer-widgets a { text-decoration:underline }
 .footer-widgets :is(select,input,textarea) { max-width:100%; color:var(--ink); background:white }
@@ -972,8 +989,18 @@ h3 {
   flex-basis:100%;
   order:5
 }
-.primary-navigation .menu {
-  padding-block:12px
+.site-header .menu {
+  flex-direction:column;
+  align-items:stretch;
+  gap:0;
+  width:100%;
+  padding-block:6px
+}
+.site-header .menu>li {
+  width:100%
+}
+.site-header .menu a {
+  padding-block:8px
 }
 .has-navigation-js .primary-navigation {
   display:none
@@ -987,10 +1014,6 @@ h3 {
 .has-navigation-js .secondary-navigation.is-open {
   display:block
 }
-.secondary-navigation .menu {
-  align-items:flex-start;
-  gap:14px
-}
 .has-navigation-js .menu-toggle {
   display:block;
   margin-left:auto
@@ -999,14 +1022,18 @@ h3 {
   position:static;
   display:block;
   background:transparent;
-  padding:8px 0 0 16px;
-  min-width:0
+  padding:0 0 0 16px;
+  margin:0 0 4px;
+  min-width:0;
+  width:auto;
+  max-width:none;
+  border-left:1px solid #ffffff33
 }
 .menu .sub-menu .sub-menu {
-  position:static
+  padding:0 0 0 16px
 }
-.primary-navigation .menu {
-  align-items:flex-start
+.menu .sub-menu li+li {
+  margin-top:0
 }
 .hero-inner {
   min-height:380px
@@ -1064,10 +1091,6 @@ h3 {
 .menu-toggle {
   padding:7px 10px;
   font-size:13px
-}
-.primary-navigation .menu {
-  flex-direction:column;
-  gap:12px
 }
 .hero-inner {
   flex-direction:column;
@@ -1154,6 +1177,13 @@ h3 {
   max-width:calc(50% - 12px)
 }
 
+}
+
+@media(max-width:480px) {
+  .header-inner { column-gap:8px }
+  .header-inner .brand { flex:1 1 96px; min-width:0 }
+  .header-inner .logo,.header-inner .custom-logo { width:clamp(96px,28vw,135px); max-width:100% }
+  .header-inner .login,.header-inner .menu-toggle { flex:0 0 auto }
 }
 
 @media(prefers-reduced-motion:reduce) {
