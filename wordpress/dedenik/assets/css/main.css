@@ -867,6 +867,14 @@ h3 {
 .comment-reply-title {
   margin-top:0
 }
+.comment-reply-title small {
+  display:block;
+  margin-top:8px;
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:400;
+  line-height:1.5
+}
 .comment-form label {
   display:block;
   font-size:14px;
