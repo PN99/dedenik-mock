@@ -701,52 +701,147 @@ h3 {
 }
 .comments-area {
   margin-top:38px;
-  padding-top:24px;
-  border-top:1px solid var(--line)
+  padding:24px;
+  background:#f0eee9;
+  border:1px solid var(--line);
+  border-radius:12px
+}
+.comments-area>h2 {
+  margin:0 0 24px;
+  color:var(--navy)
 }
 .comment-list,.comment-list .children {
   list-style:none;
-  padding:0
+  padding:0;
+  margin:0
 }
 .comment-list .children {
-  padding-left:20px;
-  border-left:2px solid var(--line);
-  margin-left:6px
+  margin-left:16px;
+  padding-left:24px;
+  border-left:2px solid #c9cec8
 }
 .comment-body {
-  padding:18px 0;
-  border-bottom:1px solid var(--line);
+  position:relative;
+  margin-bottom:14px;
+  padding:20px;
+  background:#fff;
+  border:1px solid #d1d5cf;
+  border-radius:8px;
+  box-shadow:0 2px 3px #18202c08;
   overflow-wrap:anywhere
 }
+.comment-list .children>.comment>.comment-body::before {
+  content:"";
+  position:absolute;
+  top:28px;
+  left:-26px;
+  width:24px;
+  border-top:2px solid #c9cec8
+}
+.comment-meta {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:6px 16px;
+  margin-bottom:14px
+}
 .comment-author {
-  font-weight:700
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+  color:var(--navy);
+  font-size:16px;
+  font-weight:600
+}
+.comment-author .fn {
+  min-width:0;
+  font-weight:inherit;
+  font-style:normal
+}
+.comment-author .says {
+  display:none
 }
 .comment-author .avatar {
-  border-radius:50%;
-  float:left;
-  margin-right:12px
+  flex:none;
+  width:32px;
+  height:32px;
+  border-radius:50%
 }
 .comment-metadata {
-  color:var(--muted);
-  font-size:12px
+  margin-left:auto;
+  padding-top:4px;
+  color:#626975;
+  font-size:13px;
+  text-align:right
+}
+.comment-metadata time {
+  font-variant-numeric:tabular-nums
+}
+.comment-metadata .edit-link {
+  display:inline-block;
+  margin-left:8px
 }
 .comment-content {
-  clear:both;
-  font:17px/1.65 var(--serif);
-  padding-top:6px
+  color:var(--ink);
+  font:16px/1.75 var(--sans)
+}
+.comment-content>:first-child {
+  margin-top:0
+}
+.comment-content>:last-child {
+  margin-bottom:0
+}
+.comment-content p {
+  margin:0 0 12px
 }
 .comment-content img {
   max-width:100%;
   height:auto
 }
-.reply {
+.comment-content blockquote {
+  margin:12px 0;
+  padding-left:16px;
+  border-left:3px solid var(--line)
+}
+.comment-content pre {
+  max-width:100%;
+  overflow:auto
+}
+.comment-body>.reply {
+  display:flex;
+  justify-content:flex-end;
+  margin-top:14px
+}
+.comment-reply-link,.comment-reply-login {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:6px 14px;
+  background:var(--green);
+  color:#fff;
+  border-radius:5px;
   font-size:13px;
-  color:var(--green)
+  font-weight:600;
+  text-align:center
+}
+.comment-reply-link:hover,.comment-reply-login:hover {
+  background:var(--navy);
+  text-decoration:none
+}
+.comment:target>.comment-body,.comment-body:target {
+  border-color:var(--green);
+  outline:2px solid var(--green);
+  outline-offset:2px
 }
 .comment-awaiting-moderation {
-  font-size:13px;
+  flex-basis:100%;
+  margin:4px 0 0;
+  padding:8px 10px;
   background:var(--cream);
-  padding:8px
+  font-size:13px
 }
 .comment-respond {
   padding:24px;
@@ -846,8 +941,7 @@ h3 {
   margin-bottom:24px
 }
 .bypostauthor>.comment-body {
-  border-left:3px solid var(--gold);
-  padding-left:12px
+  border-left:3px solid var(--gold)
 }
 
 @media(max-width:1150px) {
@@ -1018,9 +1112,37 @@ h3 {
   float:none;
   margin-inline:0
 }
+.comments-area {
+  padding:18px 12px;
+  border-radius:10px
+}
+.comments-area>h2 {
+  margin-bottom:18px
+}
+.comment-body {
+  padding:16px 14px
+}
+.comment-meta {
+  gap:4px 10px
+}
 .comment-list .children {
-  padding-left:10px;
+  padding-left:12px;
   margin-left:0
+}
+.comment-list .children>.comment>.comment-body::before {
+  left:-14px;
+  width:12px
+}
+/* Keep long conversations readable on narrow screens. */
+.comment-list .children .children .children {
+  padding-left:6px
+}
+.comment-list .children .children .children>.comment>.comment-body::before {
+  left:-8px;
+  width:6px
+}
+.comment-reply-link,.comment-reply-login {
+  min-height:44px
 }
 .comment-respond {
   padding:18px
