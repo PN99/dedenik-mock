@@ -14,6 +14,6 @@ window.DEDENIK_CONTENT = {
   world:[
     {kind:'Podcast',title:'Právě posloucháme',description:'O zvířatech, lidech a životě.',image:'podcast',action:'Poslechnout',className:'green',badge:'pod',note:'Podklad neobsahuje zvuk epizody ani odkaz na přehrávač. Při napojení na CMS se zde zobrazí aktuální epizoda a skutečný přehrávač.'},
     {kind:'Dedivadlo',title:'V Dedivadle',description:'',program:[{date:'21. 11. 2026',title:'Vánočnice',time:'19.00',location:'Velichovky'},{date:'5. 12. 2026',title:'Vánočnice',time:'19.00',location:'Velichovky'}],image:'dedivadlo-logo',action:'Do Dedivadla',className:'gold',badge:'theatre',note:'Program Dedivadla.'},
-    {kind:'Knihy',title:'Z knih Dede',description:'Alžběta — příběh o síle, přátelství a nových začátcích.',image:'book',action:'Objevit knihy',className:'book-button',badge:'books',note:'Alžběta je titul uvedený v návrhu. Pro ostrý web doplnit schválený popis, obálku a odkaz vydavatele.'}
+    {kind:'Knihy',title:'Z knih Dede',description:'Alžběta — příběh o síle, přátelství a nových začátcích.',image:'book-logo',action:'Objevit knihy',className:'book-button',badge:'books',note:'Alžběta je titul uvedený v návrhu. Pro ostrý web doplnit schválený popis, obálku a odkaz vydavatele.'}
   ]
 };
