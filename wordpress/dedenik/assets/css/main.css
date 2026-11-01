@@ -1245,6 +1245,7 @@ h3 {
 .world-card .world-image { display:block; width:110px; height:170px; object-fit:cover; border-radius:12px }
 .world-card-podcast .world-image { height:auto; aspect-ratio:1; object-fit:contain; background:#fff }
 .world-card-theatre .world-image { object-fit:contain; background:#6b79b5 }
+.world-card-books .world-image { height:auto; aspect-ratio:1; object-fit:contain; background:transparent }
 .world-card-theatre>div { align-self:stretch; display:grid; grid-template-rows:auto 1fr auto; min-width:0 }
 .world-card-theatre .theatre-program-list { align-self:center }
 .world-card h3 { margin:4px 0; font-size:24px; line-height:1.1 }
