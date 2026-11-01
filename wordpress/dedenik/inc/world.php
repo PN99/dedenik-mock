@@ -26,7 +26,7 @@ function dedenik_world_items() {
             'title' => get_theme_mod( 'dedenik_world_' . $key . '_title', '' ) ?: ( $public_page ? get_the_title( $page ) : $default_label ),
             'description' => get_theme_mod( 'dedenik_world_' . $key . '_description', '' ),
             'image' => absint( get_theme_mod( 'dedenik_world_' . $key . '_image', 0 ) ),
-            'button' => get_theme_mod( 'dedenik_world_' . $key . '_button', 'podcast' === $key ? __( 'Poslechnout →', 'dedenik' ) : __( 'Objevit více →', 'dedenik' ) ),
+            'button' => get_theme_mod( 'dedenik_world_' . $key . '_button', 'podcast' === $key ? __( 'Poslechnout →', 'dedenik' ) : ( 'theatre' === $key ? __( 'Do Dedivadla →', 'dedenik' ) : __( 'Objevit více →', 'dedenik' ) ) ),
         );
     }
     return $items;
