@@ -1247,6 +1247,8 @@ h3 {
 .world-card-theatre .world-image { object-fit:contain; background:#6b79b5 }
 .world-card h3 { margin:4px 0; font-size:24px; line-height:1.1 }
 .world-card p { margin:0 0 10px; font:16px/1.2 var(--serif) }
+.theatre-program-list p { margin:0 0 5px; font:13px/1.25 var(--serif) }
+.theatre-program .theatre-program-list p { margin-bottom:10px; font-size:18px }
 .world-button { display:inline-block; background:var(--green); color:white; font-size:12px; padding:12px 16px }
 .world-card-theatre .world-button { background:var(--gold) }
 .world-card-books .world-button { background:#a34749 }

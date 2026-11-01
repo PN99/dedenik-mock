@@ -32,6 +32,14 @@ function dedenik_world_items() {
     return $items;
 }
 
+/** Upcoming Dedivadlo performances shown on the homepage and its landing page. */
+function dedenik_theatre_program() {
+    return array(
+        array( 'date' => __( '21. 11. 2026', 'dedenik' ), 'title' => __( 'Vánočnice', 'dedenik' ), 'time' => __( '19.00', 'dedenik' ), 'location' => __( 'Velichovky', 'dedenik' ) ),
+        array( 'date' => __( '5. 12. 2026', 'dedenik' ), 'title' => __( 'Vánočnice', 'dedenik' ), 'time' => __( '19.00', 'dedenik' ), 'location' => __( 'Velichovky', 'dedenik' ) ),
+    );
+}
+
 /** Obtain only an explicit audio source or supported Spotify embed, never arbitrary HTML. */
 function dedenik_episode_source( $content, $enclosure = '' ) {
     $find = function ( $blocks ) use ( &$find ) {

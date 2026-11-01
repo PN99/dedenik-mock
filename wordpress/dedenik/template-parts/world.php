@@ -19,7 +19,8 @@ else { $pictures = array( 'podcast' => 'podcast.png', 'theatre' => 'dedivadlo-lo
 <img class="world-image" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $pictures[ $item['key'] ] ) ); ?>" alt="<?php echo 'theatre' === $item['key'] ? esc_attr( 'Logo Dedivadla se čtyřmi členkami souboru' ) : ''; ?>" loading="lazy" width="110" height="<?php echo esc_attr( $image_height ); ?>">
 <?php } ?>
 <div><span class="badge"><?php echo esc_html( $item['label'] ); ?></span><h3><a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a></h3>
-<?php if ( $item['description'] ) : ?><p><?php echo esc_html( $item['description'] ); ?></p><?php endif; ?>
+<?php if ( 'theatre' === $item['key'] ) : ?><div class="theatre-program-list" aria-label="<?php esc_attr_e( 'Program Dedivadla', 'dedenik' ); ?>"><?php foreach ( dedenik_theatre_program() as $performance ) : ?><p><strong><?php echo esc_html( $performance['date'] ); ?></strong> · <?php echo esc_html( $performance['title'] ); ?> · <?php echo esc_html( $performance['time'] ); ?> · <?php echo esc_html( $performance['location'] ); ?></p><?php endforeach; ?></div>
+<?php elseif ( $item['description'] ) : ?><p><?php echo esc_html( $item['description'] ); ?></p><?php endif; ?>
 <a class="button world-button" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['button'] ); ?></a></div></article>
 <?php endforeach; ?>
 </div></div></section>
