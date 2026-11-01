@@ -11,12 +11,12 @@ $landing = $landing_id ? get_post( $landing_id ) : null;
 <?php foreach ( $items as $item ) : ?>
 <article class="world-card world-card-<?php echo esc_attr( $item['key'] ); ?>">
 <?php
-$image = $item['image'] ? wp_get_attachment_image( $item['image'], 'medium', false, array( 'class' => 'world-image', 'alt' => '', 'loading' => 'lazy' ) ) : '';
+$image = 'theatre' === $item['key'] ? '' : ( $item['image'] ? wp_get_attachment_image( $item['image'], 'medium', false, array( 'class' => 'world-image', 'alt' => '', 'loading' => 'lazy' ) ) : '' );
 if ( 'podcast' === $item['key'] ) { $image = ''; }
-if ( ! $image && 'podcast' !== $item['key'] && $item['page'] ) { $image = get_the_post_thumbnail( $item['page'], 'medium', array( 'class' => 'world-image', 'alt' => '', 'loading' => 'lazy' ) ); }
+if ( ! $image && ! in_array( $item['key'], array( 'podcast', 'theatre' ), true ) && $item['page'] ) { $image = get_the_post_thumbnail( $item['page'], 'medium', array( 'class' => 'world-image', 'alt' => '', 'loading' => 'lazy' ) ); }
 if ( $image ) { echo $image; }
-else { $pictures = array( 'podcast' => 'podcast.png', 'theatre' => 'theatre.webp', 'books' => 'book.webp' ); $image_height = 'podcast' === $item['key'] ? 110 : 170; ?>
-<img class="world-image" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $pictures[ $item['key'] ] ) ); ?>" alt="" loading="lazy" width="110" height="<?php echo esc_attr( $image_height ); ?>">
+else { $pictures = array( 'podcast' => 'podcast.png', 'theatre' => 'dedivadlo-logo.jpg', 'books' => 'book.webp' ); $image_height = 'podcast' === $item['key'] ? 110 : 170; ?>
+<img class="world-image" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $pictures[ $item['key'] ] ) ); ?>" alt="<?php echo 'theatre' === $item['key'] ? esc_attr( 'Logo Dedivadla se čtyřmi členkami souboru' ) : ''; ?>" loading="lazy" width="110" height="<?php echo esc_attr( $image_height ); ?>">
 <?php } ?>
 <div><span class="badge"><?php echo esc_html( $item['label'] ); ?></span><h3><a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a></h3>
 <?php if ( $item['description'] ) : ?><p><?php echo esc_html( $item['description'] ); ?></p><?php endif; ?>

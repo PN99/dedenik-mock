@@ -13,7 +13,7 @@ window.DEDENIK_CONTENT = {
   discussions:[['Co vás dnes potěšilo?',20],['Podzimní fotografie',14],['Naše zvířecí radosti',32],['Knižní tipy',18],['Zahrádka v říjnu',11]],
   world:[
     {kind:'Podcast',title:'Právě posloucháme',description:'O zvířatech, lidech a životě.',image:'podcast',action:'Poslechnout',className:'green',badge:'pod',note:'Podklad neobsahuje zvuk epizody ani odkaz na přehrávač. Při napojení na CMS se zde zobrazí aktuální epizoda a skutečný přehrávač.'},
-    {kind:'Dedivadlo',title:'V Dedivadle',description:'Program: 7. 11. · Vánočnice · 19.00 · Velichovky',image:'theatre',action:'Do Dedivadla',className:'gold',badge:'theatre',note:'Program Dedivadla: 7. 11. · Vánočnice · 19.00 · Velichovky.'},
+    {kind:'Dedivadlo',title:'V Dedivadle',description:'Program: 7. 11. · Vánočnice · 19.00 · Velichovky',image:'dedivadlo-logo',action:'Do Dedivadla',className:'gold',badge:'theatre',note:'Program Dedivadla: 7. 11. · Vánočnice · 19.00 · Velichovky.'},
     {kind:'Knihy',title:'Z knih Dede',description:'Alžběta — příběh o síle, přátelství a nových začátcích.',image:'book',action:'Objevit knihy',className:'book-button',badge:'books',note:'Alžběta je titul uvedený v návrhu. Pro ostrý web doplnit schválený popis, obálku a odkaz vydavatele.'}
   ]
 };
