@@ -18,6 +18,7 @@ if ( 'theatre' === $kind ) : ?>
         <h2 id="theatre-program-title"><?php esc_html_e( 'Program Dedivadla', 'dedenik' ); ?></h2>
         <p><strong><?php esc_html_e( '7. 11. · Vánočnice', 'dedenik' ); ?></strong> · <?php esc_html_e( '19.00 · Velichovky', 'dedenik' ); ?></p>
     </section>
+    <?php get_template_part( 'template-parts/theatre-gallery' ); ?>
 <?php endif;
 $category = absint( get_post_meta( $page_id, '_dedenik_world_category', true ) );
 $links = array( 'spotify' => 'Spotify', 'apple' => 'Apple Podcasts', 'youtube' => 'YouTube' );

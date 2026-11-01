@@ -1308,3 +1308,9 @@ h3 {
 .home #latest > .section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:16px }
 .home #latest > .section-heading > a { white-space:nowrap; font-size:14px }
 @media(max-width:620px) { .home #latest > .section-heading { flex-wrap:wrap; gap:0; margin-bottom:12px } }
+.theatre-story { margin:24px 0 36px; max-width:1000px }
+.theatre-story > p { max-width:850px; font-size:1.05rem; line-height:1.7 }
+.theatre-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:20px }
+.theatre-gallery figure { margin:0; overflow:hidden; border-radius:12px; background:var(--cream) }
+.theatre-gallery img { display:block; width:100%; aspect-ratio:3/2; object-fit:cover }
+@media(max-width:620px) { .theatre-gallery { grid-template-columns:1fr; gap:12px } }
