@@ -13,7 +13,7 @@ import uuid
 REMOTE = '/public_html/svetdede/wp-content/themes/dedenik'
 SITE = 'https://svetdede.dedenik.cz'
 SOURCE = Path(__file__).resolve().parent / 'dedenik'
-RUNTIME_SUFFIXES = {'.php', '.css', '.js', '.json', '.png', '.webp'}
+RUNTIME_SUFFIXES = {'.php', '.css', '.js', '.json', '.png', '.jpg', '.webp'}
 
 
 def source_files(source=SOURCE):

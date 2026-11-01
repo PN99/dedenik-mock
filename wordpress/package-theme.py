@@ -7,7 +7,7 @@ source = base / 'dedenik'
 version = re.search(r'^Version:\s*(\S+)', (source / 'style.css').read_text(encoding='utf-8'), re.M).group(1)
 output = base.parent / 'dist' / ('dedenik-' + version + '.zip')
 output.parent.mkdir(exist_ok=True)
-allowed = {'.php', '.css', '.js', '.json', '.png', '.webp', '.md', '.txt'}
+allowed = {'.php', '.css', '.js', '.json', '.png', '.jpg', '.webp', '.md', '.txt'}
 with ZipFile(output, 'w', ZIP_DEFLATED) as archive:
     for path in sorted(source.rglob('*')):
         if path.is_file():
