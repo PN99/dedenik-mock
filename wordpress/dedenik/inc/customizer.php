@@ -16,15 +16,16 @@ function dedenik_customize( $customizer ) {
     $customizer->add_setting( 'dedenik_world_landing', array( 'default' => 0, 'sanitize_callback' => 'absint' ) );
     $customizer->add_control( 'dedenik_world_landing', array( 'label' => __( 'Hlavní stránka Světa Dede (volitelné)', 'dedenik' ), 'section' => 'dedenik_world', 'type' => 'dropdown-pages' ) );
     $orders = array( 'podcast,theatre,books' => 'Podcasty, Divadlo, Knihy', 'podcast,books,theatre' => 'Podcasty, Knihy, Divadlo', 'theatre,podcast,books' => 'Divadlo, Podcasty, Knihy', 'theatre,books,podcast' => 'Divadlo, Knihy, Podcasty', 'books,podcast,theatre' => 'Knihy, Podcasty, Divadlo', 'books,theatre,podcast' => 'Knihy, Divadlo, Podcasty' );
-    $customizer->add_setting( 'dedenik_world_order', array( 'default' => 'podcast,theatre,books', 'sanitize_callback' => 'dedenik_world_order' ) );
+    foreach ( $orders as $order => $label ) { $orders[ $order . ',radio' ] = $label . ', Fejetony pro Český rozhlas'; }
+    $customizer->add_setting( 'dedenik_world_order', array( 'default' => 'podcast,theatre,books,radio', 'sanitize_callback' => 'dedenik_world_order' ) );
     $customizer->add_control( 'dedenik_world_order', array( 'label' => __( 'Pořadí karet', 'dedenik' ), 'section' => 'dedenik_world', 'type' => 'select', 'choices' => $orders ) );
-    foreach ( array( 'podcast' => 'Podcasty', 'theatre' => 'Divadlo', 'books' => 'Knihy' ) as $key => $label ) {
+    foreach ( array( 'podcast' => 'Podcasty', 'theatre' => 'Divadlo', 'books' => 'Knihy', 'radio' => 'Fejetony pro Český rozhlas' ) as $key => $label ) {
         $setting = 'dedenik_world_' . $key;
         $customizer->add_setting( $setting, array( 'default' => 0, 'sanitize_callback' => 'absint' ) );
         $customizer->add_control( $setting, array( 'label' => $label . ' – ' . __( 'stránka', 'dedenik' ), 'section' => 'dedenik_world', 'type' => 'dropdown-pages', 'description' => __( 'Bez veřejné stránky nebo vyplněného odkazu se karta nezobrazí.', 'dedenik' ) ) );
         foreach ( array( 'label' => 'Označení karty', 'title' => 'Titulek karty', 'description' => 'Popis karty', 'button' => 'Text tlačítka', 'url' => 'Vlastní odkaz (má přednost před stránkou)' ) as $field => $field_label ) {
             $id = $setting . '_' . $field;
-            $defaults = array( 'label' => $label, 'title' => '', 'description' => '', 'button' => 'Objevit více →', 'url' => '' );
+            $defaults = array( 'label' => $label, 'title' => 'radio' === $key ? 'Fejetony' : '', 'description' => 'radio' === $key ? 'Autorské fejetony Dagmar Ruščákové pro Český rozhlas.' : '', 'button' => 'radio' === $key ? 'Číst fejetony →' : 'Objevit více →', 'url' => 'radio' === $key ? 'https://hradec.rozhlas.cz/dagmar-ruscakova-5002236' : '' );
             $customizer->add_setting( $id, array( 'default' => $defaults[ $field ], 'sanitize_callback' => 'url' === $field ? 'dedenik_world_url' : 'sanitize_text_field' ) );
             $customizer->add_control( $id, array( 'label' => $label . ' – ' . $field_label, 'section' => 'dedenik_world', 'type' => 'url' === $field ? 'url' : ( 'description' === $field ? 'textarea' : 'text' ), 'description' => 'books' === $key && 'url' === $field ? 'Pro knihy vložte https://alzbetaadrak.cz/' : '' ) );
         }
@@ -35,6 +36,7 @@ function dedenik_customize( $customizer ) {
 add_action( 'customize_register', 'dedenik_customize' );
 function dedenik_world_order( $value ) {
     $items = explode( ',', $value );
-    return count( $items ) === 3 && count( array_unique( $items ) ) === 3 && ! array_diff( $items, array( 'podcast', 'theatre', 'books' ) ) ? $value : 'podcast,theatre,books';
+    if ( count( $items ) === 3 && ! array_diff( $items, array( 'podcast', 'theatre', 'books' ) ) ) { $items[] = 'radio'; }
+    return count( $items ) === 4 && count( array_unique( $items ) ) === 4 && ! array_diff( $items, array( 'podcast', 'theatre', 'books', 'radio' ) ) ? implode( ',', $items ) : 'podcast,theatre,books,radio';
 }
 function dedenik_world_url( $value ) { return esc_url_raw( $value, array( 'http', 'https' ) ); }

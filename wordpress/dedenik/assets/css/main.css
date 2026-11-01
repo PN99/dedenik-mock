@@ -1317,6 +1317,20 @@ h3 {
 .theatre-story { margin:24px 0 36px; max-width:1000px }
 .theatre-story > p { max-width:850px; font-size:1.05rem; line-height:1.7 }
 .theatre-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:20px }
+.home .world-grid { grid-template-columns:repeat(4,minmax(0,1fr)); align-items:stretch }
+.home .world-card { grid-template-columns:minmax(64px,30%) minmax(0,1fr); gap:10px; min-height:178px; align-items:stretch }
+.home .world-card .world-image { width:100%; height:150px; align-self:center; object-fit:cover }
+.home .world-card-podcast .world-image,.home .world-card-books .world-image,.home .world-card-radio .world-image { height:auto; aspect-ratio:1 }
+.home .world-card-podcast .world-image,.home .world-card-books .world-image { object-fit:contain }
+.home .world-card-theatre .world-image { object-fit:contain; background:#6b79b5 }
+.home .world-card-radio .world-image { object-fit:cover }
+.home .world-card>div { display:flex; flex-direction:column; align-items:flex-start; min-width:0 }
+.home .world-card .badge { display:inline-flex; align-items:center; min-height:24px; line-height:1.15 }
+.home .world-card .world-button { margin-top:auto; align-self:flex-start; white-space:nowrap }
+.home .world-card-radio .badge { background:#dce8ee; color:#1f4e65 }
+.home .world-card-radio .world-button { background:#24708b }
+@media (max-width:1000px) and (min-width:621px) { .home .world-grid { grid-template-columns:repeat(2,minmax(0,1fr)) } }
+@media(max-width:620px) { .home .world-grid { grid-template-columns:1fr } }
 .theatre-gallery figure { margin:0; overflow:hidden; border-radius:12px; background:var(--cream) }
 .theatre-gallery img { display:block; width:100%; aspect-ratio:3/2; object-fit:cover }
 @media(max-width:620px) { .theatre-gallery { grid-template-columns:1fr; gap:12px } }

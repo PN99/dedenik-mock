@@ -5,15 +5,16 @@ defined( 'ABSPATH' ) || exit;
 function dedenik_world_items() {
     $items = array();
     if ( ! get_theme_mod( 'dedenik_world_enabled', true ) ) { return $items; }
-    $labels = array( 'podcast' => 'Podcasty', 'theatre' => 'Dedivadlo', 'books' => 'Knihy' );
-    $order = explode( ',', get_theme_mod( 'dedenik_world_order', 'podcast,theatre,books' ) );
-    if ( count( $order ) !== 3 || count( array_unique( $order ) ) !== 3 || array_diff( $order, array_keys( $labels ) ) ) { $order = array_keys( $labels ); }
+    $labels = array( 'podcast' => 'Podcasty', 'theatre' => 'Dedivadlo', 'books' => 'Knihy', 'radio' => 'Fejetony pro Český rozhlas' );
+    $order = explode( ',', get_theme_mod( 'dedenik_world_order', 'podcast,theatre,books,radio' ) );
+    if ( 3 === count( $order ) && ! array_diff( $order, array( 'podcast', 'theatre', 'books' ) ) ) { $order[] = 'radio'; }
+    if ( count( $order ) !== 4 || count( array_unique( $order ) ) !== 4 || array_diff( $order, array_keys( $labels ) ) ) { $order = array_keys( $labels ); }
     foreach ( $order as $key ) {
         $default_label = $labels[ $key ];
         $selected = absint( get_theme_mod( 'dedenik_world_' . $key, 0 ) );
         $page = $selected ? get_post( $selected ) : null;
         $public_page = $selected && $page && 'page' === $page->post_type && 'publish' === $page->post_status && ! $page->post_password;
-        $default_urls = array( 'podcast' => 'https://open.spotify.com/show/4xeerT4CEz6vBbsb9YzGWM', 'theatre' => home_url( '/dedivadlo/' ), 'books' => 'https://alzbetaadrak.cz/' );
+        $default_urls = array( 'podcast' => 'https://open.spotify.com/show/4xeerT4CEz6vBbsb9YzGWM', 'theatre' => home_url( '/dedivadlo/' ), 'books' => 'https://alzbetaadrak.cz/', 'radio' => 'https://hradec.rozhlas.cz/dagmar-ruscakova-5002236' );
         $external = get_theme_mod( 'dedenik_world_' . $key . '_url', '' );
         if ( ! $external && ! $selected ) { $external = $default_urls[ $key ] ?? ''; }
         $url = $external ? esc_url( $external, array( 'http', 'https' ) ) : ( $public_page ? get_permalink( $page ) : '' );
