@@ -18,7 +18,7 @@ if ( $image ) { echo $image; }
 else { $pictures = array( 'podcast' => 'podcast.png', 'theatre' => 'dedivadlo-logo.jpg', 'books' => 'book.webp' ); $image_height = 'podcast' === $item['key'] ? 110 : 170; ?>
 <img class="world-image" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $pictures[ $item['key'] ] ) ); ?>" alt="<?php echo 'theatre' === $item['key'] ? esc_attr( 'Logo Dedivadla se čtyřmi členkami souboru' ) : ''; ?>" loading="lazy" width="110" height="<?php echo esc_attr( $image_height ); ?>">
 <?php } ?>
-<div><?php if ( 'theatre' !== $item['key'] ) : ?><span class="badge"><?php echo esc_html( $item['label'] ); ?></span><?php endif; ?><h3><a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a></h3>
+<div><span class="badge"><?php echo esc_html( $item['label'] ); ?></span><h3><a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a></h3>
 <?php if ( 'theatre' === $item['key'] ) : ?><div class="theatre-program-list" aria-label="<?php esc_attr_e( 'Program Dedivadla', 'dedenik' ); ?>"><?php foreach ( dedenik_theatre_program() as $performance ) : ?><p><strong><?php echo esc_html( $performance['date'] ); ?></strong> · <?php echo esc_html( $performance['title'] ); ?> · <?php echo esc_html( $performance['time'] ); ?> · <?php echo esc_html( $performance['location'] ); ?></p><?php endforeach; ?></div>
 <?php elseif ( $item['description'] ) : ?><p><?php echo esc_html( $item['description'] ); ?></p><?php endif; ?>
 <a class="button world-button" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['button'] ); ?></a></div></article>
