@@ -1,6 +1,11 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 $items = dedenik_world_items();
+$card_descriptions = array(
+    'podcast' => 'S nadhledem a optimisticky o lidech, zvířatech, knihách a divadle',
+    'books' => 'Knihy Dede – román, povídky, vyprávění, fejetony',
+    'radio' => 'Fejetony pro český rozhlas – o životě kolem nás a s kapkou optimismu.',
+);
 if ( ! $items ) { return; }
 $landing_id = absint( get_theme_mod( 'dedenik_world_landing', 0 ) );
 $landing = $landing_id ? get_post( $landing_id ) : null;
@@ -18,9 +23,9 @@ if ( $image ) { echo $image; }
 else { $pictures = array( 'podcast' => 'podcast.png', 'theatre' => 'dedivadlo-logo.jpg', 'books' => 'book-logo.png', 'radio' => 'radio-columnist.png' ); $image_height = in_array( $item['key'], array( 'podcast', 'radio' ), true ) ? 110 : 170; ?>
 <img class="world-image" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $pictures[ $item['key'] ] ) ); ?>" alt="<?php echo 'theatre' === $item['key'] ? esc_attr( 'Logo Dedivadla se čtyřmi členkami souboru' ) : ( 'radio' === $item['key'] ? esc_attr( 'Dagmar Ruščáková ve studiu Českého rozhlasu' ) : '' ); ?>" loading="lazy" width="110" height="<?php echo esc_attr( $image_height ); ?>">
 <?php } ?>
-<div><span class="badge"><?php echo esc_html( $item['label'] ); ?></span><?php if ( 'theatre' !== $item['key'] ) : ?><h3><a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a></h3><?php endif; ?>
+<div><span class="badge"><?php echo esc_html( $item['label'] ); ?></span>
 <?php if ( 'theatre' === $item['key'] ) : ?><div class="theatre-program-list" aria-label="<?php echo esc_attr( __( 'Program Dedivadla', 'dedenik' ) ); ?>"><?php foreach ( dedenik_theatre_program() as $performance ) : ?><p><strong><?php echo esc_html( $performance['date'] ); ?></strong> · <?php echo esc_html( $performance['title'] ); ?> · <?php echo esc_html( $performance['time'] ); ?> · <?php echo esc_html( $performance['location'] ); ?></p><?php endforeach; ?></div>
-<?php elseif ( $item['description'] ) : ?><p><?php echo esc_html( $item['description'] ); ?></p><?php endif; ?>
+<?php elseif ( isset( $card_descriptions[ $item['key'] ] ) ) : ?><p class="world-description"><?php echo esc_html( $card_descriptions[ $item['key'] ] ); ?></p><?php endif; ?>
 <a class="button world-button" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['button'] ); ?></a></div></article>
 <?php endforeach; ?>
 </div></div></section>
