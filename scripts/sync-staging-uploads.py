@@ -1,5 +1,5 @@
 """Copy only absent public media from production uploads to fixed staging uploads."""
-import ftplib, hashlib, json, os, pathlib, re, ssl, tempfile, uuid
+import concurrent.futures, ftplib, hashlib, json, os, pathlib, re, ssl, tempfile, threading, uuid
 
 SOURCE='/public_html/www/wp-content/uploads'
 TARGET='/public_html/svetdede/wp-content/uploads'
@@ -63,10 +63,18 @@ def main():
             return
         # Missing source entries require a reviewed manifest; never silently claim completion.
         assert not before['unavailable_source'],'Some requested source files are absent'
-        for i,item in enumerate(before['missing'],1):
-            path=item['path']; folder=str(pathlib.PurePosixPath(path).parent); name=pathlib.PurePosixPath(path).name
+        for folder in sorted({str(pathlib.PurePosixPath(v['path']).parent) for v in before['missing']}):
             ensure_folder(ftp,folder)
-            if name in listing(ftp,TARGET,folder): report['raced_existing'].append(path); continue
+    report_lock=threading.Lock()
+    def record(kind,value):
+        with report_lock:
+            report[kind].append(value)
+            (HERE/'uploads-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+            done=len(report['copied'])+len(report['raced_existing'])
+            if done%10==0 or done==len(before['missing']): print('Verified media copied:',done,'/',len(before['missing']),flush=True)
+    def copy_one(ftp,item):
+            path=item['path']; folder=str(pathlib.PurePosixPath(path).parent); name=pathlib.PurePosixPath(path).name
+            if name in listing(ftp,TARGET,folder): record('raced_existing',path); return
             temp=TARGET+'/'+path+'.uploading-'+uuid.uuid4().hex
             assert temp.startswith(TARGET+'/') and valid(path)
             uploaded=False
@@ -84,14 +92,20 @@ def main():
                     verify=hashlib.sha256(); ftp.retrbinary('RETR '+temp,verify.update,blocksize=65536)
                     assert verify.digest()==digest.digest(),'Uploaded file checksum mismatch'
                     if name in listing(ftp,TARGET,folder):
-                        report['raced_existing'].append(path)
+                        record('raced_existing',path)
                     else:
                         ftp.rename(temp,TARGET+'/'+path); uploaded=False
-                        report['copied'].append({'path':path,'bytes':size,'sha256':digest.hexdigest()})
-                if i%25==0 or i==len(before['missing']): print('Verified media copied:',i,'/',len(before['missing']),flush=True)
+                        record('copied',{'path':path,'bytes':size,'sha256':digest.hexdigest()})
             finally:
                 if uploaded: ftp.delete(temp)
-                (HERE/'uploads-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+    def worker(items):
+        if not items: return
+        with connect() as ftp:
+            for item in items: copy_one(ftp,item)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+        futures=[pool.submit(worker,before['missing'][n::3]) for n in range(3)]
+        for future in futures: future.result()
+    with connect() as ftp:
         report['after']=inventory(ftp,files)
         (HERE/'uploads-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
         assert not report['after']['missing'] and not report['after']['unavailable_source']
