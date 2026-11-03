@@ -2,43 +2,31 @@
   "source_root": "/public_html/www",
   "target_root": "/public_html/svetdede",
   "files": [
-    "php_uploads/zviretnik.jpg",
-    "wp-content/uploads/2021/02/BTW_dé_logo.jpg",
-    "wp-content/uploads/2021/05/BTW_dé_logo.jpg",
-    "wp-content/uploads/2021/06/471_Turistický-průvodce01_1.jpg",
-    "wp-content/uploads/2021/06/logo_literární-léto.jpg",
-    "wp-content/uploads/2021/07/BTW_dé_logo.jpg",
-    "wp-content/uploads/2021/08/logo_literární-léto.jpg",
-    "wp-content/uploads/2021/10/BTW_dé_logo-1.jpg",
-    "wp-content/uploads/2021/10/BTW_dé_logo-2.jpg",
-    "wp-content/uploads/2021/10/BTW_dé_logo.jpg",
-    "wp-content/uploads/2022/01/BTW_dé_logo.jpg",
-    "wp-content/uploads/2022/02/BTW_dé_logo.jpg",
-    "wp-content/uploads/2022/07/logo_literární-léto.jpg",
-    "wp-content/uploads/2022/09/BTW_dé_logo.jpg",
-    "wp-content/uploads/2022/12/507_První-sníh_3_1.jpg",
-    "wp-content/uploads/2022/12/508_Na-křídlech-radosti_1_1.jpg",
-    "wp-content/uploads/2023/01/507_Pozdrav-zpoza-duhového-mostu_1_1.jpg",
-    "wp-content/uploads/2023/02/508_Hodinová-zima_3_1.jpg",
-    "wp-content/uploads/2023/03/510_Dráždit-hada-bosou-nohou_1_1.jpg",
-    "wp-content/uploads/2023/06/517_Vždy-ve-střehu_1_1.jpg",
-    "wp-content/uploads/2023/07/Kniha-na-poličce_1.jpg",
-    "wp-content/uploads/2023/07/logo_literární-léto.jpg",
-    "wp-content/uploads/2023/08/logo_literární-léto.jpg",
-    "wp-content/uploads/2023/10/524_Pěkně-si-třísknout_5_1.jpg",
-    "wp-content/uploads/2023/10/Kniha-na-poličce_1.jpg",
-    "wp-content/uploads/2023/11/Kniha-na-poličce_1.jpg",
-    "wp-content/uploads/2023/12/529_Vánoční-restart4_1.jpg",
-    "wp-content/uploads/2023/12/logo-rádio-dede.bmp",
-    "wp-content/uploads/2024/01/530_Tam-kde-přebývají-míčky_3_1.jpg",
-    "wp-content/uploads/2024/02/531_Otevřené-dveře_kostel-sv-Jana-Křtitele-cedule_1-1.jpg",
-    "wp-content/uploads/2024/02/532_Období-dešťů_1_1.jpg",
-    "wp-content/uploads/2024/04/šeřík_1.jpg",
-    "wp-content/uploads/2024/05/538_Osobní-kouzlo2_1.png",
-    "wp-content/uploads/2024/05/Hvězda-Alžběta.jpg",
-    "wp-content/uploads/2024/06/logo_literární-léto.jpg",
-    "wp-content/uploads/2024/09/Rozárka-6_1.jpeg",
-    "wp-content/uploads/2025/03/558_Vstávej-je-jaro_1_1.jpg",
-    "wp-content/uploads/2025/04/559_Když-hřebci-tančí-9_1.jpg"
-  ]
+    "wp-content/uploads/2021/11/1102dar4_1.jpg",
+    "wp-content/uploads/2021/11/1105dar1.jpeg",
+    "wp-content/uploads/2021/11/1109dar2_1.jpg"
+  ],
+  "archived_sources": {
+    "wp-content/uploads/2021/11/1102dar4_1.jpg": {
+      "url": "https://web.archive.org/web/20211110152917id_/https://www.dedenik.cz/wp-content/uploads/2021/11/1102dar4_1.jpg",
+      "bytes": 11974,
+      "sha256": "1e2f32090b8fbf83955cd92ae439c9cfb4135d5ceec3768c7d125d9f6ff7134e",
+      "width": 133,
+      "height": 100
+    },
+    "wp-content/uploads/2021/11/1105dar1.jpeg": {
+      "url": "https://web.archive.org/web/20211110173445id_/https://www.dedenik.cz/wp-content/uploads/2021/11/1105dar1.jpeg",
+      "bytes": 18137,
+      "sha256": "72b928309d1ebce5dd78f3b53624b535987ce359e14a36b3c6ba3366d02be1a9",
+      "width": 133,
+      "height": 100
+    },
+    "wp-content/uploads/2021/11/1109dar2_1.jpg": {
+      "url": "https://web.archive.org/web/20211110153123id_/https://www.dedenik.cz/wp-content/uploads/2021/11/1109dar2_1.jpg",
+      "bytes": 6868,
+      "sha256": "abb7b83dad2b9e0cccf16e43d8b43a4169041e5162d52fd06185a11a8096fe47",
+      "width": 133,
+      "height": 100
+    }
+  }
 }

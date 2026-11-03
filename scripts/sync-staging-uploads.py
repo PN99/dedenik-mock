@@ -1,9 +1,10 @@
 """Copy only absent public media from production uploads to fixed staging uploads."""
-import concurrent.futures, ftplib, hashlib, json, os, pathlib, re, ssl, tempfile, threading, uuid
+import concurrent.futures, ftplib, hashlib, json, os, pathlib, re, ssl, tempfile, threading, uuid, urllib.request
 
 SOURCE='/public_html/www'
 TARGET='/public_html/svetdede'
 HERE=pathlib.Path(__file__).parent
+ARCHIVED_SOURCES={}
 
 def valid(path):
     return bool(re.fullmatch(r'(?:wp-content/uploads/\d{4}/\d{2}/|php_uploads/)[^/\\\x00-\x1f]+',path)) and pathlib.PurePosixPath(path).suffix.lower() in {'.jpg','.jpeg','.png','.gif','.webp','.avif','.bmp'}
@@ -49,6 +50,9 @@ def inventory(ftp,files):
                 result['existing'].append(p)
             elif name in source and source[name]>0:
                 result['missing'].append({'path':p,'bytes':source[name]}); result['bytes_to_copy']+=source[name]
+            elif p in ARCHIVED_SOURCES:
+                size=ARCHIVED_SOURCES[p]['bytes']
+                result['missing'].append({'path':p,'bytes':size,'archived':True}); result['bytes_to_copy']+=size
             else: result['unavailable_source'].append(p)
     return result
 
@@ -71,9 +75,16 @@ def exists(ftp,path):
         raise
 
 def main():
+    global ARCHIVED_SOURCES
     manifest=json.loads((HERE/'uploads-manifest.json').read_text(encoding='utf-8'))
     assert manifest['source_root']==SOURCE and manifest['target_root']==TARGET
     files=manifest['files']; assert len(files)==len(set(files)) and all(valid(p) for p in files)
+    ARCHIVED_SOURCES=manifest.get('archived_sources',{})
+    assert set(ARCHIVED_SOURCES)<=set(files)
+    for path,source in ARCHIVED_SOURCES.items():
+        assert re.fullmatch(r'[0-9a-f]{64}',source['sha256'])
+        assert 0<source['bytes']<=128*1024*1024
+        assert re.fullmatch(r'https://web\.archive\.org/web/\d{14}id_/https://www\.dedenik\.cz/'+re.escape(path),source['url'])
     apply=os.environ.get('UPLOAD_APPLY')=='true'
     with connect() as ftp:
         before=inventory(ftp,files)
@@ -107,7 +118,16 @@ def main():
                         nonlocal size
                         size+=len(block); assert size<=128*1024*1024
                         digest.update(block); stream.write(block)
-                    ftp.retrbinary('RETR '+SOURCE+'/'+path,receive,blocksize=65536)
+                    if item.get('archived'):
+                        source=ARCHIVED_SOURCES[path]
+                        with urllib.request.urlopen(source['url'],timeout=60) as response:
+                            while True:
+                                block=response.read(65536)
+                                if not block: break
+                                receive(block)
+                        assert digest.hexdigest()==source['sha256'],'Archived original checksum mismatch'
+                    else:
+                        ftp.retrbinary('RETR '+SOURCE+'/'+path,receive,blocksize=65536)
                     assert size==item['bytes'] and size>0
                     stream.seek(0); uploaded=True
                     ftp.storbinary('STOR '+temp,stream,blocksize=65536)
