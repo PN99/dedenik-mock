@@ -1,24 +1,40 @@
-name: Check staging PHP runtime
+name: Sync staging uploads (isolated branch)
 on:
   workflow_dispatch:
+    inputs:
+      apply:
+        type: boolean
+        default: false
+        description: Copy only missing media into staging uploads
 permissions:
   contents: read
 concurrency:
-  group: svetdede-runtime-check
+  group: svetdede-theme
   cancel-in-progress: false
 jobs:
-  check:
+  sync:
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 40
     environment: svetdede
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-      - name: Read PHP version and remove temporary authenticated probe
+      - name: Inventory and optionally copy missing uploads
         env:
           SVETDEDE_FTP_HOST: ${{ secrets.SVETDEDE_FTP_HOST }}
           SVETDEDE_FTP_USER: ${{ secrets.SVETDEDE_FTP_USER }}
           SVETDEDE_FTP_PASSWORD: ${{ secrets.SVETDEDE_FTP_PASSWORD }}
           SVETDEDE_FTP_PORT: ${{ vars.SVETDEDE_FTP_PORT || '21' }}
-        run: python3 scripts/check-php-runtime.py
+          UPLOAD_APPLY: ${{ inputs.apply && 'true' || 'false' }}
+        run: python3 scripts/sync-staging-uploads.py
+      - name: Print missing media inventory
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('scripts/uploads-report.json')
+          if p.exists():
+              r=json.loads(p.read_text())
+              print('MEDIA_REPORT_JSON='+json.dumps(r,ensure_ascii=False))
+          PY
