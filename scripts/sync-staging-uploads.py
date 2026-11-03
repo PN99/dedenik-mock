@@ -1,12 +1,12 @@
 """Copy only absent public media from production uploads to fixed staging uploads."""
 import concurrent.futures, ftplib, hashlib, json, os, pathlib, re, ssl, tempfile, threading, uuid
 
-SOURCE='/public_html/www/wp-content/uploads'
-TARGET='/public_html/svetdede/wp-content/uploads'
+SOURCE='/public_html/www'
+TARGET='/public_html/svetdede'
 HERE=pathlib.Path(__file__).parent
 
 def valid(path):
-    return bool(re.fullmatch(r'\d{4}/\d{2}/[^/\\\x00-\x1f]+',path)) and pathlib.PurePosixPath(path).suffix.lower() in {'.jpg','.jpeg','.png','.gif','.webp','.avif','.mp3','.mp4','.pdf','.ogg','.wav'}
+    return bool(re.fullmatch(r'(?:wp-content/uploads/\d{4}/\d{2}/|php_uploads/)[^/\\\x00-\x1f]+',path)) and pathlib.PurePosixPath(path).suffix.lower() in {'.jpg','.jpeg','.png','.gif','.webp','.avif','.bmp'}
 
 def connect():
     host=os.environ['SVETDEDE_FTP_HOST']
@@ -39,9 +39,9 @@ def inventory(ftp,files):
     return result
 
 def ensure_folder(ftp,folder):
+    assert re.fullmatch(r'wp-content/uploads/\d{4}/\d{2}|php_uploads',folder)
     current=TARGET
     for part in pathlib.PurePosixPath(folder).parts:
-        assert re.fullmatch(r'\d{4}|\d{2}',part)
         current+='/'+part
         try: ftp.cwd(current)
         except ftplib.error_perm as e:
