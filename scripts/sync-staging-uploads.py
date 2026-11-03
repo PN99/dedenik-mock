@@ -48,6 +48,14 @@ def ensure_folder(ftp,folder):
             if not str(e).startswith('550'): raise
             ftp.mkd(current); ftp.cwd(current)
 
+def exists(ftp,path):
+    assert path.startswith(TARGET+'/')
+    ftp.voidcmd('TYPE I')
+    try: return ftp.size(path) is not None
+    except ftplib.error_perm as e:
+        if str(e).startswith('550'): return False
+        raise
+
 def main():
     manifest=json.loads((HERE/'uploads-manifest.json').read_text(encoding='utf-8'))
     assert manifest['source_root']==SOURCE and manifest['target_root']==TARGET
@@ -74,7 +82,7 @@ def main():
             if done%10==0 or done==len(before['missing']): print('Verified media copied:',done,'/',len(before['missing']),flush=True)
     def copy_one(ftp,item):
             path=item['path']; folder=str(pathlib.PurePosixPath(path).parent); name=pathlib.PurePosixPath(path).name
-            if name in listing(ftp,TARGET,folder): record('raced_existing',path); return
+            if exists(ftp,TARGET+'/'+path): record('raced_existing',path); return
             temp=TARGET+'/'+path+'.uploading-'+uuid.uuid4().hex
             assert temp.startswith(TARGET+'/') and valid(path)
             uploaded=False
@@ -91,7 +99,7 @@ def main():
                     ftp.storbinary('STOR '+temp,stream,blocksize=65536)
                     verify=hashlib.sha256(); ftp.retrbinary('RETR '+temp,verify.update,blocksize=65536)
                     assert verify.digest()==digest.digest(),'Uploaded file checksum mismatch'
-                    if name in listing(ftp,TARGET,folder):
+                    if exists(ftp,TARGET+'/'+path):
                         record('raced_existing',path)
                     else:
                         ftp.rename(temp,TARGET+'/'+path); uploaded=False
