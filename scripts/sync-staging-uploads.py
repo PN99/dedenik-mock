@@ -20,7 +20,21 @@ def connect():
     return ftp
 
 def listing(ftp,root,folder,optional=False):
-    try: return {name:int(facts.get('size','0')) for name,facts in ftp.mlsd(root+'/'+folder,facts=['type','size']) if facts.get('type')=='file'}
+    try:
+        # Historical directories contain mixed encodings. Preserve undecodable
+        # names without changing the exact UTF-8 names in the reviewed manifest.
+        ftp.sendcmd('OPTS MLST type;size;')
+        raw=bytearray()
+        def receive(block):
+            raw.extend(block); assert len(raw)<=32*1024*1024
+        ftp.retrbinary('MLSD '+root+'/'+folder,receive,blocksize=65536)
+        result={}
+        for line in bytes(raw).splitlines():
+            facts,sep,name=line.partition(b' ')
+            if not sep: continue
+            values=dict(v.split(b'=',1) for v in facts.split(b';') if b'=' in v)
+            if values.get(b'type')==b'file': result[name.decode('utf-8','surrogateescape')]=int(values.get(b'size',b'0'))
+        return result
     except ftplib.error_perm as e:
         if optional and str(e).startswith('550'): return {}
         raise
