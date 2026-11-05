@@ -16,7 +16,7 @@ if ( post_password_required() ) { continue; }
 if ( 'theatre' === $kind ) : ?>
     <section class="world-posts theatre-program" aria-labelledby="theatre-program-title">
         <h2 id="theatre-program-title"><?php esc_html_e( 'Program Dedivadla', 'dedenik' ); ?></h2>
-        <div class="theatre-program-list"><?php foreach ( dedenik_theatre_program() as $performance ) : ?><p><strong><?php echo esc_html( $performance['date'] ); ?></strong> · <?php echo esc_html( $performance['title'] ); ?> · <?php echo esc_html( $performance['time'] ); ?> · <?php echo esc_html( $performance['location'] ); ?></p><?php endforeach; ?></div>
+        <div class="theatre-program-list"><?php foreach ( dedenik_theatre_program( true ) as $performance ) : ?><p><strong><?php echo esc_html( $performance['date'] ); ?></strong> · <?php echo esc_html( $performance['title'] ); ?> · <?php echo esc_html( $performance['time'] ); ?> · <?php echo esc_html( $performance['location'] ); ?></p><?php endforeach; ?></div>
     </section>
     <?php get_template_part( 'template-parts/theatre-gallery' ); ?>
 <?php endif;

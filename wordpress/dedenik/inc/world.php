@@ -34,10 +34,11 @@ function dedenik_world_items() {
 }
 
 /** Upcoming Dedivadlo performances shown on the homepage and its landing page. */
-function dedenik_theatre_program() {
+function dedenik_theatre_program( $detailed = false ) {
+    $location = $detailed ? __( 'Velichovky - Dům pod Kaštany', 'dedenik' ) : __( 'Velichovky', 'dedenik' );
     return array(
-        array( 'date' => __( '21. 11. 2026', 'dedenik' ), 'title' => __( 'Vánočnice', 'dedenik' ), 'time' => __( '19.00', 'dedenik' ), 'location' => __( 'Velichovky', 'dedenik' ) ),
-        array( 'date' => __( '5. 12. 2026', 'dedenik' ), 'title' => __( 'Vánočnice', 'dedenik' ), 'time' => __( '19.00', 'dedenik' ), 'location' => __( 'Velichovky', 'dedenik' ) ),
+        array( 'date' => __( '21. 11. 2026', 'dedenik' ), 'title' => __( 'Vánočnice', 'dedenik' ), 'time' => __( '19.00', 'dedenik' ), 'location' => $location ),
+        array( 'date' => __( '5. 12. 2026', 'dedenik' ), 'title' => __( 'Vánočnice', 'dedenik' ), 'time' => __( '19.00', 'dedenik' ), 'location' => $location ),
     );
 }
 
