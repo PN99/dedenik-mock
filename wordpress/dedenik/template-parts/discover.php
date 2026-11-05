@@ -4,22 +4,22 @@
 <?php
 // Fixed editorial selection and order from the approved category reference.
 $topics = array(
-    array( 'label' => __( 'BTW', 'dedenik' ), 'slug' => 'btw', 'image' => 'forest' ),
-    array( 'label' => __( 'Člověčiny', 'dedenik' ), 'slug' => 'cloveciny', 'image' => 'forest' ),
-    array( 'label' => __( 'Matyldoviny', 'dedenik' ), 'slug' => 'matyldoviny', 'image' => 'forest' ),
-    array( 'label' => __( 'Mlsotník', 'dedenik' ), 'slug' => 'mlsotnik', 'image' => 'forest' ),
-    array( 'label' => __( 'Rozcestník', 'dedenik' ), 'slug' => 'rozcestnik', 'image' => 'armenia' ),
-    array( 'label' => __( 'Rozhledník', 'dedenik' ), 'slug' => 'rozhlednik', 'image' => 'armenia' ),
-    array( 'label' => __( 'Chatník', 'dedenik' ), 'slug' => 'chatnik', 'image' => 'forest' ),
-    array( 'label' => __( 'Fotočlánky', 'dedenik' ), 'slug' => 'fotoclanek', 'image' => '' ),
-    array( 'label' => __( 'Povídky', 'dedenik' ), 'slug' => 'povidky', 'image' => 'reading' ),
-    array( 'label' => __( 'Literární léto', 'dedenik' ), 'slug' => 'literarni-leto', 'image' => 'reading' ),
-    array( 'label' => __( 'Kočky', 'dedenik' ), 'slug' => 'kocky', 'image' => 'dog' ),
-    array( 'label' => __( 'Psi', 'dedenik' ), 'slug' => 'psi', 'image' => 'dog' ),
-    array( 'label' => __( 'Koně', 'dedenik' ), 'slug' => 'kone', 'image' => '' ),
-    array( 'label' => __( 'Netopýři', 'dedenik' ), 'slug' => 'netopyri', 'image' => '' ),
-    array( 'label' => __( 'Akvaristika', 'dedenik' ), 'slug' => 'akvaristika', 'image' => '' ),
-    array( 'label' => __( 'Dedivadlo', 'dedenik' ), 'slug' => 'dedivadlo', 'image' => '' ),
+    array( 'label' => __( 'BTW', 'dedenik' ), 'slug' => 'btw', 'viewBox' => '15 17 372 221' ),
+    array( 'label' => __( 'Člověčiny', 'dedenik' ), 'slug' => 'cloveciny', 'viewBox' => '412 17 372 221' ),
+    array( 'label' => __( 'Matyldoviny', 'dedenik' ), 'slug' => 'matyldoviny', 'viewBox' => '809 17 372 221' ),
+    array( 'label' => __( 'Mlsotník', 'dedenik' ), 'slug' => 'mlsotnik', 'viewBox' => '1206 17 372 221' ),
+    array( 'label' => __( 'Rozcestník', 'dedenik' ), 'slug' => 'rozcestnik', 'viewBox' => '15 261 372 221' ),
+    array( 'label' => __( 'Rozhledník', 'dedenik' ), 'slug' => 'rozhlednik', 'viewBox' => '412 261 372 221' ),
+    array( 'label' => __( 'Chatník', 'dedenik' ), 'slug' => 'chatnik', 'viewBox' => '809 261 372 221' ),
+    array( 'label' => __( 'Fotočlánky', 'dedenik' ), 'slug' => 'fotoclanek', 'viewBox' => '1206 261 372 221' ),
+    array( 'label' => __( 'Povídky', 'dedenik' ), 'slug' => 'povidky', 'viewBox' => '15 507 372 221' ),
+    array( 'label' => __( 'Literární léto', 'dedenik' ), 'slug' => 'literarni-leto', 'viewBox' => '412 507 372 221' ),
+    array( 'label' => __( 'Kočky', 'dedenik' ), 'slug' => 'kocky', 'viewBox' => '809 507 372 221' ),
+    array( 'label' => __( 'Psi', 'dedenik' ), 'slug' => 'psi', 'viewBox' => '1206 507 372 221' ),
+    array( 'label' => __( 'Koně', 'dedenik' ), 'slug' => 'kone', 'viewBox' => '15 752 372 221' ),
+    array( 'label' => __( 'Netopýři', 'dedenik' ), 'slug' => 'netopyri', 'viewBox' => '412 752 372 221' ),
+    array( 'label' => __( 'Akvaristika', 'dedenik' ), 'slug' => 'akvaristika', 'viewBox' => '809 752 372 221' ),
+    array( 'label' => __( 'Dedivadlo', 'dedenik' ), 'slug' => 'dedivadlo', 'viewBox' => '1206 752 372 221' ),
 );
 foreach ( $topics as $topic ) :
     $category = get_term_by( 'slug', $topic['slug'], 'category' );
@@ -27,7 +27,7 @@ foreach ( $topics as $topic ) :
     $available = $url && ! is_wp_error( $url );
     $tag = $available ? 'a' : 'span';
 ?>
-<<?php echo $tag; ?> class="topic<?php echo $topic['image'] ? '' : ' topic-plain'; ?>"<?php if ( $available ) : ?> href="<?php echo esc_url( $url ); ?>"<?php else : ?> aria-disabled="true"<?php endif; ?>><?php if ( $topic['image'] ) : ?><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $topic['image'] . '.webp' ) ); ?>" alt="" loading="lazy" width="200" height="120"><?php endif; ?><span><?php echo esc_html( $topic['label'] ); ?></span></<?php echo $tag; ?>>
+<<?php echo $tag; ?> class="topic"<?php if ( $available ) : ?> href="<?php echo esc_url( $url ); ?>"<?php else : ?> aria-disabled="true"<?php endif; ?>><svg class="topic-image" viewBox="<?php echo esc_attr( $topic['viewBox'] ); ?>" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="<?php echo esc_url( get_theme_file_uri( 'assets/images/topics-sheet.png' ) ); ?>" width="1588" height="991"/></svg><span><?php echo esc_html( $topic['label'] ); ?></span></<?php echo $tag; ?>>
 <?php endforeach; ?>
 </div></div>
 <div class="discover-side">
