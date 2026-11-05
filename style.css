@@ -14,3 +14,5 @@ html{scroll-behavior:smooth;scroll-padding-top:25px}button,input{font:inherit}bu
 @media(max-width:620px){.worldgrid{grid-template-columns:1fr}}
 
 .worldcard:not(.dedivadlo-card)>div{align-self:stretch;display:grid;grid-template-rows:auto 1fr auto;justify-items:start;gap:10px}.worldcard .world-description{align-self:center;margin:0;font:14px/1.4 var(--serif);color:var(--ink)}
+
+#autori .authors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;justify-items:center}#autori .author{width:100%;min-width:0}

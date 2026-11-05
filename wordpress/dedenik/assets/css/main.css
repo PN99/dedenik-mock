@@ -1362,7 +1362,7 @@ h3 {
 .has-theatre-dialog { overflow:hidden }
 @media(max-width:620px) { .theatre-dialog { padding:20px } .theatre-dialog h2 { font-size:28px } .theatre-dialog .theatre-gallery { grid-template-columns:1fr } .theatre-dialog .theatre-gallery img { aspect-ratio:3/2 } }
 
-/* Match the mock's wrapping author buttons, including the twelfth tile. */
-.discover-side .authors { display:flex; flex-wrap:wrap; gap:13px }
-.discover-side .author { width:62px; min-height:75px; font-size:11px }
+/* Twelve author buttons arranged in three columns and four rows. */
+.discover-side .authors { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px; justify-items:center }
+.discover-side .author { width:100%; min-width:0; min-height:75px; font-size:11px }
 .author[aria-disabled="true"] { cursor:default }
