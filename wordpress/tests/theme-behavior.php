@@ -24,7 +24,7 @@ function has_post_thumbnail() { return $GLOBALS['thumbnail']; }
 function post_password_required() { return $GLOBALS['protected']; }
 function the_post_thumbnail($size,$args) { echo '<img src="protected-source.jpg">'; }
 function get_term($id,$taxonomy) { return $id===9 ? (object)array('term_id'=>9,'name'=>'Chatník') : new Exception('invalid'); }
-function get_term_by($field,$value,$taxonomy) { return $GLOBALS['fixture_categories'][$value] ?? false; }
+function get_term_by($field,$value,$taxonomy) { return $GLOBALS['fixture_terms'][$taxonomy][$value] ?? $GLOBALS['fixture_categories'][$value] ?? false; }
 function get_post($id) { return $GLOBALS['fixture_pages'][$id] ?? null; }
 require __DIR__.'/../dedenik/inc/template-tags.php';
 $tests=0;
@@ -72,4 +72,18 @@ unset($fixture_categories['kone']);
 ob_start(); require __DIR__.'/../dedenik/template-parts/discover.php'; $html=ob_get_clean();
 check(substr_count($html, 'aria-disabled="true"') === 2, 'Unavailable categories stay visible without fabricated links');
 check(strpos($html, 'category/507/') === false && strpos($html, 'category/512/') === false, 'Unavailable categories do not link to stale targets');
+// Featured authors resolve editorial tag identities, not publishing accounts.
+function get_term_link($term) { return 'https://example.test/tag/'.$term->slug.'/'; }
+function wp_html_excerpt($value,$length,$more) { preg_match('/^./us',$value,$first); return $first[0] ?? ''; }
+$author_names = array('Dede','Matylda','EvaB','Netopýrka','Tora','Pů','Yga','Alex','MartinR','Neviathiel','Aries','a další');
+$author_slugs = array('dagmar-ruscakova','matylda','evab','netopyrka','tora','pu','yga','alex','martinr','neviathiel','aloisie-trpkosova-aries');
+foreach ($author_slugs as $slug) { $fixture_terms['post_tag'][$slug] = (object)array('slug'=>$slug); }
+ob_start(); require __DIR__.'/../dedenik/template-parts/authors.php'; $html=ob_get_clean();
+preg_match_all('/<span>([^<]+)<\/span><\/a>/', $html, $labels);
+check($labels[1] === $author_names, 'Featured authors preserve all eleven names, editorial order and final more link');
+check(strpos($html, 'href="https://example.test/tag/dagmar-ruscakova/"') !== false && strpos($html, 'href="https://example.test/tag/aloisie-trpkosova-aries/"') !== false, 'Dede and Aries resolve their actual author tags');
+check(strpos($html, 'https://www.dedenik.cz/#f2-tagcloud-2') !== false, 'More authors links to the complete author list');
+$fixture_terms['post_tag']['neviathiel'] = new Exception('missing');
+ob_start(); require __DIR__.'/../dedenik/template-parts/authors.php'; $html=ob_get_clean();
+check(strpos($html, 'aria-disabled="true"') !== false && strpos($html, 'href="https://example.test/tag/neviathiel/"') === false, 'Missing author tag is visible without a fabricated archive link');
 echo 'Passed '.$tests." offline behavior checks\n";
