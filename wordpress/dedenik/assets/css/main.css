@@ -1346,3 +1346,18 @@ h3 {
 
 /* Each category shows its own viewport of the supplied 4 by 4 image sheet. */
 .topic .topic-image { position:absolute; inset:0; width:100%; height:100%; z-index:-2; overflow:hidden }
+
+/* Dedivadlo modal; the homepage link remains usable without JavaScript. */
+.theatre-dialog:not([open]) { display:none }
+.theatre-dialog { box-sizing:border-box; width:min(700px,calc(100% - 32px)); max-height:90vh; max-height:90dvh; margin:auto; padding:30px; border:0; border-radius:16px; color:var(--ink); background:#fff; box-shadow:0 20px 80px #0005; overflow:auto }
+.theatre-dialog::backdrop { background:#05092baa }
+.theatre-dialog h2 { margin:0 40px 16px 0; font:32px/1.1 var(--serif) }
+.theatre-dialog .kicker { margin:0 0 6px }
+.theatre-dialog .theatre-story { margin:0; padding:0 }
+.theatre-dialog .theatre-story>p { line-height:1.7 }
+.theatre-dialog .theatre-gallery { gap:12px }
+.theatre-dialog .theatre-gallery img { aspect-ratio:8/7 }
+.theatre-dialog .button { background:var(--gold); color:#fff }
+.theatre-dialog-close { position:sticky; top:0; float:right; display:grid; place-items:center; width:36px; height:36px; padding:0; border:0; border-radius:50%; background:var(--cream); color:var(--ink); font:24px/1 sans-serif; cursor:pointer }
+.has-theatre-dialog { overflow:hidden }
+@media(max-width:620px) { .theatre-dialog { padding:20px } .theatre-dialog h2 { font-size:28px } .theatre-dialog .theatre-gallery { grid-template-columns:1fr } .theatre-dialog .theatre-gallery img { aspect-ratio:3/2 } }
