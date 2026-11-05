@@ -24,7 +24,7 @@ function has_post_thumbnail() { return $GLOBALS['thumbnail']; }
 function post_password_required() { return $GLOBALS['protected']; }
 function the_post_thumbnail($size,$args) { echo '<img src="protected-source.jpg">'; }
 function get_term($id,$taxonomy) { return $id===9 ? (object)array('term_id'=>9,'name'=>'Chatník') : new Exception('invalid'); }
-function get_term_by($field,$value,$taxonomy) { return false; }
+function get_term_by($field,$value,$taxonomy) { return $GLOBALS['fixture_categories'][$value] ?? false; }
 function get_post($id) { return $GLOBALS['fixture_pages'][$id] ?? null; }
 require __DIR__.'/../dedenik/inc/template-tags.php';
 $tests=0;
@@ -56,4 +56,20 @@ ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get
 check(strpos($html,'https://open.spotify.com/show/4xeerT4CEz6vBbsb9YzGWM')!==false,'Podcast card defaults to the supplied Spotify show');
 $mods['dedenik_world_podcast_url']='https://example.test/custom-podcast';
 $items=dedenik_world_items(); check($items[0]['url']==='https://example.test/custom-podcast','Configured podcast link takes priority');
+// The homepage category selection must keep its editorial order and real term URLs.
+function esc_html_e($value,$domain) { echo esc_html($value); }
+function get_template_part($slug) {}
+$category_names = array('BTW','Člověčiny','Matyldoviny','Mlsotník','Rozcestník','Rozhledník','Chatník','Fotočlánky','Povídky','Literární léto','Kočky','Psi','Koně','Netopýři','Akvaristika','Dedivadlo');
+$category_slugs = array('btw','cloveciny','matyldoviny','mlsotnik','rozcestnik','rozhlednik','chatnik','fotoclanek','povidky','literarni-leto','kocky','psi','kone','netopyri','akvaristika','dedivadlo');
+$fixture_categories = array();
+foreach ($category_slugs as $index => $slug) { $fixture_categories[$slug] = (object)array('term_id'=>500+$index); }
+ob_start(); require __DIR__.'/../dedenik/template-parts/discover.php'; $html=ob_get_clean();
+preg_match_all('/<span>([^<]+)<\/span>/', $html, $labels);
+check($labels[1] === $category_names, 'Homepage has exactly the reference categories in editorial order');
+foreach ($category_slugs as $index => $slug) { check(strpos($html, 'href="https://example.test/category/'.(500+$index).'/"') !== false, 'Category tile uses its resolved term URL: '.$slug); }
+$fixture_categories['fotoclanek'] = new Exception('missing');
+unset($fixture_categories['kone']);
+ob_start(); require __DIR__.'/../dedenik/template-parts/discover.php'; $html=ob_get_clean();
+check(substr_count($html, 'aria-disabled="true"') === 2, 'Unavailable categories stay visible without fabricated links');
+check(strpos($html, 'category/507/') === false && strpos($html, 'category/512/') === false, 'Unavailable categories do not link to stale targets');
 echo 'Passed '.$tests." offline behavior checks\n";

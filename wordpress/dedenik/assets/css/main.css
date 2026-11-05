@@ -1338,3 +1338,8 @@ h3 {
 /* Approved homepage summaries, centered between badges and links. */
 .home .world-card:not(.world-card-theatre)>div { align-self:stretch; display:grid; grid-template-rows:auto 1fr auto; justify-items:start; gap:10px }
 .home .world-card .world-description { align-self:center; margin:0; font:14px/1.4 var(--serif); color:var(--ink) }
+
+/* Text-only category tiles from the homepage editorial selection. */
+.topic.topic-plain { background:#195f79 }
+.topic.topic-plain::before { display:none }
+.topic[aria-disabled="true"] { cursor:default }
