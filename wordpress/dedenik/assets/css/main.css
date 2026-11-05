@@ -1361,3 +1361,8 @@ h3 {
 .theatre-dialog-close { position:sticky; top:0; float:right; display:grid; place-items:center; width:36px; height:36px; padding:0; border:0; border-radius:50%; background:var(--cream); color:var(--ink); font:24px/1 sans-serif; cursor:pointer }
 .has-theatre-dialog { overflow:hidden }
 @media(max-width:620px) { .theatre-dialog { padding:20px } .theatre-dialog h2 { font-size:28px } .theatre-dialog .theatre-gallery { grid-template-columns:1fr } .theatre-dialog .theatre-gallery img { aspect-ratio:3/2 } }
+
+/* Match the mock's wrapping author buttons, including the twelfth tile. */
+.discover-side .authors { display:flex; flex-wrap:wrap; gap:13px }
+.discover-side .author { width:62px; min-height:75px; font-size:11px }
+.author[aria-disabled="true"] { cursor:default }
