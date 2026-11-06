@@ -15,6 +15,7 @@ SOURCE = '/public_html/www/wp-content/uploads'
 TARGET = '/public_html/svetdede/wp-content/uploads'
 HERE = pathlib.Path(__file__).resolve().parent
 MAX_BYTES = 128 * 1024 * 1024
+WORKERS = 5
 EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif', '.bmp', '.heic',
               '.mp3', '.mp4', '.mov', '.avi', '.pdf', '.docx', '.ogg', '.wav'}
 
@@ -290,8 +291,8 @@ def main():
             if ftp is not None:
                 ftp.close()
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-        futures = [pool.submit(worker, before['missing'][index::3]) for index in range(3)]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        futures = [pool.submit(worker, before['missing'][index::WORKERS]) for index in range(WORKERS)]
         for future in futures:
             future.result()
     with connect() as ftp:
