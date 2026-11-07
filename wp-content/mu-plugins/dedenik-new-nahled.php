@@ -31,7 +31,6 @@ foreach ( array( 'theme_switched', 'blog_public', 'dedenik_ai_enabled' ) as $opt
 remove_all_filters( 'determine_current_user' );
 add_filter( 'determine_current_user', '__return_zero', PHP_INT_MAX );
 add_filter( 'send_auth_cookies', '__return_false' );
-add_filter( 'comments_open', '__return_false' );
 add_filter( 'pings_open', '__return_false' );
 add_filter( 'comments_template_query_args', static function ( $args ) {
 	unset( $args['include_unapproved'] );
@@ -40,6 +39,25 @@ add_filter( 'comments_template_query_args', static function ( $args ) {
 add_filter( 'post_password_required', static function ( $required, $post ) {
 	return isset( $post->post_password ) && '' !== $post->post_password;
 }, 10, 2 );
+
+// Use the article's discussion settings and native reply form. Preview POSTs are blocked in wp-config.php.
+add_filter( 'comment_form_defaults', static function ( $defaults ) {
+	$preview_home = home_url( '/' );
+	$permalink    = get_permalink();
+	$live_home    = 'https://www.dedenik.cz/';
+	$live_url     = is_string( $permalink ) && str_starts_with( $permalink, $preview_home )
+		? $live_home . substr( $permalink, strlen( $preview_home ) )
+		: add_query_arg( is_page() ? 'page_id' : 'p', get_the_ID(), $live_home );
+
+	$notice = '<p class="comment-notes">Tady si můžeš vyzkoušet komentář i odpověď bez uložení. <a href="' .
+		esc_url( $live_url . '#respond' ) . '">Přidat komentář na původním Dedeníku</a>.</p>';
+
+	$defaults['comment_notes_before'] = $notice . $defaults['comment_notes_before'];
+	$defaults['must_log_in']          = '<p>Pro přidání komentáře je potřeba přihlášení.</p>' . $notice;
+	$defaults['submit_button']        = '<input type="submit" name="%1$s" id="%2$s" class="%3$s" value="%4$s" disabled />';
+	$defaults['label_submit']         = 'Odesílání je v náhledu vypnuté';
+	return $defaults;
+} );
 
 add_filter( 'pre_wp_mail', '__return_false' );
 add_filter( 'pre_http_request', static function () {

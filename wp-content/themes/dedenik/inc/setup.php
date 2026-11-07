@@ -28,7 +28,7 @@ function dedenik_assets() {
     wp_enqueue_script( 'dedenik-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), $version, true );
     wp_enqueue_script( 'dedenik-theatre-dialog', get_template_directory_uri() . '/assets/js/theatre-dialog.js', array(), $version, true );
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment-reply' );
+        wp_enqueue_script( 'dedenik-comments', get_template_directory_uri() . '/assets/js/comments.js', array( 'comment-reply' ), $version, true );
     }
 }
 add_action( 'wp_enqueue_scripts', 'dedenik_assets' );
