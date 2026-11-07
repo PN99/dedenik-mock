@@ -12,7 +12,7 @@ import uuid
 
 REMOTE = '/public_html/svetdede/wp-content/themes/dedenik'
 SITE = 'https://svetdede.dedenik.cz'
-SOURCE = Path(__file__).resolve().parent / 'dedenik'
+SOURCE = Path(__file__).resolve().parents[1] / 'wp-content/themes/dedenik'
 RUNTIME_SUFFIXES = {'.php', '.css', '.js', '.json', '.png', '.jpg', '.webp'}
 
 

@@ -1,0 +1,23 @@
+# Public preview at /new/ (before cutover).
+DirectoryIndex index.php
+
+<IfModule mod_headers.c>
+    Header always set X-Robots-Tag "noindex"
+</IfModule>
+
+# Without its own wp-config.php, WordPress redirects to setup-config.php.
+RewriteEngine On
+RewriteBase /new/
+ErrorDocument 503 "Nahled Dedeniku ceka na konfiguraci WordPressu."
+RewriteRule ^wp-admin/setup-config\.php(?:/|$) - [R=503,L,NC]
+
+# Installation and database upgrades are managed separately from preview access.
+<FilesMatch "^(install|upgrade|upgrade-network)\.php$">
+    Require all denied
+</FilesMatch>
+
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /new/index.php [L]

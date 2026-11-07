@@ -1,0 +1,1780 @@
+# Translation of Themes - Twenty Twenty-Four in Czech
+# This file is distributed under the same license as the Themes - Twenty Twenty-Four package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-04-21 14:25:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n >= 2 && n <= 4) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.1.0\n"
+"Language: cs_CZ\n"
+"Project-Id-Version: Themes - Twenty Twenty-Four\n"
+
+#. Theme Name of the theme
+#: style.css
+#, gp-priority: high
+msgid "Twenty Twenty-Four"
+msgstr "Twenty Twenty-Four"
+
+#. Description of the theme
+#: style.css
+#, gp-priority: high
+msgid "Twenty Twenty-Four is designed to be flexible, versatile and applicable to any website. Its collection of templates and patterns tailor to different needs, such as presenting a business, blogging and writing or showcasing work. A multitude of possibilities open up with just a few adjustments to color and typography. Twenty Twenty-Four comes with style variations and full page designs to help speed up the site building process, is fully compatible with the site editor, and takes advantage of new design tools introduced in WordPress 6.4."
+msgstr "Šablona Twenty Twenty-Four je navržena tak, aby byla flexibilní, univerzální a vhodná pro jakýkoli web. Její sbírka šablon a vzorů se přizpůsobí různým potřebám, jako je prezentace firmy, blogování a psaní nebo předvedení vlastní tvorby. Pouhými několika úpravami barev a typografie se otevírá celá řada možností. Twenty Twenty-Four obsahuje různé stylové varianty a návrhy celostránkových rozvržení, které urychlují proces tvorby webu, je plně kompatibilní s editorem webu a využívá nové nástroje pro design představené ve WordPressu 6.4."
+
+#: patterns/text-centered-statement.php
+msgctxt "Pattern description"
+msgid "A centered text statement with a large amount of padding on all sides."
+msgstr "Text vycentrovaný se značným odsazením ze všech stran."
+
+#: patterns/hidden-posts-heading.php
+msgctxt "Pattern title"
+msgid "Posts heading"
+msgstr "Nadpis příspěvku"
+
+#: patterns/text-title-left-image-right.php
+msgctxt "Pattern description"
+msgid "A title, a paragraph and a CTA button on the left with an image on the right."
+msgstr "Nadpis, odstavec a tlačítko s výzvou k akci vlevo, s obrázkem vpravo."
+
+#: patterns/text-project-details.php
+msgctxt "Pattern description"
+msgid "A text-only section for project details."
+msgstr "Část určená výhradně pro text s podrobnostmi o projektu."
+
+#: patterns/text-feature-grid-3-col.php
+msgctxt "Pattern description"
+msgid "A feature grid of 2 rows and 3 columns with headings and text."
+msgstr "Tabulka o rozměrech 2 řádky a 3 sloupce s nadpisy a textem."
+
+#: patterns/text-faq.php:40
+msgctxt "Question in the FAQ pattern"
+msgid "Who is behind Études?"
+msgstr "Kdo stojí za značkou Études?"
+
+#: patterns/text-faq.php
+msgctxt "Pattern description"
+msgid "A FAQ section with a large FAQ heading and a group of questions and answers."
+msgstr "Sekce Často kladené dotazy s velkým nadpisem „Často kladené dotazy“ a seznamem otázek a odpovědí."
+
+#: patterns/text-centered-statement-small.php
+msgctxt "Pattern description"
+msgid "A centered italic text statement with compact padding."
+msgstr "Textové sdělení vycentrované a psané kurzívou s malým vnitřním odsazením."
+
+#: patterns/text-alternating-images.php
+msgctxt "Pattern description"
+msgid "A text section, then a two-column section with text in one column and an image in the other."
+msgstr "Nejprve textová část, poté dvoukolonová část, kde v jedné kolonce je text a ve druhé obrázek."
+
+#: patterns/testimonial-centered.php
+msgctxt "Pattern description"
+msgid "A centered testimonial section with an avatar, name, and job title."
+msgstr "Sekce s referencemi uprostřed stránky, obsahující profilovou fotku, jméno a pracovní pozici."
+
+#: patterns/team-4-col.php
+msgctxt "Pattern description"
+msgid "A team section, with a heading, a paragraph, and 4 columns for team members."
+msgstr "Sekce týmu s nadpisem, odstavcem a čtyřmi sloupci pro členy týmu."
+
+#: patterns/posts-list.php
+msgctxt "Pattern description"
+msgid "A list of posts without images, 1 column."
+msgstr "Seznam příspěvků bez obrázků, 1 sloupec."
+
+#: patterns/posts-images-only-offset-4-col.php
+msgctxt "Pattern description"
+msgid "A list of posts with featured images only, 4 columns."
+msgstr "Seznam příspěvků pouze s úvodními obrázky, ve čtyřech sloupcích."
+
+#: patterns/posts-images-only-3-col.php
+msgctxt "Pattern description"
+msgid "A list of posts with featured images only, 3 columns."
+msgstr "Seznam příspěvků pouze s úvodními obrázky, ve třech sloupcích."
+
+#: patterns/posts-grid-2-col.php
+msgctxt "Pattern description"
+msgid "A grid of posts featuring the first post, 2 columns."
+msgstr "Mřížka příspěvků s prvním příspěvkem, 2 sloupce."
+
+#: patterns/posts-3-col.php
+msgctxt "Pattern description"
+msgid "A list of posts, 3 columns."
+msgstr "Seznam příspěvků, 3 sloupce."
+
+#: patterns/posts-1-col.php
+msgctxt "Pattern description"
+msgid "A list of posts, 1 column."
+msgstr "Seznam příspěvků, 1 sloupec."
+
+#: patterns/page-portfolio-overview.php
+msgctxt "Pattern description"
+msgid "A full portfolio page with a section for project description, project details, a full screen image, and a gallery section with two images."
+msgstr "Kompletní stránka portfolia obsahující sekci s popisem projektu, podrobnosti o projektu, obrázek na celou obrazovku a galerii se dvěma obrázky."
+
+#: patterns/page-newsletter-landing.php
+msgctxt "Pattern description"
+msgid "A block with a newsletter subscription CTA for a landing page."
+msgstr "Blok s výzvou k akci (CTA) pro přihlášení k odběru newsletteru na vstupní stránce."
+
+#: patterns/page-home-portfolio.php
+msgctxt "Pattern description"
+msgid "A portfolio home page with a description and a 4-column post section with only feature images."
+msgstr "Úvodní stránka portfolia s popisem a čtyřsloupcovou sekcí příspěvků, která obsahuje pouze úvodní obrázky."
+
+#: patterns/page-home-portfolio-gallery.php
+msgctxt "Pattern description"
+msgid "A portfolio home page that features a gallery."
+msgstr "Úvodní stránka portfolia s galerií."
+
+#: patterns/page-home-business.php
+msgctxt "Pattern description"
+msgid "A business home page with a hero section, a text section, a services section, a team section, a clients section, a FAQ section, and a CTA section."
+msgstr "Domovská stránka firmy obsahující úvodní sekci, textovou sekci, sekci služeb, sekci týmu, sekci klientů, sekci často kladených dotazů a sekci s výzvou k akci."
+
+#: patterns/page-home-blogging.php
+msgctxt "Pattern description"
+msgid "A blogging home page with a hero section, a text section, a blog section, and a CTA section."
+msgstr "Úvodní stránka blogu s úvodním blokem, textovou částí, sekcí blogu a výzvou k akci."
+
+#: patterns/page-about-business.php
+msgctxt "Pattern description"
+msgid "A business about page with a hero section, a text section, a services section, a team section, a clients section, a FAQ section, and a CTA section."
+msgstr "Stránka „O nás“ obsahující úvodní sekci, textovou sekci, sekci služeb, sekci týmu, sekci klientů, sekci často kladených dotazů a sekci s výzvou k akci."
+
+#: patterns/gallery-project-layout.php
+msgctxt "Pattern description"
+msgid "A gallery section with a project layout with 2 images."
+msgstr "Sekce galerie s rozložením projektu obsahujícím 2 obrázky."
+
+#: patterns/gallery-offset-images-grid-4-col.php
+msgctxt "Pattern description"
+msgid "A gallery section with 4 columns and offset images."
+msgstr "Sekce galerie se čtyřmi sloupci a posunutými obrázky."
+
+#: patterns/gallery-offset-images-grid-3-col.php
+msgctxt "Pattern description"
+msgid "A gallery section with 3 columns and offset images."
+msgstr "Sekce galerie se třemi sloupci a posunutými obrázky."
+
+#: patterns/gallery-offset-images-grid-2-col.php
+msgctxt "Pattern description"
+msgid "A gallery section with 2 columns and offset images."
+msgstr "Sekce galerie se dvěma sloupci a posunutými obrázky."
+
+#: patterns/gallery-full-screen-image.php
+msgctxt "Pattern description"
+msgid "A cover image section that covers the entire width."
+msgstr "Oblast s obrázkem na obálce, která zabírá celou šířku."
+
+#: patterns/footer.php
+msgctxt "Pattern description"
+msgid "A footer section with a colophon and 4 columns."
+msgstr "Zápatí s tirážem a čtyřmi sloupci."
+
+#: patterns/footer-colophon-3-col.php
+msgctxt "Pattern description"
+msgid "A footer section with a colophon and 3 columns."
+msgstr "Zápatí s tirážem a třemi sloupci."
+
+#: patterns/footer-centered-logo-nav.php
+msgctxt "Pattern description"
+msgid "A footer section with a centered logo, navigation, and WordPress credits."
+msgstr "Zápatí s vycentrovaným logem, navigační lištou a informacemi o WordPressu."
+
+#: patterns/cta-subscribe-centered.php
+msgctxt "Pattern description"
+msgid "Subscribers CTA section with a title, a paragraph and a CTA button."
+msgstr "Sekce s výzvou k akci pro předplatitele obsahující nadpis, odstavec a tlačítko s výzvou k akci."
+
+#: patterns/cta-services-image-left.php
+msgctxt "Pattern description"
+msgid "An image, title, paragraph and a CTA button to describe services."
+msgstr "Obrázek, nadpis, odstavec a tlačítko s výzvou k akci (CTA) k popisu služeb."
+
+#: patterns/cta-rsvp.php patterns/page-rsvp-landing.php
+msgctxt "Pattern description"
+msgid "A large RSVP heading sideways, a description, and a CTA button."
+msgstr "Velký text „RSVP“ umístěný na boku, popis a tlačítko s výzvou k akci."
+
+#: patterns/cta-pricing.php
+msgctxt "Pattern description"
+msgid "A pricing section with a title, a paragraph and three pricing levels."
+msgstr "Část věnovaná cenám s nadpisem, odstavcem a třemi cenovými úrovněmi."
+
+#: patterns/cta-content-image-on-right.php
+msgctxt "Pattern description"
+msgid "A title, paragraph, two CTA buttons, and an image for a general CTA section."
+msgstr "Nadpis, odstavec, dvě tlačítka s výzvou k akci a obrázek pro obecnou sekci s výzvou k akci."
+
+#: patterns/banner-project-description.php
+msgctxt "Pattern description"
+msgid "Project description section with title, paragraph, and an image."
+msgstr "Část s popisem projektu obsahující nadpis, odstavec a obrázek."
+
+#: patterns/banner-hero.php
+msgctxt "Pattern description"
+msgid "A hero section with a title, a paragraph, a CTA button, and an image."
+msgstr "Úvodní blok s nadpisem, odstavcem, tlačítkem CTA a obrázkem."
+
+#: patterns/footer.php:101
+msgid "Twitter/X"
+msgstr "Twitter/X"
+
+#: patterns/footer.php:79
+msgid "Contact Us"
+msgstr "Kontaktujte nás"
+
+#: patterns/footer.php:78
+msgid "Terms and Conditions"
+msgstr "Obchodní podmínky"
+
+#: patterns/footer.php:77
+msgid "Privacy Policy"
+msgstr "Zásady ochrany osobních údajů"
+
+#: patterns/footer.php:56
+msgid "Careers"
+msgstr "Kariéra"
+
+#: patterns/footer.php:55
+msgid "History"
+msgstr "Historie"
+
+#: patterns/footer.php:54
+msgid "Team"
+msgstr "Tým"
+
+#: patterns/hidden-portfolio-hero.php:21
+msgid "I’m <em>Leia Acosta</em>, a passionate photographer who finds inspiration in capturing the fleeting beauty of life."
+msgstr "Jsem <em>Leia Acosta</em>, vášnivá fotografka, která nachází inspiraci v zachycování pomíjivé krásy života."
+
+#: patterns/posts-list.php
+msgctxt "Pattern title"
+msgid "List of posts without images, 1 column"
+msgstr "Seznam příspěvků bez obrázků, 1 sloupec"
+
+#: functions.php:189
+msgid "A collection of full page layouts."
+msgstr "Soubor celostránkových rozvržení."
+
+#: functions.php:188
+msgctxt "Block pattern category"
+msgid "Pages"
+msgstr "Stránky"
+
+#: theme.json styles/fossil.json styles/ice.json
+msgctxt "Font family name"
+msgid "Inter"
+msgstr "Inter"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Zápatí"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Záhlaví"
+
+#. Author URI of the theme
+#. Translators: WordPress link.
+#: style.css patterns/footer-centered-logo-nav.php:27
+#: patterns/footer-colophon-3-col.php:96 patterns/footer.php:122
+msgid "https://wordpress.org"
+msgstr "https://wordpress.org"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post Meta"
+msgstr "Meta příspěvku"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "6"
+msgstr "6"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5"
+msgstr "5"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4"
+msgstr "4"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr "3"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr "2"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr "1"
+
+#: theme.json styles/ember.json styles/fossil.json styles/ice.json
+#: styles/maelstrom.json styles/mint.json styles/onyx.json styles/rust.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr "Kontrast"
+
+#: theme.json styles/fossil.json styles/ice.json styles/maelstrom.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Střední"
+
+#: theme.json styles/fossil.json styles/ice.json styles/maelstrom.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Velké"
+
+#: theme.json styles/fossil.json styles/ice.json styles/maelstrom.json
+msgctxt "Font size name"
+msgid "Extra Large"
+msgstr "Extra velké"
+
+#: theme.json styles/ember.json styles/fossil.json styles/ice.json
+#: styles/maelstrom.json styles/mint.json styles/onyx.json styles/rust.json
+msgctxt "Color name"
+msgid "Base"
+msgstr "Základna"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single with Sidebar"
+msgstr "Jednostránkový s postranním panelem"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page with Wide Image"
+msgstr "Stránka s velkým obrázkem"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page with Sidebar"
+msgstr "Stránka s postranním panelem"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page No Title"
+msgstr "Číslo stránky Název"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr "Postranní panel"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard pewter to white"
+msgstr "Vertikální, tvrdý cín až bílá"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard mint to white"
+msgstr "Svislá, tvrdá, mátově zelená až bílá"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard sage to white"
+msgstr "Svislá tvrdá šalvěj až bílá"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard rust to white"
+msgstr "Svislá tvrdá rezavá skvrna, která zbělela"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard sandstone to white"
+msgstr "Svislý tvrdý pískovec až bílý"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard beige to white"
+msgstr "Svislý, tvrdý, béžový až bílý"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft pewter to white"
+msgstr "Vertikální přechod od jemného cínu k bílé"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft mint to white"
+msgstr "Vertikální, jemně mátová až bílá"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft sage to white"
+msgstr "Vertikální, jemně šedozelená až bílá"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft rust to white"
+msgstr "Svislý přechod od jemně rezavé barvy k bílé"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft sandstone to white"
+msgstr "Svislý měkký pískovec až bílý"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft beige to white"
+msgstr "Vertikální, jemně béžová až bílá"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and pastel blue"
+msgstr "Černá a pastelově modrá"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and sage"
+msgstr "Černá a šalvějová"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and rust"
+msgstr "Černá a rezavá"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and sandstone"
+msgstr "Černá a pískovec"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and white"
+msgstr "Černobílé"
+
+#: styles/rust.json
+msgctxt "Color name"
+msgid "Base / 2"
+msgstr "Základní úroveň / 2"
+
+#: styles/rust.json
+msgctxt "Gradient name"
+msgid "Vertical hard rust to beige"
+msgstr "Svislá tvrdá skvrna od rezavé až po béžovou"
+
+#: styles/rust.json
+msgctxt "Gradient name"
+msgid "Vertical rust to beige"
+msgstr "Vertikální přechod od rezavé k béžové"
+
+#: styles/rust.json
+msgctxt "Gradient name"
+msgid "Vertical hard transparent rust to beige"
+msgstr "Svislá tvrdá vrstva, průhledná, barva od rezavé po béžovou"
+
+#: styles/rust.json
+msgctxt "Gradient name"
+msgid "Vertical transparent rust to beige"
+msgstr "Vertikální pruhy v odstínech od rezavé po béžovou"
+
+#: styles/rust.json
+msgctxt "Duotone name"
+msgid "Dark rust to beige"
+msgstr "Od tmavě rezavé po béžovou"
+
+#: styles/rust.json
+msgctxt "Style variation name"
+msgid "Rust"
+msgstr "Klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid klid kl"
+
+#: theme.json styles/onyx.json
+msgctxt "Color name"
+msgid "Accent / Five"
+msgstr "Akcent / Pět"
+
+#: theme.json styles/onyx.json
+msgctxt "Color name"
+msgid "Accent / Four"
+msgstr "Accent / Four"
+
+#: theme.json styles/onyx.json
+msgctxt "Color name"
+msgid "Accent / Three"
+msgstr "Akcent / Tři"
+
+#: theme.json styles/onyx.json
+msgctxt "Color name"
+msgid "Accent / Two"
+msgstr "Akcent / Dva"
+
+#: theme.json styles/onyx.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr "Accent"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical hard pewter to dark gray"
+msgstr "Vertikální, tvrdý cín až tmavě šedý"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical hard steel to dark gray"
+msgstr "Svislá tvrdá ocel až tmavě šedá"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical hard olive to dark gray"
+msgstr "Svisle, od tmavě olivové až po tmavě šedou"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical hard cinnamon to dark gray"
+msgstr "Svislá, tvrdá, skořicově hnědá až tmavě šedá"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical hard walnut to dark gray"
+msgstr "Svislý, tvrdý ořech až tmavě šedý"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical hard beige to dark gray"
+msgstr "Svisle, od sytě béžové po tmavě šedou"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical soft pewter to dark gray"
+msgstr "Vertikální, jemný odstín od cínově šedé po tmavě šedou"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical soft steel to dark gray"
+msgstr "Od světle šedé po tmavě šedou"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical soft olive to dark gray"
+msgstr "Vertikální, odstín od světle olivové až po tmavě šedou"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical soft cinnamon to dark gray"
+msgstr "Od jemně skořicové až po tmavě šedou"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical soft walnut to dark gray"
+msgstr "Vertikální, od světle hnědé až po tmavě šedou"
+
+#: styles/onyx.json
+msgctxt "Gradient name"
+msgid "Vertical soft driftwood to dark gray"
+msgstr "Svislé kousky měkkého naplaveného dřeva v odstínech od světle šedé po tmavě šedou"
+
+#: styles/onyx.json
+msgctxt "Duotone name"
+msgid "Dark gray and steel"
+msgstr "Tmavě šedá a ocelová"
+
+#: styles/onyx.json
+msgctxt "Duotone name"
+msgid "Dark gray and olive"
+msgstr "Tmavě šedá a olivová"
+
+#: styles/onyx.json
+msgctxt "Duotone name"
+msgid "Dark gray and cinnamon"
+msgstr "Tmavě šedá a skořicová"
+
+#: styles/onyx.json
+msgctxt "Duotone name"
+msgid "Dark gray and walnut"
+msgstr "Tmavě šedá a ořechová"
+
+#: styles/onyx.json
+msgctxt "Duotone name"
+msgid "Dark gray and white"
+msgstr "Tmavě šedá a bílá"
+
+#: styles/onyx.json
+msgctxt "Style variation name"
+msgid "Onyx"
+msgstr "Onyx"
+
+#: styles/mint.json
+msgctxt "Style variation name"
+msgid "Mint"
+msgstr "Jako"
+
+#: styles/maelstrom.json
+msgctxt "Color name"
+msgid "Contrast / 3"
+msgstr "Kontrast / 3"
+
+#: styles/maelstrom.json
+msgctxt "Style variation name"
+msgid "Maelstrom"
+msgstr "Vír"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical hard ink to ocean"
+msgstr "Svislý proud inkoustu do oceánu"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical hard ocean to slate"
+msgstr "Vertikální tvrdý oceán až břidlice"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical hard ink to ice"
+msgstr "Vertikální tvrdý inkoust na led"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical hard ocean to ice"
+msgstr "Svislý úsek od moře k ledu"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical hard slate to ice"
+msgstr "Svislá tvrdá břidlice až led"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical hard ice to azure"
+msgstr "Svislý tvrdý led až azurová modř"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical ink to ocean"
+msgstr "Od hrotu pera až k oceánu"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical ocean to slate"
+msgstr "Od hlubokého oceánu po břidlici"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical ink to ice"
+msgstr "Vertikální inkoust na led"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical ocean to ice"
+msgstr "Od oceánu k ledu"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical slate to ice"
+msgstr "Od svislé břidlice k ledu"
+
+#: styles/ice.json
+msgctxt "Gradient name"
+msgid "Vertical azure to ice"
+msgstr "Od sytě modré po ledově bílou"
+
+#: styles/ice.json
+msgctxt "Style variation name"
+msgid "Ice"
+msgstr "Led"
+
+#: theme.json styles/fossil.json styles/ice.json styles/maelstrom.json
+msgctxt "Font size name"
+msgid "Extra Extra Large"
+msgstr "Extra extra velká"
+
+#: theme.json styles/fossil.json styles/ice.json styles/maelstrom.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Malý"
+
+#: theme.json styles/fossil.json styles/maelstrom.json
+msgctxt "Font family name"
+msgid "Cardo"
+msgstr "Cardo Cardo"
+
+#: theme.json styles/fossil.json styles/ice.json styles/mint.json
+#: styles/onyx.json
+msgctxt "Color name"
+msgid "Contrast / Three"
+msgstr "Kontrast / Tři"
+
+#: theme.json styles/fossil.json styles/ice.json styles/mint.json
+#: styles/onyx.json
+msgctxt "Color name"
+msgid "Contrast / Two"
+msgstr "Kontrast / Dva"
+
+#: styles/fossil.json
+msgctxt "Style variation name"
+msgid "Fossil"
+msgstr "Fossil"
+
+#: theme.json styles/ember.json styles/fossil.json styles/ice.json
+#: styles/maelstrom.json styles/mint.json
+msgctxt "Font family name"
+msgid "System Serif"
+msgstr "Systémové serifové písmo"
+
+#: theme.json styles/ember.json styles/fossil.json styles/ice.json
+#: styles/maelstrom.json styles/mint.json
+msgctxt "Font family name"
+msgid "System Sans-serif"
+msgstr "Bezpatkové písmo System"
+
+#: styles/ember.json styles/ice.json styles/maelstrom.json styles/mint.json
+msgctxt "Font family name"
+msgid "Jost"
+msgstr "Jost"
+
+#: styles/ember.json styles/mint.json
+msgctxt "Font family name"
+msgid "Instrument Sans"
+msgstr "Nástroj bez"
+
+#: theme.json styles/ember.json styles/fossil.json styles/ice.json
+#: styles/maelstrom.json styles/mint.json styles/onyx.json
+msgctxt "Color name"
+msgid "Base / Two"
+msgstr "Základna / Dva"
+
+#: styles/ember.json styles/maelstrom.json
+msgctxt "Color name"
+msgid "Contrast / 2"
+msgstr "Kontrast / 2"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical hard ebony to sable"
+msgstr "Vertikální, od tmavě černé až po černou"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical hard sable to taupe"
+msgstr "Vertikální, pískově hnědá až šedohnědá"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical hard ebony to beige"
+msgstr "Svislý pruh od tmavě černé po béžovou"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical hard sable to beige"
+msgstr "Svislý odstín od tmavě hnědé po béžovou"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical hard taupe to beige"
+msgstr "Vertikální přechod od tmavě šedohnědé k béžové"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical hard beige to linen"
+msgstr "Vertikální, od sytě béžové po lněnou barvu"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical ebony to sable"
+msgstr "Od tmavě černé po černou"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical ebony to beige"
+msgstr "Vertikální přechod od ebenové barvy k béžové"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical sable to beige"
+msgstr "Svislý pruh od černé po béžovou"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical taupe to beige"
+msgstr "Vertikální přechod od šedohnědé k béžové"
+
+#: styles/ember.json styles/fossil.json
+msgctxt "Gradient name"
+msgid "Vertical linen to beige"
+msgstr "Svislé pruhy v odstínech od lnu po béžovou"
+
+#: styles/ember.json
+msgctxt "Duotone name"
+msgid "Orange and white"
+msgstr "Oranžová a bílá"
+
+#: styles/ember.json
+msgctxt "Style variation name"
+msgid "Ember"
+msgstr "Člověk"
+
+#: patterns/text-title-left-image-right.php:40
+msgctxt "Call to Action button text"
+msgid "About us"
+msgstr "O nás"
+
+#: patterns/text-title-left-image-right.php:33
+msgctxt "Description for the About pattern"
+msgid "Leaving an indelible mark on the landscape of tomorrow."
+msgstr "Zanecháváme nesmazatelnou stopu v krajině zítřka."
+
+#: patterns/text-title-left-image-right.php:26
+msgctxt "Headline for the About pattern"
+msgid "Études offers comprehensive consulting, management, design, and research solutions. Every architectural endeavor is an opportunity to shape the future."
+msgstr "Společnost Études nabízí komplexní řešení v oblasti poradenství, řízení, navrhování a výzkumu. Každý architektonický projekt je příležitostí k utváření budoucnosti."
+
+#: patterns/text-title-left-image-right.php
+msgctxt "Pattern title"
+msgid "Title text and button on left with image on right"
+msgstr "Název a tlačítko vlevo, obrázek vpravo"
+
+#: patterns/text-project-details.php:40 patterns/text-project-details.php:48
+msgctxt "Descriptive text for the feature area"
+msgid "The revitalized Art Gallery is set to redefine the cultural landscape of Toronto, serving as a nexus of artistic expression, community engagement, and architectural marvel. The expansion and renovation project pay homage to the Art Gallery's rich history while embracing the future, ensuring that the gallery remains a beacon of inspiration."
+msgstr "Obnovená Art Gallery má v úmyslu přetvořit kulturní scénu Toronta a stát se centrem uměleckého vyjádření, zapojení komunity a architektonickým skvostem. Projekt rozšíření a renovace vzdává hold bohaté historii Art Gallery a zároveň se otevírá budoucnosti, čímž zajišťuje, že galerie zůstane zdrojem inspirace."
+
+#: patterns/text-project-details.php:32
+msgctxt "Descriptive title for the feature area"
+msgid "With meticulous attention to detail and a commitment to excellence, we create spaces that inspire, elevate, and enrich the lives of those who inhabit them."
+msgstr "S důrazem na detail a snahou o dokonalost vytváříme prostory, které inspirují, povznášejí a obohacují životy těch, kdo v nich žijí."
+
+#: patterns/text-project-details.php:23
+msgctxt "Title text for the feature area"
+msgid "The revitalized art gallery is set to redefine cultural landscape."
+msgstr "Zrenovovaná umělecká galerie by měla přinést nový rozměr do kulturní scény."
+
+#: patterns/text-project-details.php
+msgctxt "Pattern title"
+msgid "Project details"
+msgstr "Podrobnosti o projektu"
+
+#: patterns/text-feature-grid-3-col.php:117
+msgctxt "Sample content"
+msgid "Experience the fusion of imagination and expertise with Études Architectural Solutions."
+msgstr "Zažijte spojení fantazie a odbornosti s firmou Études Architectural Solutions."
+
+#: patterns/text-feature-grid-3-col.php:113
+msgctxt "Sample heading"
+msgid "Architectural Solutions"
+msgstr "Architektonická řešení"
+
+#: patterns/text-feature-grid-3-col.php:101
+msgctxt "Sample feature heading"
+msgid "Project Management"
+msgstr "Řízení projektů"
+
+#: patterns/text-feature-grid-3-col.php:89
+msgctxt "Sample feature heading"
+msgid "Consulting"
+msgstr "Poradenství"
+
+#: patterns/text-feature-grid-3-col.php:68
+msgctxt "Sample feature heading"
+msgid "App Access"
+msgstr "Přístup k aplikaci"
+
+#: patterns/text-feature-grid-3-col.php:56
+msgctxt "Sample feature heading"
+msgid "Continuous Support"
+msgstr "Neustálá podpora"
+
+#: patterns/text-feature-grid-3-col.php:48
+#: patterns/text-feature-grid-3-col.php:60
+#: patterns/text-feature-grid-3-col.php:72
+#: patterns/text-feature-grid-3-col.php:93
+#: patterns/text-feature-grid-3-col.php:105
+msgctxt "Sample feature content"
+msgid "Experience the fusion of imagination and expertise with Études Architectural Solutions."
+msgstr "Zažijte spojení fantazie a odbornosti s firmou Études Architectural Solutions."
+
+#: patterns/text-feature-grid-3-col.php:44
+msgctxt "Sample feature heading"
+msgid "Renovation and restoration"
+msgstr "Rekonstrukce a restaurování"
+
+#: patterns/text-feature-grid-3-col.php:29
+msgctxt "Sub-heading of the features"
+msgid "Our comprehensive suite of professional services caters to a diverse clientele, ranging from homeowners to commercial developers."
+msgstr "Naše komplexní nabídka profesionálních služeb je určena širokému spektru klientů, od majitelů nemovitostí až po developery komerčních projektů."
+
+#: patterns/text-feature-grid-3-col.php:21
+msgctxt "Heading of the features"
+msgid "A passion for creating spaces"
+msgstr "Vášeň pro vytváření prostorů"
+
+#: patterns/text-feature-grid-3-col.php
+msgctxt "Pattern title"
+msgid "Feature grid, 3 columns"
+msgstr "Mřížka článků, 3 sloupce"
+
+#: patterns/text-faq.php:62
+msgctxt "Question in the FAQ pattern"
+msgid "Can I apply to be a part of the team or work as a contractor?"
+msgstr "Mohu se ucházet o místo v týmu nebo pracovat jako externista?"
+
+#: patterns/text-faq.php:51
+msgctxt "Question in the FAQ pattern"
+msgid "I'd like to get to meet fellow architects, how can I do that?"
+msgstr "Rád bych se seznámil s dalšími architekty, jak to mohu udělat?"
+
+#: patterns/text-faq.php:32 patterns/text-faq.php:43 patterns/text-faq.php:54
+#: patterns/text-faq.php:65
+msgctxt "Answer in the FAQ pattern"
+msgid "Études offers comprehensive consulting, management, design, and research solutions. Our vision is to be at the forefront of architectural innovation, fostering a global community of architects and enthusiasts united by a passion for creating spaces. Every architectural endeavor is an opportunity to shape the future."
+msgstr "Společnost Études nabízí komplexní řešení v oblasti poradenství, řízení, navrhování a výzkumu. Naší vizí je stát v čele architektonických inovací a podporovat globální komunitu architektů a nadšenců, které spojuje vášeň pro tvorbu prostorů. Každý architektonický projekt je příležitostí k utváření budoucnosti."
+
+#: patterns/text-faq.php:29
+msgctxt "Question in the FAQ pattern"
+msgid "What is your process working in smaller projects?"
+msgstr "Jaký postup používáte při práci na menších projektech?"
+
+#: patterns/text-faq.php:20
+msgctxt "Heading of the FAQs"
+msgid "FAQs"
+msgstr "Často kladené otázky"
+
+#: patterns/text-faq.php:17
+msgctxt "Name of the FAQ pattern"
+msgid "FAQs"
+msgstr "Často kladené otázky"
+
+#: patterns/text-faq.php
+msgctxt "Pattern title"
+msgid "FAQ"
+msgstr "Často kladené otázky"
+
+#: patterns/text-centered-statement.php:26
+msgid "<em>Études</em> is not confined to the past—we are passionate about the cutting edge designs shaping our world today."
+msgstr "<em>Études</em> se neomezuje pouze na minulost – nadcházejí nás nejmodernější designy, které utvářejí náš dnešní svět."
+
+#: patterns/text-centered-statement.php
+msgctxt "Pattern title"
+msgid "Centered statement"
+msgstr "Vycentrovaný text"
+
+#. Translators: About text placeholder
+#: patterns/text-centered-statement-small.php:28
+msgid "I write about finance, management and economy, my book “%1$s” is out now."
+msgstr "Píšu o financích, managementu a ekonomice; právě vyšla moje kniha „%1$s“."
+
+#. Translators: About link placeholder
+#: patterns/text-centered-statement-small.php:25
+msgid "Money Studies"
+msgstr "Studium financí"
+
+#: patterns/text-centered-statement-small.php
+msgctxt "Pattern title"
+msgid "Centered statement, small"
+msgstr "Vycentrovaný text, malý"
+
+#: patterns/text-alternating-images.php:110
+msgctxt "Sample list item"
+msgid "Exclusive access to design insights."
+msgstr "Exkluzivní přístup k informacím o designu."
+
+#: patterns/text-alternating-images.php:106
+msgctxt "Sample list item"
+msgid "Case studies that celebrate architecture."
+msgstr "Případové studie, které oslavují architekturu."
+
+#: patterns/text-alternating-images.php:102
+msgctxt "Sample list item"
+msgid "A world of thought-provoking articles."
+msgstr "Svět článků, které podněcují k zamyšlení."
+
+#: patterns/text-alternating-images.php:96
+msgctxt "Sample heading"
+msgid "Études Newsletter"
+msgstr "Studium – Zpravodaj"
+
+#: patterns/text-alternating-images.php:87
+msgid "Windows of a building in Nuremberg, Germany"
+msgstr "Okna budovy v Norimberku v Německu"
+
+#: patterns/text-alternating-images.php:69
+msgid "Tourist taking photo of a building"
+msgstr "Turista fotografující budovu"
+
+#: patterns/text-alternating-images.php:42
+msgctxt "Sample list heading"
+msgid "Études Architect App"
+msgstr "Studium architektury – aplikace"
+
+#: patterns/text-alternating-images.php:28
+msgctxt "Sample subheading content"
+msgid "Our comprehensive suite of professional services caters to a diverse clientele, ranging from homeowners to commercial developers."
+msgstr "Naše komplexní nabídka profesionálních služeb je určena širokému spektru klientů, od majitelů nemovitostí až po developery komerčních projektů."
+
+#: patterns/text-alternating-images.php:24
+msgctxt "Sample heading content"
+msgid "An array of resources"
+msgstr "Široká škála zdrojů"
+
+#: patterns/text-alternating-images.php
+msgctxt "Pattern title"
+msgid "Text with alternating images"
+msgstr "Text proložený obrázky"
+
+#: patterns/testimonial-centered.php:44
+msgctxt "Designation of Person Provided Testimonial"
+msgid "CEO, Greenprint"
+msgstr "Generální ředitel, Greenprint"
+
+#: patterns/testimonial-centered.php:40
+msgctxt "Name of Person Provided the Testimonial"
+msgid "Annie Steiner"
+msgstr "Annie Steinerová"
+
+#: patterns/testimonial-centered.php:31
+msgctxt "Name of testimonial citation group"
+msgid "Testimonial source"
+msgstr "Zdroj reference"
+
+#: patterns/testimonial-centered.php:23
+msgctxt "Testimonial Text or Review Text Got From the Person"
+msgid "“Études has saved us thousands of hours of work and has unlocked insights we never thought possible.”"
+msgstr "„Études nám ušetřilo tisíce hodin práce a odhalilo nám souvislosti, o kterých jsme si nikdy nemysleli, že by mohly existovat.“"
+
+#: patterns/testimonial-centered.php:17
+msgctxt "Name of testimonial pattern"
+msgid "Testimonial"
+msgstr "Reference"
+
+#: patterns/testimonial-centered.php
+msgctxt "Pattern title"
+msgid "Centered testimonial"
+msgstr "Svědectví uprostřed"
+
+#: patterns/template-single-portfolio.php
+msgctxt "Pattern title"
+msgid "Portfolio single post template"
+msgstr "Šablona pro jednotlivý příspěvek v portfoliu"
+
+#: patterns/template-search-blogging.php
+msgctxt "Pattern title"
+msgid "Blogging search template"
+msgstr "Šablona pro vyhledávání blogů"
+
+#: patterns/template-search-portfolio.php
+msgctxt "Pattern title"
+msgid "Portfolio search template"
+msgstr "Šablona pro vyhledávání v portfoliu"
+
+#: patterns/template-index-portfolio.php
+msgctxt "Pattern title"
+msgid "Portfolio index template"
+msgstr "Šablona indexu portfolia"
+
+#: patterns/template-index-blogging.php
+msgctxt "Pattern title"
+msgid "Blogging index template"
+msgstr "Šablona obsahu blogu"
+
+#: patterns/template-home-portfolio.php
+msgctxt "Pattern title"
+msgid "Portfolio home template with post featured images"
+msgstr "Šablona domovské stránky portfolia s vybranými obrázky příspěvků"
+
+#: patterns/template-home-business.php
+msgctxt "Pattern title"
+msgid "Business home template"
+msgstr "Šablona pro firemní webové stránky"
+
+#: patterns/template-home-blogging.php
+msgctxt "Pattern title"
+msgid "Blogging home template"
+msgstr "Šablona úvodní stránky blogu"
+
+#: patterns/template-archive-portfolio.php
+msgctxt "Pattern title"
+msgid "Portfolio archive template"
+msgstr "Šablona archivu portfolia"
+
+#: patterns/template-archive-blogging.php
+msgctxt "Pattern title"
+msgid "Blogging archive template"
+msgstr "Šablona archivu blogu"
+
+#: patterns/team-4-col.php:126
+msgctxt "Sample role of a team member"
+msgid "Project Manager"
+msgstr "Projektový manažer"
+
+#: patterns/team-4-col.php:121
+msgctxt "Sample name of a team member"
+msgid "Ivan Lawrence"
+msgstr "Ivan Lawrence"
+
+#: patterns/team-4-col.php:102
+msgctxt "Sample role of a team member"
+msgid "Architect"
+msgstr "Architekt"
+
+#: patterns/team-4-col.php:97
+msgctxt "Sample name of a team member"
+msgid "Helga Steiner"
+msgstr "Helga Steinerová"
+
+#: patterns/team-4-col.php:78
+msgctxt "Sample role of a team member"
+msgid "Engineering Manager"
+msgstr "vedoucí inženýr"
+
+#: patterns/team-4-col.php:73
+msgctxt "Sample name of a team member"
+msgid "Rhye Moore"
+msgstr "Rhye Moore"
+
+#: patterns/team-4-col.php:54
+msgctxt "Sample role of a team member"
+msgid "Founder, CEO & Architect"
+msgstr "Zakladatel, generální ředitel a architekt"
+
+#: patterns/team-4-col.php:49
+msgctxt "Sample name of a team member"
+msgid "Francesca Piovani"
+msgstr "Francesca Piovani"
+
+#: patterns/team-4-col.php:25
+msgctxt "Sample descriptive text of the team pattern"
+msgid "Our comprehensive suite of professionals caters to a diverse team, ranging from seasoned architects to renowned engineers."
+msgstr "Náš komplexní tým odborníků se skládá z rozmanitých členů, od zkušených architektů až po renomované inženýry."
+
+#: patterns/team-4-col.php:21
+msgctxt "Sample heading for the team pattern"
+msgid "Meet our team"
+msgstr "Seznamte se s naším týmem"
+
+#: patterns/team-4-col.php:16
+msgctxt "Name of team pattern"
+msgid "Team members"
+msgstr "Členové týmu"
+
+#: patterns/team-4-col.php
+msgctxt "Pattern title"
+msgid "Team members, 4 columns"
+msgstr "Členové týmu, 4 sloupce"
+
+#: patterns/posts-images-only-offset-4-col.php
+msgctxt "Pattern title"
+msgid "Offset posts with featured images only, 4 columns"
+msgstr "Články s úvodními obrázky, 4 sloupce"
+
+#: patterns/posts-images-only-3-col.php
+msgctxt "Pattern title"
+msgid "Posts with featured images only, 3 columns"
+msgstr "Pouze příspěvky s úvodním obrázkem, 3 sloupce"
+
+#: patterns/posts-grid-2-col.php:19 patterns/posts-list.php:19
+#: patterns/template-index-blogging.php:21
+msgid "Watch, Read, Listen"
+msgstr "Sledujte, čtěte, poslouchejte"
+
+#: patterns/posts-grid-2-col.php
+msgctxt "Pattern title"
+msgid "Grid of posts featuring the first post, 2 columns"
+msgstr "Mřížka příspěvků s prvním příspěvkem, 2 sloupce"
+
+#: patterns/posts-3-col.php
+msgctxt "Pattern title"
+msgid "List of posts, 3 columns"
+msgstr "Seznam příspěvků, 3 sloupce"
+
+#: patterns/posts-1-col.php
+msgctxt "Pattern title"
+msgid "List of posts, 1 column"
+msgstr "Seznam příspěvků, 1 sloupec"
+
+#: patterns/page-rsvp-landing.php:54
+msgid "Green staircase at Western University, London, Canada"
+msgstr "Zelené schodiště na Western University v Londýně, Kanada"
+
+#: patterns/page-rsvp-landing.php:19
+msgctxt "Name of RSVP landing page pattern"
+msgid "RSVP Landing Page"
+msgstr "Úvodní stránka pro potvrzení účasti"
+
+#: patterns/page-rsvp-landing.php
+msgctxt "Pattern title"
+msgid "RSVP landing"
+msgstr "RSVP přistání"
+
+#: patterns/page-portfolio-overview.php
+msgctxt "Pattern title"
+msgid "Portfolio project overview"
+msgstr "Přehled projektů v portfoliu"
+
+#: patterns/page-newsletter-landing.php:45
+msgctxt "Sample content for newsletter subscribe button"
+msgid "Sign up"
+msgstr "Zaregistrujte se"
+
+#: patterns/page-newsletter-landing.php:34
+msgctxt "sample content for newsletter subscription"
+msgid "Subscribe to the newsletter and stay connected with our community"
+msgstr "Přihlaste se k odběru newsletteru a zůstaňte v kontaktu s naší komunitou"
+
+#: patterns/page-newsletter-landing.php
+msgctxt "Pattern title"
+msgid "Newsletter landing"
+msgstr "Úvodní stránka zpravodaje"
+
+#: patterns/page-home-portfolio.php
+msgctxt "Pattern title"
+msgid "Portfolio home with post featured images"
+msgstr "Úvodní stránka portfolia s obrázky v záhlaví"
+
+#: patterns/page-home-portfolio-gallery.php
+msgctxt "Pattern title"
+msgid "Portfolio home image gallery"
+msgstr "Galerie obrázků na úvodní stránce portfolia"
+
+#: patterns/page-home-business.php
+msgctxt "Pattern title"
+msgid "Business home"
+msgstr "Domovská stránka pro firmy"
+
+#: patterns/page-home-blogging.php
+msgctxt "Pattern title"
+msgid "Blogging home"
+msgstr "Domovská stránka blogu"
+
+#: patterns/page-about-business.php
+msgctxt "Pattern title"
+msgid "About"
+msgstr "O nás"
+
+#: patterns/hidden-sidebar.php:81
+msgctxt "search form placeholder"
+msgid "Search..."
+msgstr "Hledat..."
+
+#: patterns/hidden-sidebar.php:78
+msgid "Search the website"
+msgstr "Prohledat web"
+
+#: patterns/hidden-sidebar.php:66
+msgid "Financial apps for families"
+msgstr "Finanční aplikace pro rodiny"
+
+#: patterns/hidden-sidebar.php:65
+msgid "Latest inflation report"
+msgstr "Nejnovější zpráva o inflaci"
+
+#: patterns/hidden-sidebar.php:59
+msgid "Links I found useful and wanted to share."
+msgstr "Odkazy, které se mi osvědčily a o které bych se rád podělil."
+
+#: patterns/hidden-sidebar.php:55
+msgid "Useful Links"
+msgstr "Užitečné odkazy"
+
+#: patterns/hidden-sidebar.php:39
+msgid "Popular Categories"
+msgstr "Oblíbené kategorie"
+
+#: patterns/hidden-sidebar.php:23
+msgid "About the author"
+msgstr "O autorovi"
+
+#: patterns/hidden-sidebar.php
+msgctxt "Pattern title"
+msgid "Sidebar"
+msgstr "Postranní panel"
+
+#: patterns/hidden-search.php:14
+msgctxt "search button text"
+msgid "Search"
+msgstr "Hledat"
+
+#: patterns/hidden-search.php:14 patterns/hidden-sidebar.php:81
+msgctxt "search form label"
+msgid "Search"
+msgstr "Hledat"
+
+#: patterns/hidden-search.php
+msgctxt "Pattern title"
+msgid "Search"
+msgstr "Hledat"
+
+#: patterns/hidden-post-navigation.php:17
+msgctxt "Label before the title of the next post. There is a space after the colon."
+msgid "Next: "
+msgstr "Další: "
+
+#: patterns/hidden-post-navigation.php:16
+msgctxt "Label before the title of the previous post. There is a space after the colon."
+msgid "Previous: "
+msgstr "Předchozí: "
+
+#: patterns/hidden-post-navigation.php:14
+#: patterns/hidden-post-navigation.php:15 patterns/hidden-posts-heading.php:16
+#: patterns/template-index-portfolio.php:21
+msgid "Posts"
+msgstr "Příspěvky"
+
+#: patterns/hidden-post-navigation.php
+msgctxt "Pattern title"
+msgid "Post navigation"
+msgstr "Navigace mezi příspěvky"
+
+#: patterns/hidden-post-meta.php:30
+msgctxt "Prefix for the post category block: in category name"
+msgid "in "
+msgstr "a "
+
+#: patterns/hidden-post-meta.php:25
+msgctxt "Prefix for the post author block: By author name"
+msgid "by"
+msgstr "autor:"
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Post meta"
+msgstr "Kam příspěvek zveřejnit"
+
+#: patterns/hidden-portfolio-hero.php
+msgctxt "Pattern title"
+msgid "Portfolio hero"
+msgstr "Hlavní produkt v portfoliu"
+
+#: patterns/hidden-no-results.php:15
+msgctxt "Message explaining that there are no results returned from a search"
+msgid "No posts were found."
+msgstr "Nebyly nalezeny žádné příspěvky."
+
+#: patterns/hidden-no-results.php
+msgctxt "Pattern title"
+msgid "No results"
+msgstr "Žádné výsledky"
+
+#: patterns/hidden-comments.php:17
+msgid "Comments"
+msgstr "Komentáře"
+
+#: patterns/hidden-comments.php
+msgctxt "Pattern title"
+msgid "Comments"
+msgstr "Komentáře"
+
+#: patterns/hidden-404.php:18
+msgctxt "Message to convey that a webpage could not be found"
+msgid "The page you are looking for does not exist, or it has been moved. Please try searching using the form below."
+msgstr "Stránka, kterou hledáte, neexistuje nebo byla přesunuta. Zkuste ji vyhledat pomocí níže uvedeného formuláře."
+
+#: patterns/hidden-404.php:15
+msgctxt "Heading for a webpage that is not found"
+msgid "Page Not Found"
+msgstr "Stránka nebyla nalezena"
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr "404"
+
+#: patterns/gallery-project-layout.php:59
+msgid "Art Gallery of Ontario, Toronto, Canada"
+msgstr "Umělecká galerie Ontaria, Toronto, Kanada"
+
+#: patterns/gallery-project-layout.php:54
+msgctxt "Sample text for the feature area"
+msgid "2. Case studies that celebrate the artistry can fuel curiosity and ignite inspiration."
+msgstr "2. Případové studie, které vyzdvihují uměleckou stránku, mohou podnítit zvědavost a být zdrojem inspirace."
+
+#: patterns/gallery-project-layout.php:43
+msgctxt "Sample text for the feature area"
+msgid "Our comprehensive suite of professional services caters to a diverse clientele, ranging from homeowners to commercial developers. With a commitment to innovation and sustainability, Études is the bridge that transforms architectural dreams into remarkable built realities."
+msgstr "Naše komplexní nabídka profesionálních služeb je určena širokému spektru klientů, od majitelů rodinných domů až po developery komerčních projektů. Díky svému zaměření na inovace a udržitelnost je Études mostem, který proměňuje architektonické sny v pozoruhodné stavby."
+
+#: patterns/gallery-project-layout.php:31
+msgctxt "Sample text for the feature area"
+msgid "1. Through Études, we aspire to redefine architectural boundaries and usher in a new era of design excellence that leaves an indelible mark on the built environment."
+msgstr "1. Prostřednictvím projektu Études se snažíme posunout hranice architektury a nastolit novou éru designové dokonalosti, která zanechá nesmazatelnou stopu v zastavěném prostředí."
+
+#: patterns/gallery-project-layout.php:26
+msgid "An empty staircase under an angular roof in Darling Harbour, Sydney, Australia"
+msgstr "Prázdné schodiště pod šikmou střechou v Darling Harbour v australském Sydney"
+
+#: patterns/gallery-project-layout.php
+msgctxt "Pattern title"
+msgid "Project layout"
+msgstr "Struktura projektu"
+
+#: patterns/gallery-offset-images-grid-4-col.php
+msgctxt "Pattern title"
+msgid "Offset gallery, 4 columns"
+msgstr "Galerie s odsazením, 4 sloupce"
+
+#: patterns/gallery-offset-images-grid-3-col.php
+msgctxt "Pattern title"
+msgid "Offset gallery, 3 columns"
+msgstr "Galerie s odsazením, 3 sloupce"
+
+#: patterns/gallery-offset-images-grid-2-col.php
+msgctxt "Pattern title"
+msgid "Offset gallery, 2 columns"
+msgstr "Galerie s odsazením, 2 sloupce"
+
+#: patterns/gallery-full-screen-image.php
+msgctxt "Pattern title"
+msgid "Full screen image"
+msgstr "Obrázek na celou obrazovku"
+
+#: patterns/footer.php:97
+msgid "Social Media"
+msgstr "Sociální sítě"
+
+#: patterns/footer.php:91
+msgid "Social"
+msgstr "Sociální"
+
+#: patterns/footer.php:69 patterns/footer.php:75
+msgid "Privacy"
+msgstr "Ochrana osobních údajů"
+
+#: patterns/footer.php:46 patterns/footer.php:52
+msgid "About"
+msgstr "O nás"
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer with colophon, 4 columns"
+msgstr "Zápatí s tirážem, 4 sloupce"
+
+#: patterns/footer-colophon-3-col.php:87
+msgid "&copy;"
+msgstr "Autorská práva"
+
+#: patterns/footer-colophon-3-col.php:65 patterns/footer.php:99
+msgid "Facebook"
+msgstr "Facebook"
+
+#: patterns/footer-colophon-3-col.php:65 patterns/footer.php:100
+msgid "Instagram"
+msgstr "Instagram"
+
+#: patterns/footer-colophon-3-col.php:62
+msgid "Follow"
+msgstr "Sledovat"
+
+#: patterns/footer-colophon-3-col.php:47
+msgctxt "Example email in site footer"
+msgid "info@example.com"
+msgstr "info@example.com"
+
+#: patterns/footer-colophon-3-col.php:44
+msgid "Contact"
+msgstr "Kontakt"
+
+#: patterns/footer-colophon-3-col.php:35
+msgid "Keep up, get in touch."
+msgstr "Zůstaňte v kontaktu."
+
+#: patterns/footer-colophon-3-col.php
+msgctxt "Pattern title"
+msgid "Footer with colophon, 3 columns"
+msgstr "Zápatí s tirážem, 3 sloupce"
+
+#. Translators: Designed with WordPress
+#: patterns/footer-centered-logo-nav.php:30
+#: patterns/footer-colophon-3-col.php:99 patterns/footer.php:125
+msgid "Designed with %1$s"
+msgstr "Navrženo s %1$s"
+
+#: patterns/footer-centered-logo-nav.php
+msgctxt "Pattern title"
+msgid "Footer with centered logo and navigation"
+msgstr "Zápatí s vycentrovaným logem a navigační lištou"
+
+#: patterns/cta-subscribe-centered.php:36
+msgctxt "Sample text for Sign Up Button"
+msgid "Sign up"
+msgstr "Zaregistrujte se"
+
+#: patterns/cta-subscribe-centered.php:29
+msgctxt "Sample text for Subscriber Description"
+msgid "Stay in the loop with everything you need to know."
+msgstr "Buďte vždy v obraze a mějte přehled o všem, co potřebujete vědět."
+
+#: patterns/cta-subscribe-centered.php:25
+msgctxt "Sample text for Subscriber Heading with numbers"
+msgid "Join 900+ subscribers"
+msgstr "Přidejte se k více než 900 odběratelům"
+
+#: patterns/cta-subscribe-centered.php
+msgctxt "Pattern title"
+msgid "Centered call to action"
+msgstr "Výzva k akci uprostřed stránky"
+
+#: patterns/cta-services-image-left.php:44
+msgctxt "Sample button text to view the services"
+msgid "Our services"
+msgstr "Naše služby"
+
+#: patterns/cta-services-image-left.php:37
+msgctxt "Sample description of the services pattern"
+msgid "Experience the fusion of imagination and expertise with Études—the catalyst for architectural transformations that enrich the world around us."
+msgstr "Zažijte spojení fantazie a odbornosti s Études – hnací silou architektonických proměn, které obohacují svět kolem nás."
+
+#: patterns/cta-services-image-left.php:33
+msgctxt "Sample heading of the services pattern"
+msgid "Guiding your business through the project"
+msgstr "Provázíme vaši firmu celým projektem"
+
+#: patterns/cta-services-image-left.php
+msgctxt "Pattern title"
+msgid "Services call to action with image on left"
+msgstr "Výzva k akci se službami a obrázkem vlevo"
+
+#: patterns/cta-rsvp.php:55 patterns/text-title-left-image-right.php:56
+msgid "A ramp along a curved wall in the Kiasma Museu, Helsinki, Finland"
+msgstr "Rampa podél zakřivené stěny v muzeu Kiasma v Helsinkách, Finsko"
+
+#: patterns/cta-rsvp.php:39 patterns/page-rsvp-landing.php:39
+msgctxt "Call to action button text for the reservation button"
+msgid "Reserve your spot"
+msgstr "Zarezervujte si místo"
+
+#: patterns/cta-rsvp.php:32 patterns/page-rsvp-landing.php:33
+msgctxt "RSVP call to action description"
+msgid "Experience the fusion of imagination and expertise with Études Arch Summit, February 2025."
+msgstr "Zažijte spojení fantazie a odbornosti na konferenci Études Arch Summit v únoru 2025."
+
+#: patterns/cta-rsvp.php:26 patterns/page-rsvp-landing.php:28
+msgctxt "Initials for ´please respond´"
+msgid "RSVP"
+msgstr "Potvrďte prosím svou účast"
+
+#: patterns/cta-rsvp.php:16
+msgctxt "Name of RSVP pattern"
+msgid "RSVP"
+msgstr "Potvrďte prosím svou účast"
+
+#: patterns/cta-rsvp.php
+msgctxt "Pattern title"
+msgid "RSVP"
+msgstr "Potvrďte prosím svou účast"
+
+#: patterns/cta-pricing.php:208
+msgctxt "Button text for the third pricing level"
+msgid "Subscribe"
+msgstr "Přihlásit se k odběru"
+
+#: patterns/cta-pricing.php:194
+msgctxt "Feature for pricing level"
+msgid "Exclusive access to the <em>Études</em> app for iOS and Android"
+msgstr "Exkluzivní přístup k aplikaci <em>Études</em> pro iOS a Android"
+
+#: patterns/cta-pricing.php:178
+msgctxt "Feature for pricing level"
+msgid "Exclusive, unlimited access to <em>Études Articles</em>."
+msgstr "Exkluzivní a neomezený přístup k <em>Článkům Études</em>."
+
+#: patterns/cta-pricing.php:167
+msgctxt "Sample price for the third pricing level"
+msgid "$28"
+msgstr "28 dolarů"
+
+#: patterns/cta-pricing.php:162
+msgctxt "Sample heading for the third pricing level"
+msgid "Expert"
+msgstr "Odborník"
+
+#: patterns/cta-pricing.php:150
+msgctxt "Button text for the second pricing level"
+msgid "Subscribe"
+msgstr "Přihlásit se k odběru"
+
+#: patterns/cta-pricing.php:120
+msgctxt "Feature for pricing level"
+msgid "Access to 20 exclusive <em>Études Articles</em> per month."
+msgstr "Přístup k 20 exkluzivním <em>článkům Études</em> měsíčně."
+
+#: patterns/cta-pricing.php:109
+msgctxt "Sample price for the second pricing level"
+msgid "$12"
+msgstr "12 dolarů"
+
+#: patterns/cta-pricing.php:104
+msgctxt "Sample heading for the second pricing level"
+msgid "Connoisseur"
+msgstr "Znalec"
+
+#: patterns/cta-pricing.php:92
+msgctxt "Button text for the first pricing level"
+msgid "Subscribe"
+msgstr "Přihlásit se k odběru"
+
+#: patterns/cta-pricing.php:77 patterns/cta-pricing.php:136
+msgctxt "Feature for pricing level"
+msgid "Exclusive access to the <em>Études</em> app for iOS and Android."
+msgstr "Exkluzivní přístup k aplikaci <em>Études</em> pro iOS a Android."
+
+#: patterns/cta-pricing.php:67 patterns/cta-pricing.php:128
+#: patterns/cta-pricing.php:186
+msgctxt "Feature for pricing level"
+msgid "Weekly print edition."
+msgstr "Týdenní tištěné vydání."
+
+#: patterns/cta-pricing.php:58
+msgctxt "Feature for pricing level"
+msgid "Access to 5 exclusive <em>Études Articles</em> per month."
+msgstr "Přístup k 5 exkluzivním <em>článkům z rubriky Études</em> měsíčně."
+
+#: patterns/cta-pricing.php:47
+msgctxt "Sample price for the first pricing level"
+msgid "$0"
+msgstr "0 $"
+
+#: patterns/cta-pricing.php:42
+msgctxt "Sample heading for the first pricing level"
+msgid "Free"
+msgstr "Zdarma"
+
+#: patterns/cta-pricing.php:27
+msgctxt "Sample description for a pricing table"
+msgid "We offer flexible options, which you can adapt to the different needs of each project."
+msgstr "Nabízíme flexibilní možnosti, které můžete přizpůsobit konkrétním požadavkům každého projektu."
+
+#: patterns/cta-pricing.php:23
+msgctxt "Sample heading for pricing pattern"
+msgid "Our Services"
+msgstr "Naše služby"
+
+#: patterns/cta-pricing.php:16
+msgctxt "Name for the pricing pattern"
+msgid "Pricing Table"
+msgstr "Ceník"
+
+#: patterns/cta-pricing.php
+msgctxt "Pattern title"
+msgid "Pricing"
+msgstr "Ceny"
+
+#: patterns/cta-content-image-on-right.php:64
+#: patterns/cta-services-image-left.php:24
+msgid "White abstract geometric artwork from Dresden, Germany"
+msgstr "Bílé abstraktní geometrické umělecké dílo z Drážďan, Německo"
+
+#: patterns/cta-content-image-on-right.php:52
+msgctxt "Button text of this section"
+msgid "How it works"
+msgstr "Jak to funguje"
+
+#: patterns/cta-content-image-on-right.php:46
+msgctxt "Button text of this section"
+msgid "Download app"
+msgstr "Stáhněte si aplikaci"
+
+#: patterns/cta-content-image-on-right.php:37
+#: patterns/text-alternating-images.php:57
+msgctxt "Sample list item"
+msgid "Experience the world of architecture."
+msgstr "Objevte svět architektury."
+
+#: patterns/cta-content-image-on-right.php:33
+#: patterns/text-alternating-images.php:53
+msgctxt "Sample list item"
+msgid "Showcase your projects."
+msgstr "Představte své projekty."
+
+#: patterns/cta-content-image-on-right.php:29
+#: patterns/text-alternating-images.php:49
+msgctxt "Sample list item"
+msgid "Collaborate with fellow architects."
+msgstr "Spolupracujte s ostatními architekty."
+
+#: patterns/cta-content-image-on-right.php:23
+msgctxt "Sample heading"
+msgid "Enhance your architectural journey with the Études Architect app."
+msgstr "Obohaťte své architektonické zážitky s aplikací Études Architect."
+
+#: patterns/cta-content-image-on-right.php
+msgctxt "Pattern title"
+msgid "Call to action with image on right"
+msgstr "Výzva k akci s obrázkem vpravo"
+
+#: patterns/banner-project-description.php:47
+msgid "Hyatt Regency San Francisco, San Francisco, United States"
+msgstr "Hyatt Regency San Francisco, San Francisco, Spojené státy americké"
+
+#: patterns/banner-project-description.php:32
+msgctxt "Sample descriptive text for a project or post."
+msgid "This transformative project seeks to enhance the gallery's infrastructure, accessibility, and exhibition spaces while preserving its rich cultural heritage."
+msgstr "Cílem tohoto transformačního projektu je zlepšit infrastrukturu galerie, její přístupnost a výstavní prostory a zároveň zachovat její bohaté kulturní dědictví."
+
+#: patterns/banner-project-description.php:23
+msgctxt "Sample title for a project or post"
+msgid "Art Gallery — Overview"
+msgstr "Galerie umění — Přehled"
+
+#: patterns/banner-project-description.php
+msgctxt "Pattern title"
+msgid "Project description"
+msgstr "Popis projektu"
+
+#: patterns/banner-hero.php:57
+msgid "Building exterior in Toronto, Canada"
+msgstr "Exteriér budovy v Torontu, Kanada"
+
+#: patterns/banner-hero.php:42
+msgctxt "Button text of the hero section"
+msgid "About us"
+msgstr "O nás"
+
+#: patterns/banner-hero.php:31
+msgctxt "Content of the hero section"
+msgid "Études is a pioneering firm that seamlessly merges creativity and functionality to redefine architectural excellence."
+msgstr "Études je průkopnická firma, která hladce spojuje kreativitu a funkčnost a tím přepisuje standardy architektonické dokonalosti."
+
+#: patterns/banner-hero.php:23
+msgctxt "Heading of the hero section"
+msgid "A commitment to innovation and sustainability"
+msgstr "Závazek k inovacím a udržitelnosti"
+
+#: patterns/banner-hero.php
+msgctxt "Pattern title"
+msgid "Hero"
+msgstr "Hrdina"
+
+#: functions.php:108
+msgid "With asterisk"
+msgstr "S hvězdičkou"
+
+#: functions.php:90
+msgid "With arrow"
+msgstr "Se šipkou"
+
+#: functions.php:71
+msgid "Checkmark"
+msgstr "Zaškrtávací políčko"
+
+#: functions.php:48
+msgid "Pill"
+msgstr "tabletka"
+
+#: functions.php:25
+msgid "Arrow icon"
+msgstr "Ikona šipky"
+
+#. Author of the theme
+#: style.css
+#, gp-priority: low
+msgid "the WordPress team"
+msgstr "Vývojáři WordPressu (a překladatelé)"
+
+#. Theme URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://wordpress.org/themes/twentytwentyfour/"
+msgstr "https://wordpress.org/themes/twentytwentyfour/"

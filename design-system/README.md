@@ -52,11 +52,11 @@ Publikaci zajišťuje workflow `.github/workflows/design-system.yml`. Změny té
 
 ## Vztah ke skutečné šabloně
 
-- `wordpress/dedenik/assets/css/main.css`: veřejné komponenty a responzivní pravidla.
-- `wordpress/dedenik/assets/css/editor.css`: vzhled editoru a tři výslovné styly obrázků.
-- `wordpress/dedenik/inc/setup.php`: registrace stylů a nastavení šablony.
-- `wordpress/dedenik/template-parts/`: komponenty karet, rubrik a Světa Dede.
-- `wordpress/dedenik/header.php`, `footer.php`, `single.php`: hlavička, patička a článek.
+- `wp-content/themes/dedenik/assets/css/main.css`: veřejné komponenty a responzivní pravidla.
+- `wp-content/themes/dedenik/assets/css/editor.css`: vzhled editoru a tři výslovné styly obrázků.
+- `wp-content/themes/dedenik/inc/setup.php`: registrace stylů a nastavení šablony.
+- `wp-content/themes/dedenik/template-parts/`: komponenty karet, rubrik a Světa Dede.
+- `wp-content/themes/dedenik/header.php`, `footer.php`, `single.php`: hlavička, patička a článek.
 
 Hodnota tokenu se stavem `implemented` byla nalezena v aktuálním lokálním zdroji, nikoli automaticky na produkci. Stav `reference` označuje pojmenovanou referenční hodnotu; starší CSS ji může mít zapsanou přímo. Mezery a poloměry zatím nejsou plošně převedené na tokeny.
 

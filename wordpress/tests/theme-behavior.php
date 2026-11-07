@@ -26,7 +26,8 @@ function the_post_thumbnail($size,$args) { echo '<img src="protected-source.jpg"
 function get_term($id,$taxonomy) { return $id===9 ? (object)array('term_id'=>9,'name'=>'Chatník') : new Exception('invalid'); }
 function get_term_by($field,$value,$taxonomy) { return $GLOBALS['fixture_terms'][$taxonomy][$value] ?? $GLOBALS['fixture_categories'][$value] ?? false; }
 function get_post($id) { return $GLOBALS['fixture_pages'][$id] ?? null; }
-require __DIR__.'/../dedenik/inc/template-tags.php';
+$theme_dir = dirname(__DIR__, 2) . '/wp-content/themes/dedenik';
+require $theme_dir . '/inc/template-tags.php';
 $tests=0;
 function check($condition,$message) { $GLOBALS['tests']++; if (!$condition) { throw new RuntimeException($message); } }
 $options['theme_mods_frontier']=array('nav_menu_locations'=>array('frontier-menu-primary'=>7));
@@ -43,16 +44,16 @@ check(strpos($html,'category/2/')!==false,'Primary category honored');
 check(strpos($html,'<script>')===false && strpos($html,'&lt;script&gt;')!==false,'Category names escaped');
 $primary=99; ob_start(); dedenik_primary_category(); $html=ob_get_clean(); check(strpos($html,'category/1/')!==false,'Invalid primary category falls back');
 $protected=true; ob_start(); dedenik_card_image(); $html=ob_get_clean(); check(strpos($html,'protected-source')===false,'Password-protected card must not disclose thumbnail');
-ob_start(); require __DIR__.'/../dedenik/comments.php'; $html=ob_get_clean(); check($html==='','Protected post must not render comments or form');
+ob_start(); require $theme_dir . '/comments.php'; $html=ob_get_clean(); check($html==='','Protected post must not render comments or form');
 $protected=false; ob_start(); dedenik_card_image(); $html=ob_get_clean(); check(strpos($html,'protected-source')!==false,'Public thumbnail rendered');
 $thumbnail=false; ob_start(); dedenik_card_image(); $html=ob_get_clean(); check(strpos($html,'card-placeholder')!==false,'Missing image has fallback');
 $mods['dedenik_chat_category']=999; check(dedenik_chat_category()===false,'Invalid Chatnik category hides component');
 $mods['dedenik_chat_category']=9; check(dedenik_chat_category()->term_id===9,'Configured Chatnik category used');
-$fixture_pages=array(); ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'https://alzbetaadrak.cz/')!==false,'Default books card links to Alzbeta a drak');
+$fixture_pages=array(); ob_start(); require $theme_dir . '/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'https://alzbetaadrak.cz/')!==false,'Default books card links to Alzbeta a drak');
 $mods['dedenik_world_books']=3; $fixture_pages[3]=(object)array('post_type'=>'page','post_status'=>'draft','post_password'=>'');
-ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'world-card-books')===false,'Draft promotional page must not leak');
+ob_start(); require $theme_dir . '/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'world-card-books')===false,'Draft promotional page must not leak');
 $fixture_pages[3]->post_status='publish'; $fixture_pages[3]->post_password='fixture';
-ob_start(); require __DIR__.'/../dedenik/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'world-card-books')===false,'Protected promotional page must not leak');
+ob_start(); require $theme_dir . '/template-parts/world.php'; $html=ob_get_clean(); check(strpos($html,'world-card-books')===false,'Protected promotional page must not leak');
 check(strpos($html,'https://open.spotify.com/show/4xeerT4CEz6vBbsb9YzGWM')!==false,'Podcast card defaults to the supplied Spotify show');
 $mods['dedenik_world_podcast_url']='https://example.test/custom-podcast';
 $items=dedenik_world_items(); check($items[0]['url']==='https://example.test/custom-podcast','Configured podcast link takes priority');
@@ -63,13 +64,13 @@ $category_names = array('BTW','Člověčiny','Matyldoviny','Mlsotník','Rozcestn
 $category_slugs = array('btw','cloveciny','matyldoviny','mlsotnik','rozcestnik','rozhlednik','chatnik','fotoclanek','povidky','literarni-leto','kocky','psi','kone','netopyri','akvaristika','dedivadlo');
 $fixture_categories = array();
 foreach ($category_slugs as $index => $slug) { $fixture_categories[$slug] = (object)array('term_id'=>500+$index); }
-ob_start(); require __DIR__.'/../dedenik/template-parts/discover.php'; $html=ob_get_clean();
+ob_start(); require $theme_dir . '/template-parts/discover.php'; $html=ob_get_clean();
 preg_match_all('/<span>([^<]+)<\/span>/', $html, $labels);
 check($labels[1] === $category_names, 'Homepage has exactly the reference categories in editorial order');
 foreach ($category_slugs as $index => $slug) { check(strpos($html, 'href="https://example.test/category/'.(500+$index).'/"') !== false, 'Category tile uses its resolved term URL: '.$slug); }
 $fixture_categories['fotoclanek'] = new Exception('missing');
 unset($fixture_categories['kone']);
-ob_start(); require __DIR__.'/../dedenik/template-parts/discover.php'; $html=ob_get_clean();
+ob_start(); require $theme_dir . '/template-parts/discover.php'; $html=ob_get_clean();
 check(substr_count($html, 'aria-disabled="true"') === 2, 'Unavailable categories stay visible without fabricated links');
 check(strpos($html, 'category/507/') === false && strpos($html, 'category/512/') === false, 'Unavailable categories do not link to stale targets');
 // Featured authors resolve editorial tag identities, not publishing accounts.
@@ -78,12 +79,12 @@ function wp_html_excerpt($value,$length,$more) { preg_match('/^./us',$value,$fir
 $author_names = array('Dede','Matylda','EvaB','Netopýrka','Tora','Pů','Yga','Alex','MartinR','Neviathiel','Aries','a další');
 $author_slugs = array('dagmar-ruscakova','matylda','evab','netopyrka','tora','pu','yga','alex','martinr','neviathiel','aloisie-trpkosova-aries');
 foreach ($author_slugs as $slug) { $fixture_terms['post_tag'][$slug] = (object)array('slug'=>$slug); }
-ob_start(); require __DIR__.'/../dedenik/template-parts/authors.php'; $html=ob_get_clean();
+ob_start(); require $theme_dir . '/template-parts/authors.php'; $html=ob_get_clean();
 preg_match_all('/<span>([^<]+)<\/span><\/a>/', $html, $labels);
 check($labels[1] === $author_names, 'Featured authors preserve all eleven names, editorial order and final more link');
 check(strpos($html, 'href="https://example.test/tag/dagmar-ruscakova/"') !== false && strpos($html, 'href="https://example.test/tag/aloisie-trpkosova-aries/"') !== false, 'Dede and Aries resolve their actual author tags');
 check(strpos($html, 'https://www.dedenik.cz/#f2-tagcloud-2') !== false, 'More authors links to the complete author list');
 $fixture_terms['post_tag']['neviathiel'] = new Exception('missing');
-ob_start(); require __DIR__.'/../dedenik/template-parts/authors.php'; $html=ob_get_clean();
+ob_start(); require $theme_dir . '/template-parts/authors.php'; $html=ob_get_clean();
 check(strpos($html, 'aria-disabled="true"') !== false && strpos($html, 'href="https://example.test/tag/neviathiel/"') === false, 'Missing author tag is visible without a fabricated archive link');
 echo 'Passed '.$tests." offline behavior checks\n";

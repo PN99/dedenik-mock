@@ -108,7 +108,7 @@ def outputs(source=SOURCE):
 
 
 def check_theme(entries):
-    stylesheet = (ROOT / 'wordpress/dedenik/assets/css/main.css').read_text(encoding='utf-8-sig')
+    stylesheet = (ROOT / 'wp-content/themes/dedenik/assets/css/main.css').read_text(encoding='utf-8-sig')
     actual = dict(re.findall(r'(--[a-z][a-z0-9-]*)\s*:\s*([^;}]+)', stylesheet))
     normalize = lambda value: re.sub(r'\s+', '', value)
     mismatches = []

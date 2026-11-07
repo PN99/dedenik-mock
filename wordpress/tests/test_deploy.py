@@ -16,6 +16,7 @@ class DeploymentBoundaries(unittest.TestCase):
         self.assertEqual(deploy.SITE, 'https://svetdede.dedenik.cz')
 
     def test_real_payload_contains_no_config_or_data(self):
+        self.assertEqual(deploy.SOURCE, Path(__file__).resolve().parents[2] / 'wp-content/themes/dedenik')
         files = deploy.source_files()
         self.assertTrue(files)
         self.assertFalse(any(p.name == 'wp-config.php' or p.suffix in {'.sql', '.gz', '.md'} for p in files))
