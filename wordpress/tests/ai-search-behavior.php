@@ -38,7 +38,7 @@ class FakeDB {
     function query($args){if($this->count >= $args[1])return 0;$this->count++;return 1;}
 }
 $wpdb=new FakeDB;
-require __DIR__.'/../dedenik/inc/ai-search.php';
+require dirname(__DIR__, 2) . '/wp-content/themes/dedenik/inc/ai-search.php';
 $checks=0;
 function ai_check($v,$m){$GLOBALS['checks']++;if(!$v)throw new RuntimeException($m);}
 function answer($value,$finish='STOP'){

@@ -2,10 +2,11 @@ name: Check theme and deploy Svet Dede
 
 on:
   pull_request:
-    paths: ['wordpress/**', '.github/workflows/svetdede.yml']
+    branches: [main]
+    paths: ['wp-content/themes/dedenik/**', 'wordpress/**', '.github/workflows/svetdede.yml']
   push:
     branches: [main]
-    paths: ['wordpress/**', '.github/workflows/svetdede.yml']
+    paths: ['wp-content/themes/dedenik/**', 'wordpress/**', '.github/workflows/svetdede.yml']
   workflow_dispatch:
     inputs:
       dry_run:
@@ -29,7 +30,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Check PHP syntax
-        run: find wordpress/dedenik -name '*.php' -print0 | xargs -0 -n1 php -n -l
+        run: find wp-content/themes/dedenik -name '*.php' -print0 | xargs -0 -n1 php -n -l
       - name: Check theme behavior
         run: php -n wordpress/tests/theme-behavior.php
       - name: Check AI search isolation and budgets
