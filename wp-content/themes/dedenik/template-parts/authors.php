@@ -10,7 +10,7 @@ $authors = array(
     array( 'name' => 'Yga', 'slug' => 'yga' ),
     array( 'name' => 'Alex', 'slug' => 'alex' ),
     array( 'name' => 'MartinR', 'slug' => 'martinr' ),
-    array( 'name' => 'David L.', 'slug' => 'davidl' ),
+    array( 'name' => 'DavidL', 'slug' => 'davidl' ),
     array( 'name' => 'Aries', 'slug' => 'aloisie-trpkosova-aries' ),
 );
 ?>
