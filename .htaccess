@@ -1,0 +1,3 @@
+# Temporary access block for /public_html/www/new only.
+# Replace after its own configuration and preview isolation are verified.
+Require all denied
